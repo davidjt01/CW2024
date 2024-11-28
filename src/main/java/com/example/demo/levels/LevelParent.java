@@ -1,9 +1,9 @@
-package com.example.demo.Levels;
+package com.example.demo.levels;
 
-import com.example.demo.Actors.ActiveActorDestructible;
-import com.example.demo.Actors.FighterPlane;
-import com.example.demo.LevelViews.LevelView;
-import com.example.demo.Actors.UserPlane;
+import com.example.demo.actors.ActiveActorDestructible;
+import com.example.demo.planes.FighterPlane;
+import com.example.demo.levelviews.LevelView;
+import com.example.demo.planes.UserPlane;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.scene.Group;

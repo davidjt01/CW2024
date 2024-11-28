@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.example.demo.audio;
 
 import javafx.scene.media.AudioClip;
 

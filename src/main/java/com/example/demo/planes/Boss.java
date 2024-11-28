@@ -1,7 +1,9 @@
-package com.example.demo.Actors;
+package com.example.demo.planes;
 
-import com.example.demo.AudioPlayer;
-import com.example.demo.LevelViews.LevelViewBoss;
+import com.example.demo.actors.ActiveActorDestructible;
+import com.example.demo.projectiles.BossProjectile;
+import com.example.demo.audio.AudioPlayer;
+import com.example.demo.levelviews.LevelViewBoss;
 
 import java.util.ArrayList;
 import java.util.Collections;

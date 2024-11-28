@@ -1,6 +1,8 @@
-package com.example.demo.Actors;
+package com.example.demo.planes;
 
-import com.example.demo.AudioPlayer;
+import com.example.demo.actors.ActiveActorDestructible;
+import com.example.demo.projectiles.UserProjectile;
+import com.example.demo.audio.AudioPlayer;
 
 public class UserPlane extends FighterPlane {
 
