@@ -1,6 +1,6 @@
 package com.example.demo.levels;
 
-import com.example.demo.planes.Boss;
+import com.example.demo.planes.BossPlane;
 import com.example.demo.levelviews.LevelView;
 import com.example.demo.levelviews.LevelViewBoss;
 
@@ -9,12 +9,12 @@ public class LevelFive extends LevelParent {
     private static final String BACKGROUND_IMAGE_NAME = "/com/example/demo/images/background2.jpg";
     private static final String NEXT_LEVEL = "com.example.demo.Levels.LevelThree";
     private static final int PLAYER_INITIAL_HEALTH = 5;
-    private final Boss boss;
+    private final BossPlane bossPlane;
     private LevelViewBoss levelView;
 
     public LevelFive(double screenHeight, double screenWidth) {
         super(BACKGROUND_IMAGE_NAME, screenHeight, screenWidth, PLAYER_INITIAL_HEALTH);
-        boss = new Boss(levelView);
+        bossPlane = new BossPlane(levelView);
     }
 
     @Override
@@ -26,7 +26,7 @@ public class LevelFive extends LevelParent {
     protected void checkIfGameOver() {
         if (userIsDestroyed()) {
             loseGame();
-        } else if (boss.isDestroyed()) {
+        } else if (bossPlane.isDestroyed()) {
             winGame();
         }
     }
@@ -34,7 +34,7 @@ public class LevelFive extends LevelParent {
     @Override
     protected void spawnEnemyUnits() {
         if (getCurrentNumberOfEnemies() == 0) {
-            addEnemyUnit(boss);
+            addEnemyUnit(bossPlane);
         }
     }
 

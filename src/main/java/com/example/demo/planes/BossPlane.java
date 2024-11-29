@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class Boss extends FighterPlane {
+public class BossPlane extends Plane {
 
     private static final String IMAGE_NAME = "bossplane.png";
     private static final double INITIAL_X_POSITION = 1000.0;
@@ -40,7 +40,7 @@ public class Boss extends FighterPlane {
     private int indexOfCurrentMove;
     private int framesWithShieldActivated;
 
-    public Boss(LevelViewBoss levelView) {
+    public BossPlane(LevelViewBoss levelView) {
         super(IMAGE_NAME, IMAGE_HEIGHT, INITIAL_X_POSITION, INITIAL_Y_POSITION, HEALTH);
         this.levelView = levelView;
 

@@ -4,7 +4,7 @@ import com.example.demo.actors.ActiveActorDestructible;
 import com.example.demo.projectiles.UserProjectile;
 import com.example.demo.audio.AudioPlayer;
 
-public class UserPlane extends FighterPlane {
+public class UserPlane extends Plane {
 
     private static final String IMAGE_NAME = "userplane.png";
     private static final double Y_UPPER_BOUND = 20;

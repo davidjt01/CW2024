@@ -1,7 +1,7 @@
 package com.example.demo.levels;
 
 import com.example.demo.actors.ActiveActorDestructible;
-import com.example.demo.planes.FighterPlane;
+import com.example.demo.planes.Plane;
 import com.example.demo.levelviews.LevelView;
 import com.example.demo.planes.UserPlane;
 import javafx.animation.KeyFrame;
@@ -152,7 +152,7 @@ public abstract class LevelParent extends Observable {
     }
 
     private void generateEnemyFire() {
-        enemyUnits.forEach(enemy -> spawnEnemyProjectile(((FighterPlane) enemy).fireProjectile()));
+        enemyUnits.forEach(enemy -> spawnEnemyProjectile(((Plane) enemy).fireProjectile()));
     }
 
     private void spawnEnemyProjectile(ActiveActorDestructible projectile) {

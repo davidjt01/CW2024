@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class AdvancedEnemyPlane extends FighterPlane {
+public class AdvancedEnemyPlane extends Plane {
 
     private static final String IMAGE_NAME = "advancedenemyplane.png";
     private static final int IMAGE_HEIGHT = 54;
