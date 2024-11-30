@@ -1,5 +1,6 @@
-package com.example.demo.controller;
+package com.example.demo.menus;
 
+import com.example.demo.controller.GameController;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
@@ -8,11 +9,11 @@ import javafx.stage.Stage;
 
 public class LevelSelectionMenu {
     private final Stage stage;
-    private final Controller controller;
+    private final GameController gameController;
 
-    public LevelSelectionMenu(Stage stage, Controller controller) {
+    public LevelSelectionMenu(Stage stage, GameController gameController) {
         this.stage = stage;
-        this.controller = controller;
+        this.gameController = gameController;
     }
 
     public Scene createLevelSelectionScene() {
@@ -37,7 +38,7 @@ public class LevelSelectionMenu {
 
             levelButton.setOnAction(e -> {
                 try {
-                    controller.goToLevel(className);
+                    gameController.goToLevel(className);
                 } catch (Exception ex) {
                     ex.printStackTrace();
                 }
@@ -46,7 +47,7 @@ public class LevelSelectionMenu {
         }
 
         Button backButton = new Button("Back");
-        backButton.setOnAction(e -> controller.showMainMenu());
+        backButton.setOnAction(e -> gameController.showMainMenu());
 
         layout.getChildren().add(backButton);
 

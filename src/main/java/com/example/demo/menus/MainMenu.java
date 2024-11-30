@@ -1,5 +1,6 @@
-package com.example.demo.controller;
+package com.example.demo.menus;
 
+import com.example.demo.controller.GameController;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
@@ -16,7 +17,7 @@ public class MainMenu {
         this.stage = stage;
     }
 
-    public Scene createMainMenuScene(Controller controller) {
+    public Scene createMainMenuScene(GameController gameController) {
         VBox menuLayout = new VBox(20);
         menuLayout.setStyle("-fx-alignment: center; -fx-padding: 50;");
 
@@ -31,7 +32,7 @@ public class MainMenu {
         menuLayout.setBackground(new Background(bgImage));
 
         Button playButton = new Button("Play");
-        playButton.setOnAction(e -> controller.showLevelSelectionMenu());
+        playButton.setOnAction(e -> gameController.showLevelSelectionMenu());
 
         Button quitButton = new Button("Quit");
         quitButton.setOnAction(e -> stage.close());

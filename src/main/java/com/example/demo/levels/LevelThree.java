@@ -1,14 +1,14 @@
 package com.example.demo.levels;
 
-import com.example.demo.actors.ActiveActorDestructible;
+import com.example.demo.entities.DestructibleEntity;
 import com.example.demo.planes.EnemyPlane;
 import com.example.demo.planes.AdvancedEnemyPlane;
-import com.example.demo.levelviews.LevelView;
+import com.example.demo.levelui.LevelUI;
 
 public class LevelThree extends LevelParent {
 
     private static final String BACKGROUND_IMAGE_NAME = "/com/example/demo/images/background1.jpg";
-    private static final String NEXT_LEVEL = "com.example.demo.Levels.LevelFour";
+    private static final String NEXT_LEVEL = "com.example.demo.levels.LevelFour";
     private static final int TOTAL_ENEMIES = 5;
     private static final int KILLS_TO_ADVANCE = 20;
     private static final double ENEMY_SPAWN_PROBABILITY = .20;
@@ -41,7 +41,7 @@ public class LevelThree extends LevelParent {
             if (Math.random() < ENEMY_SPAWN_PROBABILITY) {
                 double newEnemyInitialYPosition = Math.random() * getEnemyMaximumYPosition();
 
-                ActiveActorDestructible newEnemy;
+                DestructibleEntity newEnemy;
                 if (spawnEnemyPlaneNext) {
                     newEnemy = new EnemyPlane(getScreenWidth(), newEnemyInitialYPosition);
                 } else {
@@ -56,8 +56,8 @@ public class LevelThree extends LevelParent {
     }
 
     @Override
-    protected LevelView instantiateLevelView() {
-        return new LevelView(getRoot(), PLAYER_INITIAL_HEALTH);
+    protected LevelUI instantiateLevelView() {
+        return new LevelUI(getRoot(), PLAYER_INITIAL_HEALTH);
     }
 
     private boolean userHasReachedKillTarget() {
