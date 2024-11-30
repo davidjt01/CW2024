@@ -10,7 +10,7 @@ module com.example.demo {
     opens com.example.demo.images to javafx.fxml;
     opens com.example.demo.levelviews to javafx.fxml;
     opens com.example.demo.controller to javafx.fxml;
-    opens com.example.demo.actors to javafx.fxml;
+    opens com.example.demo.entities to javafx.fxml;
     opens com.example.demo.audio to javafx.fxml;
     opens com.example.demo.projectiles to javafx.fxml;
     opens com.example.demo.planes to javafx.fxml;
