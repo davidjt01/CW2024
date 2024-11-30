@@ -8,12 +8,12 @@ import javafx.stage.Stage;
 
 import java.lang.reflect.Constructor;
 
-public class Controller {
+public class GameController {
 
     private static final String LEVEL_ONE_CLASS_NAME = "com.example.demo.Levels.LevelOne";
     private final Stage stage;
 
-    public Controller(Stage stage) {
+    public GameController(Stage stage) {
         this.stage = stage;
     }
 
