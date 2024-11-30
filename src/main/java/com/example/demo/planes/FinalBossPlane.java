@@ -4,6 +4,7 @@ import com.example.demo.entities.DestructibleEntity;
 import com.example.demo.projectiles.BossProjectile;
 import com.example.demo.audio.AudioPlayer;
 import com.example.demo.levelui.BossLevelUI;
+import com.example.demo.projectiles.AngledBossProjectile;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -79,16 +80,19 @@ public class FinalBossPlane extends Plane {
 
     @Override
     public DestructibleEntity fireProjectile() {
-        if (bossFiresInCurrentFrame()) {
-            fireBallAudio.play();
-            return new BossProjectile(getProjectileInitialPosition());
-        }
         return null;
     }
 
     @Override
     public List<DestructibleEntity> fireProjectiles() {
-        return List.of();
+        List<DestructibleEntity> projectiles = new ArrayList<>();
+        if (bossFiresInCurrentFrame()) {
+            fireBallAudio.play();
+            projectiles.add(new BossProjectile(getProjectileInitialPosition()));
+            projectiles.add(new AngledBossProjectile(getProjectileInitialPosition(), -20));
+            projectiles.add(new AngledBossProjectile(getProjectileInitialPosition(), 20));
+        }
+        return projectiles;
     }
 
     @Override
