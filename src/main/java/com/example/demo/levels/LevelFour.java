@@ -7,7 +7,7 @@ import com.example.demo.levelviews.LevelViewBoss;
 public class LevelFour extends LevelParent {
 
     private static final String BACKGROUND_IMAGE_NAME = "/com/example/demo/images/background2.jpg";
-    private static final String NEXT_LEVEL = "com.example.demo.Levels.LevelFive";
+    private static final String NEXT_LEVEL = "com.example.demo.levels.LevelFive";
     private static final int PLAYER_INITIAL_HEALTH = 5;
     private final BossPlane bossPlane1;
     private final BossPlane bossPlane2;
