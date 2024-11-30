@@ -14,4 +14,6 @@ module com.example.demo {
     opens com.example.demo.audio to javafx.fxml;
     opens com.example.demo.projectiles to javafx.fxml;
     opens com.example.demo.planes to javafx.fxml;
+    exports com.example.demo.menus;
+    opens com.example.demo.menus to javafx.fxml;
 }
