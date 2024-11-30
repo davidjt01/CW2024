@@ -1,3 +1,4 @@
+/*
 package com.example.demo.projectiles;
 
 public class AngledBossProjectile extends BossProjectile {
@@ -17,3 +18,4 @@ public class AngledBossProjectile extends BossProjectile {
         super.moveVertically(dy);
     }
 }
+*/
