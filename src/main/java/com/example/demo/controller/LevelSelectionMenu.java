@@ -3,12 +3,7 @@ package com.example.demo.controller;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundImage;
-import javafx.scene.layout.BackgroundPosition;
-import javafx.scene.layout.BackgroundRepeat;
-import javafx.scene.layout.BackgroundSize;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
 import javafx.stage.Stage;
 
 public class LevelSelectionMenu {
@@ -25,11 +20,13 @@ public class LevelSelectionMenu {
         layout.setStyle("-fx-alignment: center; -fx-padding: 50;");
 
         Image backgroundImage = new Image(getClass().getResource("/com/example/demo/images/background1.jpg").toExternalForm());
+
+        BackgroundSize backgroundSize = new BackgroundSize(stage.getWidth(), stage.getHeight(), false, false, false, false);
         BackgroundImage bgImage = new BackgroundImage(backgroundImage,
                 BackgroundRepeat.NO_REPEAT,
                 BackgroundRepeat.NO_REPEAT,
                 BackgroundPosition.CENTER,
-                BackgroundSize.DEFAULT);
+                backgroundSize);
         layout.setBackground(new Background(bgImage));
 
         for (int i = 1; i <= 5; i++) {

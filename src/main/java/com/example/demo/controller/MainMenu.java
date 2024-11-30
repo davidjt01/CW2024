@@ -2,15 +2,9 @@ package com.example.demo.controller;
 
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundImage;
-import javafx.scene.layout.BackgroundPosition;
-import javafx.scene.layout.BackgroundRepeat;
-import javafx.scene.layout.BackgroundSize;
-import javafx.scene.layout.BackgroundImage;
-import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
 import javafx.scene.image.Image;
+import javafx.scene.layout.*;
+import javafx.stage.Stage;
 
 import java.util.Objects;
 
@@ -27,11 +21,13 @@ public class MainMenu {
         menuLayout.setStyle("-fx-alignment: center; -fx-padding: 50;");
 
         Image backgroundImage = new Image(Objects.requireNonNull(getClass().getResource("/com/example/demo/images/background1.jpg")).toExternalForm());
+
+        BackgroundSize backgroundSize = new BackgroundSize(stage.getWidth(), stage.getHeight(), false, false, false, false);
         BackgroundImage bgImage = new BackgroundImage(backgroundImage,
                 BackgroundRepeat.NO_REPEAT,
                 BackgroundRepeat.NO_REPEAT,
                 BackgroundPosition.CENTER,
-                BackgroundSize.DEFAULT);
+                backgroundSize);
         menuLayout.setBackground(new Background(bgImage));
 
         Button playButton = new Button("Play");
