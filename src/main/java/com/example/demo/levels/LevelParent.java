@@ -2,7 +2,7 @@ package com.example.demo.levels;
 
 import com.example.demo.entities.DestructibleEntity;
 import com.example.demo.planes.Plane;
-import com.example.demo.levelviews.LevelView;
+import com.example.demo.levelui.LevelView;
 import com.example.demo.planes.UserPlane;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;

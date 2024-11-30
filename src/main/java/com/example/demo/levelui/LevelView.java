@@ -1,4 +1,4 @@
-package com.example.demo.levelviews;
+package com.example.demo.levelui;
 
 import com.example.demo.images.GameOverImage;
 import com.example.demo.images.HeartDisplay;

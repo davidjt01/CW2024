@@ -3,7 +3,7 @@ package com.example.demo.planes;
 import com.example.demo.entities.DestructibleEntity;
 import com.example.demo.projectiles.BossProjectile;
 import com.example.demo.audio.AudioPlayer;
-import com.example.demo.levelviews.LevelViewBoss;
+import com.example.demo.levelui.LevelViewBoss;
 
 import java.util.ArrayList;
 import java.util.Collections;
