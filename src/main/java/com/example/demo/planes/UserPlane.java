@@ -1,6 +1,6 @@
 package com.example.demo.planes;
 
-import com.example.demo.actors.ActiveActorDestructible;
+import com.example.demo.entities.DestructibleEntity;
 import com.example.demo.projectiles.UserProjectile;
 import com.example.demo.audio.AudioPlayer;
 
@@ -67,7 +67,7 @@ public class UserPlane extends Plane {
     }
 
     @Override
-    public ActiveActorDestructible fireProjectile() {
+    public DestructibleEntity fireProjectile() {
         pewAudio.play();
         return new UserProjectile(getProjectileXPosition(PROJECTILE_X_POSITION_OFFSET),
                 getProjectileYPosition(PROJECTILE_Y_POSITION_OFFSET));

@@ -1,6 +1,6 @@
 package com.example.demo.planes;
 
-import com.example.demo.actors.ActiveActorDestructible;
+import com.example.demo.entities.DestructibleEntity;
 import com.example.demo.projectiles.EnemyProjectile;
 import com.example.demo.audio.AudioPlayer;
 
@@ -60,7 +60,7 @@ public class AdvancedEnemyPlane extends Plane {
     }
 
     @Override
-    public ActiveActorDestructible fireProjectile() {
+    public DestructibleEntity fireProjectile() {
         if (Math.random() < 0.01) {
             double projectileXPosition = getProjectileXPosition(-100.0);
             double projectileYPosition = getProjectileYPosition(50.0);

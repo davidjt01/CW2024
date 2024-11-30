@@ -1,6 +1,6 @@
 package com.example.demo.planes;
 
-import com.example.demo.actors.ActiveActorDestructible;
+import com.example.demo.entities.DestructibleEntity;
 import com.example.demo.projectiles.BossProjectile;
 import com.example.demo.audio.AudioPlayer;
 import com.example.demo.levelviews.LevelViewBoss;
@@ -78,7 +78,7 @@ public class BossPlane extends Plane {
     }
 
     @Override
-    public ActiveActorDestructible fireProjectile() {
+    public DestructibleEntity fireProjectile() {
         if (bossFiresInCurrentFrame()) {
             fireBallAudio.play();
             return new BossProjectile(getProjectileInitialPosition());
