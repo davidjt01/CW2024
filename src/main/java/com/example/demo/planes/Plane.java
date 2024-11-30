@@ -15,7 +15,13 @@ public abstract class Plane extends DestructibleEntity {
 
     public abstract DestructibleEntity fireProjectile();
 
-    public abstract List<DestructibleEntity> fireProjectiles();
+    public List<DestructibleEntity> fireProjectiles() {
+        DestructibleEntity projectile = fireProjectile();
+        if (projectile != null) {
+            return List.of(projectile);
+        }
+        return List.of();
+    }
 
     @Override
     public void takeDamage() {
