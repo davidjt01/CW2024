@@ -87,11 +87,6 @@ public class BossPlane extends Plane {
     }
 
     @Override
-    public List<DestructibleEntity> fireProjectiles() {
-        return List.of();
-    }
-
-    @Override
     public void takeDamage() {
         if (!isShielded) {
             super.takeDamage();

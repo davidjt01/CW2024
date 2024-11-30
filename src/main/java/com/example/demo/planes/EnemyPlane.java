@@ -4,8 +4,6 @@ import com.example.demo.entities.DestructibleEntity;
 import com.example.demo.projectiles.EnemyProjectile;
 import com.example.demo.audio.AudioPlayer;
 
-import java.util.List;
-
 public class EnemyPlane extends Plane {
 
     private static final String IMAGE_NAME = "enemyplane.png";
@@ -45,11 +43,6 @@ public class EnemyPlane extends Plane {
             return new EnemyProjectile(projectileXPosition, projectileYPosition);
         }
         return null;
-    }
-
-    @Override
-    public List<DestructibleEntity> fireProjectiles() {
-        return List.of();
     }
 
     @Override
