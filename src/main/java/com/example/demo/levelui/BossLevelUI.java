@@ -3,7 +3,7 @@ package com.example.demo.levelui;
 import com.example.demo.images.ShieldImage;
 import javafx.scene.Group;
 
-public class LevelViewBoss extends LevelView {
+public class BossLevelUI extends LevelUI {
 
     private static final int SHIELD_X_POSITION = 1150;
     private static final int SHIELD_Y_POSITION = 500;
@@ -12,7 +12,7 @@ public class LevelViewBoss extends LevelView {
     private final Group root;
     private final ShieldImage shieldImage;
 
-    public LevelViewBoss(Group root, int heartsToDisplay) {
+    public BossLevelUI(Group root, int heartsToDisplay) {
         super(root, heartsToDisplay);
         this.root = root;
         this.shieldImage = new ShieldImage(SHIELD_X_POSITION, SHIELD_Y_POSITION);

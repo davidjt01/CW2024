@@ -2,7 +2,7 @@ package com.example.demo.levels;
 
 import com.example.demo.entities.DestructibleEntity;
 import com.example.demo.planes.Plane;
-import com.example.demo.levelui.LevelView;
+import com.example.demo.levelui.LevelUI;
 import com.example.demo.planes.UserPlane;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -36,7 +36,7 @@ public abstract class LevelParent extends Observable {
     private final List<DestructibleEntity> enemyUnits;
     private final List<DestructibleEntity> userProjectiles;
     private final List<DestructibleEntity> enemyProjectiles;
-    private final LevelView levelView;
+    private final LevelUI levelUI;
     private int currentNumberOfEnemies;
 
     public LevelParent(String backgroundImageName, double screenHeight, double screenWidth, int playerInitialHealth) {
@@ -54,7 +54,7 @@ public abstract class LevelParent extends Observable {
         this.screenHeight = screenHeight;
         this.screenWidth = screenWidth;
         this.enemyMaximumYPosition = screenHeight - SCREEN_HEIGHT_ADJUSTMENT;
-        this.levelView = instantiateLevelView();
+        this.levelUI = instantiateLevelView();
         this.currentNumberOfEnemies = 0;
         initializeTimeline();
         friendlyUnits.add(user);
@@ -66,12 +66,12 @@ public abstract class LevelParent extends Observable {
 
     protected abstract void spawnEnemyUnits();
 
-    protected abstract LevelView instantiateLevelView();
+    protected abstract LevelUI instantiateLevelView();
 
     public Scene initializeScene() {
         initializeBackground();
         initializeFriendlyUnits();
-        levelView.showHeartDisplay();
+        levelUI.showHeartDisplay();
         return scene;
     }
 
@@ -217,7 +217,7 @@ public abstract class LevelParent extends Observable {
     }
 
     private void updateLevelView() {
-        levelView.removeHearts(user.getHealth());
+        levelUI.removeHearts(user.getHealth());
     }
 
     private void updateKillCount() {
@@ -232,12 +232,12 @@ public abstract class LevelParent extends Observable {
 
     protected void winGame() {
         timeline.stop();
-        levelView.showWinImage();
+        levelUI.showWinImage();
     }
 
     protected void loseGame() {
         timeline.stop();
-        levelView.showGameOverImage();
+        levelUI.showGameOverImage();
     }
 
     protected UserPlane getUser() {

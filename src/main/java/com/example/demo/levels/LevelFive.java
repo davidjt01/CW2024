@@ -1,8 +1,8 @@
 package com.example.demo.levels;
 
 import com.example.demo.planes.BossPlane;
-import com.example.demo.levelui.LevelView;
-import com.example.demo.levelui.LevelViewBoss;
+import com.example.demo.levelui.LevelUI;
+import com.example.demo.levelui.BossLevelUI;
 
 public class LevelFive extends LevelParent {
 
@@ -10,7 +10,7 @@ public class LevelFive extends LevelParent {
     private static final String NEXT_LEVEL = "com.example.demo.levels.LevelThree";
     private static final int PLAYER_INITIAL_HEALTH = 5;
     private final BossPlane bossPlane;
-    private LevelViewBoss levelView;
+    private BossLevelUI levelView;
 
     public LevelFive(double screenHeight, double screenWidth) {
         super(BACKGROUND_IMAGE_NAME, screenHeight, screenWidth, PLAYER_INITIAL_HEALTH);
@@ -39,8 +39,8 @@ public class LevelFive extends LevelParent {
     }
 
     @Override
-    protected LevelView instantiateLevelView() {
-        levelView = new LevelViewBoss(getRoot(), PLAYER_INITIAL_HEALTH);
+    protected LevelUI instantiateLevelView() {
+        levelView = new BossLevelUI(getRoot(), PLAYER_INITIAL_HEALTH);
         return levelView;
     }
 

@@ -3,7 +3,7 @@ package com.example.demo.levels;
 import com.example.demo.entities.DestructibleEntity;
 import com.example.demo.planes.EnemyPlane;
 import com.example.demo.planes.AdvancedEnemyPlane;
-import com.example.demo.levelui.LevelView;
+import com.example.demo.levelui.LevelUI;
 
 public class LevelThree extends LevelParent {
 
@@ -56,8 +56,8 @@ public class LevelThree extends LevelParent {
     }
 
     @Override
-    protected LevelView instantiateLevelView() {
-        return new LevelView(getRoot(), PLAYER_INITIAL_HEALTH);
+    protected LevelUI instantiateLevelView() {
+        return new LevelUI(getRoot(), PLAYER_INITIAL_HEALTH);
     }
 
     private boolean userHasReachedKillTarget() {
