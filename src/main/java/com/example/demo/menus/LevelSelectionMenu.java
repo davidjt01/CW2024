@@ -34,7 +34,7 @@ public class LevelSelectionMenu {
             int level = i;
             Button levelButton = new Button("Level " + level);
 
-            String className = "com.example.demo.Levels.Level" + getLevelName(level);
+            String className = "com.example.demo.levels.Level" + getLevelName(level);
 
             levelButton.setOnAction(e -> {
                 try {
