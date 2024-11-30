@@ -4,6 +4,8 @@ import com.example.demo.entities.DestructibleEntity;
 import com.example.demo.projectiles.UserProjectile;
 import com.example.demo.audio.AudioPlayer;
 
+import java.util.List;
+
 public class UserPlane extends Plane {
 
     private static final String IMAGE_NAME = "userplane.png";
@@ -71,6 +73,11 @@ public class UserPlane extends Plane {
         pewAudio.play();
         return new UserProjectile(getProjectileXPosition(PROJECTILE_X_POSITION_OFFSET),
                 getProjectileYPosition(PROJECTILE_Y_POSITION_OFFSET));
+    }
+
+    @Override
+    public List<DestructibleEntity> fireProjectiles() {
+        return List.of();
     }
 
     @Override

@@ -73,6 +73,11 @@ public class AdvancedEnemyPlane extends Plane {
     }
 
     @Override
+    public List<DestructibleEntity> fireProjectiles() {
+        return List.of();
+    }
+
+    @Override
     public void destroy() {
         super.destroy();
         explosionAudio.play();
