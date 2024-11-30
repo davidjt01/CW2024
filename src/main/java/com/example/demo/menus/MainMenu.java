@@ -1,5 +1,6 @@
-package com.example.demo.controller;
+package com.example.demo.menus;
 
+import com.example.demo.controller.Controller;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;

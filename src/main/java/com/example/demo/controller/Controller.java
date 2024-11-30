@@ -1,6 +1,8 @@
 package com.example.demo.controller;
 
 import com.example.demo.levels.LevelParent;
+import com.example.demo.menus.LevelSelectionMenu;
+import com.example.demo.menus.MainMenu;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
