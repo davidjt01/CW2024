@@ -36,7 +36,7 @@ public class Controller {
         stage.show();
     }
 
-    protected void goToLevel(String className) throws Exception {
+    public void goToLevel(String className) throws Exception {
         Class<?> myClass = Class.forName(className);
         Constructor<?> constructor = myClass.getConstructor(double.class, double.class);
         LevelParent myLevel = (LevelParent) constructor.newInstance(stage.getHeight(), stage.getWidth());
