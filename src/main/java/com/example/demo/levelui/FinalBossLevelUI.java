@@ -39,4 +39,8 @@ public class FinalBossLevelUI extends LevelUI {
         shieldImage.updatePosition(shieldX, shieldY);
     }
 
+    public Group getRoot() {
+        return root;
+    }
+
 }
