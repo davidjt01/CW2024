@@ -4,11 +4,8 @@ import com.example.demo.entities.DestructibleEntity;
 import com.example.demo.levelui.LevelUI;
 import com.example.demo.planes.Plane;
 import com.example.demo.planes.UserPlane;
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
 import javafx.scene.Group;
 import javafx.scene.Scene;
-import javafx.util.Duration;
 
 import java.util.ArrayList;
 import java.util.List;
