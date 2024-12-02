@@ -34,16 +34,16 @@ public abstract class LevelParent extends Observable {
 
     private int currentNumberOfEnemies;
 
+    private final CollisionManager collisionManager;
+
     public LevelParent(String backgroundImageName, double screenHeight, double screenWidth, int playerInitialHealth) {
         this.root = new Group();
         this.scene = new Scene(root, screenWidth, screenHeight);
-        //this.timeline = new Timeline();
         this.user = new UserPlane(playerInitialHealth);
         this.friendlyUnits = new ArrayList<>();
         this.enemyUnits = new ArrayList<>();
         this.userProjectiles = new ArrayList<>();
         this.enemyProjectiles = new ArrayList<>();
-
         this.backgroundManager = new BackgroundManager(backgroundImageName, screenHeight, screenWidth);
         this.screenHeight = screenHeight;
         this.screenWidth = screenWidth;
@@ -52,6 +52,7 @@ public abstract class LevelParent extends Observable {
         this.currentNumberOfEnemies = 0;
 
         this.gameLoopManager = new GameLoopManager(this::updateScene);
+        this.collisionManager = new CollisionManager(user);
         friendlyUnits.add(user);
     }
 
@@ -161,36 +162,19 @@ public abstract class LevelParent extends Observable {
     }
 
     private void handlePlaneCollisions() {
-        handleCollisions(friendlyUnits, enemyUnits);
+        collisionManager.handlePlaneCollisions(friendlyUnits, enemyUnits);
     }
 
     private void handleUserProjectileCollisions() {
-        handleCollisions(userProjectiles, enemyUnits);
+        collisionManager.handleUserProjectileCollisions(userProjectiles, enemyUnits);
     }
 
     private void handleEnemyProjectileCollisions() {
-        handleCollisions(enemyProjectiles, friendlyUnits);
-    }
-
-    private void handleCollisions(List<DestructibleEntity> actors1,
-                                  List<DestructibleEntity> actors2) {
-        for (DestructibleEntity actor : actors2) {
-            for (DestructibleEntity otherActor : actors1) {
-                if (actor.getBoundsInParent().intersects(otherActor.getBoundsInParent())) {
-                    actor.takeDamage();
-                    otherActor.takeDamage();
-                }
-            }
-        }
+        collisionManager.handleEnemyProjectileCollisions(enemyProjectiles, friendlyUnits);
     }
 
     private void handleEnemyPenetration() {
-        for (DestructibleEntity enemy : enemyUnits) {
-            if (enemyHasPenetratedDefenses(enemy)) {
-                user.takeDamage();
-                enemy.destroy();
-            }
-        }
+        collisionManager.handleEnemyPenetration(enemyUnits, screenWidth);
     }
 
     private void updateLevelView() {
