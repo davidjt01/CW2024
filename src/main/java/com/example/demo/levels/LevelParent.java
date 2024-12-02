@@ -23,7 +23,7 @@ public abstract class LevelParent extends Observable {
     private final double enemyMaximumYPosition;
 
     private final Group root;
-    private final Timeline timeline;
+    //private final Timeline timeline;
     private final UserPlane user;
     private final Scene scene;
 
@@ -33,12 +33,14 @@ public abstract class LevelParent extends Observable {
     private final List<DestructibleEntity> enemyProjectiles;
     private final LevelUI levelUI;
     private final BackgroundManager backgroundManager;
+    private final GameLoopManager gameLoopManager;
+
     private int currentNumberOfEnemies;
 
     public LevelParent(String backgroundImageName, double screenHeight, double screenWidth, int playerInitialHealth) {
         this.root = new Group();
         this.scene = new Scene(root, screenWidth, screenHeight);
-        this.timeline = new Timeline();
+        //this.timeline = new Timeline();
         this.user = new UserPlane(playerInitialHealth);
         this.friendlyUnits = new ArrayList<>();
         this.enemyUnits = new ArrayList<>();
@@ -51,7 +53,8 @@ public abstract class LevelParent extends Observable {
         this.enemyMaximumYPosition = screenHeight - SCREEN_HEIGHT_ADJUSTMENT;
         this.levelUI = instantiateLevelView();
         this.currentNumberOfEnemies = 0;
-        initializeTimeline();
+
+        this.gameLoopManager = new GameLoopManager(this::updateScene);
         friendlyUnits.add(user);
     }
 
@@ -72,14 +75,13 @@ public abstract class LevelParent extends Observable {
 
     public void startGame() {
         backgroundManager.getBackground().requestFocus();
-        timeline.play();
+        gameLoopManager.startGame();
     }
 
     public void goToNextLevel(String levelName) {
-        timeline.stop();
-        timeline.getKeyFrames().clear();
+        gameLoopManager.stopGame();
+        gameLoopManager.clearGameLoop();
 
-        // Reset key event handlers
         backgroundManager.getBackground().setOnKeyPressed(null);
         backgroundManager.getBackground().setOnKeyReleased(null);
 
@@ -106,12 +108,6 @@ public abstract class LevelParent extends Observable {
         updateKillCount();
         updateLevelView();
         checkIfGameOver();
-    }
-
-    private void initializeTimeline() {
-        timeline.setCycleCount(Timeline.INDEFINITE);
-        KeyFrame gameLoop = new KeyFrame(Duration.millis(MILLISECOND_DELAY), e -> updateScene());
-        timeline.getKeyFrames().add(gameLoop);
     }
 
     private void initializeBackground() {
@@ -215,12 +211,12 @@ public abstract class LevelParent extends Observable {
     }
 
     protected void winGame() {
-        timeline.stop();
+        gameLoopManager.stopGame();
         levelUI.showWinImage();
     }
 
     protected void loseGame() {
-        timeline.stop();
+        gameLoopManager.stopGame();
         levelUI.showGameOverImage();
     }
 
