@@ -30,7 +30,6 @@ public abstract class LevelParent extends Observable {
     private final Timeline timeline;
     private final UserPlane user;
     private final Scene scene;
-    private final ImageView background;
 
     private final List<DestructibleEntity> friendlyUnits;
     private final List<DestructibleEntity> enemyUnits;
@@ -38,6 +37,8 @@ public abstract class LevelParent extends Observable {
     private final List<DestructibleEntity> enemyProjectiles;
     private final LevelUI levelUI;
     private int currentNumberOfEnemies;
+
+    private final BackgroundManager backgroundManager;
 
     public LevelParent(String backgroundImageName, double screenHeight, double screenWidth, int playerInitialHealth) {
         this.root = new Group();
@@ -49,8 +50,7 @@ public abstract class LevelParent extends Observable {
         this.userProjectiles = new ArrayList<>();
         this.enemyProjectiles = new ArrayList<>();
 
-        this.background = new ImageView(
-                new Image(Objects.requireNonNull(getClass().getResource(backgroundImageName)).toExternalForm()));
+        this.backgroundManager = new BackgroundManager(backgroundImageName, screenHeight, screenWidth);
         this.screenHeight = screenHeight;
         this.screenWidth = screenWidth;
         this.enemyMaximumYPosition = screenHeight - SCREEN_HEIGHT_ADJUSTMENT;
@@ -76,7 +76,7 @@ public abstract class LevelParent extends Observable {
     }
 
     public void startGame() {
-        background.requestFocus();
+        backgroundManager.getBackground().requestFocus();
         timeline.play();
     }
 
@@ -84,8 +84,9 @@ public abstract class LevelParent extends Observable {
         timeline.stop();
         timeline.getKeyFrames().clear();
 
-        background.setOnKeyPressed(null);
-        background.setOnKeyReleased(null);
+        // Reset key event handlers
+        backgroundManager.getBackground().setOnKeyPressed(null);
+        backgroundManager.getBackground().setOnKeyReleased(null);
 
         root.getChildren().clear();
 
@@ -119,30 +120,8 @@ public abstract class LevelParent extends Observable {
     }
 
     private void initializeBackground() {
-        background.setFocusTraversable(true);
-        background.setFitHeight(screenHeight);
-        background.setFitWidth(screenWidth);
-        background.setOnKeyPressed(e -> {
-            KeyCode kc = e.getCode();
-            if (kc == KeyCode.UP)
-                user.moveUp();
-            if (kc == KeyCode.DOWN)
-                user.moveDown();
-            if (kc == KeyCode.LEFT)
-                user.moveLeft();
-            if (kc == KeyCode.RIGHT)
-                user.moveRight();
-            if (kc == KeyCode.SPACE)
-                fireProjectile();
-        });
-        background.setOnKeyReleased(e -> {
-            KeyCode kc = e.getCode();
-            if (kc == KeyCode.UP || kc == KeyCode.DOWN)
-                user.stopVerticalMovement();
-            if (kc == KeyCode.LEFT || kc == KeyCode.RIGHT)
-                user.stopHorizontalMovement();
-        });
-        root.getChildren().add(background);
+        backgroundManager.configureKeyEvents(user, this::fireProjectile);
+        root.getChildren().add(backgroundManager.getBackground());
     }
 
     private void fireProjectile() {
