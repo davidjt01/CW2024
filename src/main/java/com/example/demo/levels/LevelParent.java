@@ -1,21 +1,17 @@
 package com.example.demo.levels;
 
 import com.example.demo.entities.DestructibleEntity;
-import com.example.demo.planes.Plane;
 import com.example.demo.levelui.LevelUI;
+import com.example.demo.planes.Plane;
 import com.example.demo.planes.UserPlane;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.scene.Group;
 import javafx.scene.Scene;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.input.KeyCode;
 import javafx.util.Duration;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 import java.util.Observable;
 
 public abstract class LevelParent extends Observable {
@@ -36,9 +32,8 @@ public abstract class LevelParent extends Observable {
     private final List<DestructibleEntity> userProjectiles;
     private final List<DestructibleEntity> enemyProjectiles;
     private final LevelUI levelUI;
-    private int currentNumberOfEnemies;
-
     private final BackgroundManager backgroundManager;
+    private int currentNumberOfEnemies;
 
     public LevelParent(String backgroundImageName, double screenHeight, double screenWidth, int playerInitialHealth) {
         this.root = new Group();
