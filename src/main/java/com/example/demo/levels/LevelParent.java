@@ -7,6 +7,7 @@ import com.example.demo.planes.UserPlane;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
 
@@ -23,10 +24,13 @@ public abstract class LevelParent extends Observable {
     private final UserPlane user;
     private final Scene scene;
 
+    private final List<DestructibleEntity> friendlyUnits;
+    private final List<DestructibleEntity> enemyUnits;
+    private final List<DestructibleEntity> userProjectiles;
+    private final List<DestructibleEntity> enemyProjectiles;
     private final LevelUI levelUI;
     private final BackgroundManager backgroundManager;
     private final GameLoopManager gameLoopManager;
-    private final EntityManager entityManager;
 
     private int currentNumberOfEnemies;
 
@@ -36,6 +40,10 @@ public abstract class LevelParent extends Observable {
         this.root = new Group();
         this.scene = new Scene(root, screenWidth, screenHeight);
         this.user = new UserPlane(playerInitialHealth);
+        this.friendlyUnits = new ArrayList<>();
+        this.enemyUnits = new ArrayList<>();
+        this.userProjectiles = new ArrayList<>();
+        this.enemyProjectiles = new ArrayList<>();
         this.backgroundManager = new BackgroundManager(backgroundImageName, screenHeight, screenWidth);
         this.screenHeight = screenHeight;
         this.screenWidth = screenWidth;
@@ -45,9 +53,7 @@ public abstract class LevelParent extends Observable {
 
         this.gameLoopManager = new GameLoopManager(this::updateScene);
         this.collisionManager = new CollisionManager(user);
-        this.entityManager = new EntityManager(root);
-
-        entityManager.addFriendlyUnit(user);
+        friendlyUnits.add(user);
     }
 
     protected abstract void initializeFriendlyUnits();
@@ -79,10 +85,10 @@ public abstract class LevelParent extends Observable {
 
         root.getChildren().clear();
 
-        entityManager.getFriendlyUnits().clear();
-        entityManager.getEnemyUnits().clear();
-        entityManager.getUserProjectiles().clear();
-        entityManager.getEnemyProjectiles().clear();
+        friendlyUnits.clear();
+        enemyUnits.clear();
+        userProjectiles.clear();
+        enemyProjectiles.clear();
         setChanged();
         notifyObservers(levelName);
     }
@@ -109,15 +115,19 @@ public abstract class LevelParent extends Observable {
 
     private void fireProjectile() {
         DestructibleEntity projectile = user.fireProjectile();
-        entityManager.addUserProjectile(projectile);
+        root.getChildren().add(projectile);
+        userProjectiles.add(projectile);
     }
 
     private void generateEnemyFire() {
-        for (DestructibleEntity enemy : entityManager.getEnemyUnits()) {
+        for (DestructibleEntity enemy : enemyUnits) {
             if (enemy instanceof Plane) {
                 List<DestructibleEntity> projectiles = ((Plane) enemy).fireProjectiles();
                 for (DestructibleEntity projectile : projectiles) {
-                    entityManager.addEnemyProjectile(projectile);
+                    if (projectile != null) {
+                        root.getChildren().add(projectile);
+                        enemyProjectiles.add(projectile);
+                    }
                 }
             }
         }
@@ -126,41 +136,45 @@ public abstract class LevelParent extends Observable {
     private void spawnEnemyProjectile(DestructibleEntity projectile) {
         if (projectile != null) {
             root.getChildren().add(projectile);
-            entityManager.getEnemyProjectiles().add(projectile);
+            enemyProjectiles.add(projectile);
         }
     }
 
     private void updateActors() {
-        entityManager.updateActors();
+        friendlyUnits.forEach(DestructibleEntity::updateActor);
+        enemyUnits.forEach(DestructibleEntity::updateActor);
+        userProjectiles.forEach(DestructibleEntity::updateActor);
+        enemyProjectiles.forEach(DestructibleEntity::updateActor);
     }
 
     private void removeAllDestroyedActors() {
-        entityManager.removeDestroyedActors();
+        removeDestroyedActors(friendlyUnits);
+        removeDestroyedActors(enemyUnits);
+        removeDestroyedActors(userProjectiles);
+        removeDestroyedActors(enemyProjectiles);
+    }
+
+    private void removeDestroyedActors(List<DestructibleEntity> actors) {
+        List<DestructibleEntity> destroyedActors = actors.stream().filter(DestructibleEntity::isDestroyed)
+                .toList();
+        root.getChildren().removeAll(destroyedActors);
+        actors.removeAll(destroyedActors);
     }
 
     private void handlePlaneCollisions() {
-        collisionManager.handlePlaneCollisions(
-                entityManager.getFriendlyUnits(),
-                entityManager.getEnemyUnits()
-        );
+        collisionManager.handlePlaneCollisions(friendlyUnits, enemyUnits);
     }
 
     private void handleUserProjectileCollisions() {
-        collisionManager.handleUserProjectileCollisions(
-                entityManager.getUserProjectiles(),
-                entityManager.getEnemyUnits()
-        );
+        collisionManager.handleUserProjectileCollisions(userProjectiles, enemyUnits);
     }
 
     private void handleEnemyProjectileCollisions() {
-        collisionManager.handleEnemyProjectileCollisions(
-                entityManager.getEnemyProjectiles(),
-                entityManager.getFriendlyUnits()
-        );
+        collisionManager.handleEnemyProjectileCollisions(enemyProjectiles, friendlyUnits);
     }
 
     private void handleEnemyPenetration() {
-        collisionManager.handleEnemyPenetration(entityManager.getEnemyUnits(), screenWidth);
+        collisionManager.handleEnemyPenetration(enemyUnits, screenWidth);
     }
 
     private void updateLevelView() {
@@ -168,7 +182,7 @@ public abstract class LevelParent extends Observable {
     }
 
     private void updateKillCount() {
-        for (int i = 0; i < currentNumberOfEnemies - entityManager.getEnemyUnits().size(); i++) {
+        for (int i = 0; i < currentNumberOfEnemies - enemyUnits.size(); i++) {
             user.incrementKillCount();
         }
     }
@@ -196,11 +210,12 @@ public abstract class LevelParent extends Observable {
     }
 
     protected int getCurrentNumberOfEnemies() {
-        return entityManager.getEnemyUnits().size();
+        return enemyUnits.size();
     }
 
     protected void addEnemyUnit(DestructibleEntity enemy) {
-        entityManager.addEnemyUnit(enemy);
+        enemyUnits.add(enemy);
+        root.getChildren().add(enemy);
     }
 
     protected double getEnemyMaximumYPosition() {
@@ -216,7 +231,7 @@ public abstract class LevelParent extends Observable {
     }
 
     private void updateNumberOfEnemies() {
-        currentNumberOfEnemies = entityManager.getEnemyUnits().size();
+        currentNumberOfEnemies = enemyUnits.size();
     }
 
 }
