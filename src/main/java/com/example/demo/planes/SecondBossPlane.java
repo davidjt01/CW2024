@@ -3,7 +3,7 @@ package com.example.demo.planes;
 import com.example.demo.entities.DestructibleEntity;
 import com.example.demo.projectiles.RandomMovingBossProjectile;
 import com.example.demo.audio.AudioPlayer;
-import com.example.demo.levelui.BossLevelUI;
+import com.example.demo.levelui.SecondBossLevelUI;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -28,7 +28,7 @@ public class SecondBossPlane extends Plane {
     private static final int MAX_FRAMES_WITH_SHIELD = 500;
 
     private final List<Integer> movePattern;
-    private final BossLevelUI levelView;
+    private final SecondBossLevelUI levelView;
 
     private final AudioPlayer fireBallAudio;
     private final AudioPlayer shieldActivateAudio;
@@ -40,7 +40,7 @@ public class SecondBossPlane extends Plane {
     private int indexOfCurrentMove;
     private int framesWithShieldActivated;
 
-    public SecondBossPlane(BossLevelUI levelView) {
+    public SecondBossPlane(SecondBossLevelUI levelView) {
         super(IMAGE_NAME, IMAGE_HEIGHT, INITIAL_X_POSITION, INITIAL_Y_POSITION, HEALTH);
         this.levelView = levelView;
 
