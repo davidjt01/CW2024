@@ -11,13 +11,13 @@ import java.util.List;
 
 public class SecondBossPlane extends Plane {
 
-    private static final String IMAGE_NAME = "bossplane.png";
+    private static final String IMAGE_NAME = "secondbossplane.png";
     private static final double INITIAL_X_POSITION = 1000.0;
     private static final double INITIAL_Y_POSITION = 400;
     private static final double PROJECTILE_Y_POSITION_OFFSET = 75.0;
     private static final double BOSS_FIRE_RATE = .04;
     private static final double BOSS_SHIELD_PROBABILITY = .002;
-    private static final int IMAGE_HEIGHT = 56;
+    private static final int IMAGE_HEIGHT = 70;
     private static final int VERTICAL_VELOCITY = 8;
     private static final int HEALTH = 3; // Lowered from 100 for testing
     private static final int MOVE_FREQUENCY_PER_CYCLE = 5;
