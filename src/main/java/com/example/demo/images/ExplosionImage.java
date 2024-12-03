@@ -21,7 +21,7 @@ public class ExplosionImage extends ImageView {
 
         root.getChildren().add(this);
 
-        Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(1), event -> root.getChildren().remove(this)));
+        Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(0.5), event -> root.getChildren().remove(this)));
         timeline.setCycleCount(1);
         timeline.play();
     }
