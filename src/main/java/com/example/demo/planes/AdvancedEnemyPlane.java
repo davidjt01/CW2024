@@ -3,6 +3,8 @@ package com.example.demo.planes;
 import com.example.demo.entities.DestructibleEntity;
 import com.example.demo.projectiles.EnemyProjectile;
 import com.example.demo.audio.AudioPlayer;
+import com.example.demo.images.ExplosionImage;
+import javafx.scene.Group;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -27,9 +29,11 @@ public class AdvancedEnemyPlane extends Plane {
 
     private final AudioPlayer explosionAudio;
     private final AudioPlayer missileAudio;
+    private final Group root;
 
-    public AdvancedEnemyPlane(double screenWidth, double initialYPosition) {
+    public AdvancedEnemyPlane(double screenWidth, double initialYPosition, Group root) {
         super(IMAGE_NAME, IMAGE_HEIGHT, screenWidth, initialYPosition, HEALTH);
+        this.root = root;
 
         movePattern = new ArrayList<>();
         initializeMovePattern();
@@ -76,6 +80,8 @@ public class AdvancedEnemyPlane extends Plane {
     public void destroy() {
         super.destroy();
         explosionAudio.play();
+
+        new ExplosionImage(getLayoutX() + getTranslateX(), getLayoutY() + getTranslateY(), root);
     }
 
     private void initializeMovePattern() {
