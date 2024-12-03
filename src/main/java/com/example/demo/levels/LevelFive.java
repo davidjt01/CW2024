@@ -1,16 +1,15 @@
 package com.example.demo.levels;
 
 import com.example.demo.entities.DestructibleEntity;
-import com.example.demo.planes.EnemyPlane;
-import com.example.demo.planes.AdvancedEnemyPlane;
-import com.example.demo.planes.FinalBossPlane;
-import com.example.demo.levelui.LevelUI;
 import com.example.demo.levelui.FinalBossLevelUI;
+import com.example.demo.levelui.LevelUI;
+import com.example.demo.planes.AdvancedEnemyPlane;
+import com.example.demo.planes.EnemyPlane;
+import com.example.demo.planes.FinalBossPlane;
 
 public class LevelFive extends LevelParent {
 
     private static final String BACKGROUND_IMAGE_NAME = "/com/example/demo/images/background2.jpg";
-    private static final String NEXT_LEVEL = "com.example.demo.levels.LevelThree";
     private static final int PLAYER_INITIAL_HEALTH = 5;
     private static final double ENEMY_SPAWN_PROBABILITY = .20;
     private static final int TOTAL_ENEMIES = 5;
