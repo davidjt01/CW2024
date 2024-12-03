@@ -4,10 +4,12 @@ import com.example.demo.entities.DestructibleEntity;
 import com.example.demo.projectiles.RandomMovingBossProjectile;
 import com.example.demo.audio.AudioPlayer;
 import com.example.demo.levelui.SecondBossLevelUI;
+import com.example.demo.images.ExplosionImage;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import javafx.scene.Group;
 
 public class SecondBossPlane extends Plane {
 
@@ -40,9 +42,12 @@ public class SecondBossPlane extends Plane {
     private int indexOfCurrentMove;
     private int framesWithShieldActivated;
 
-    public SecondBossPlane(SecondBossLevelUI levelView) {
+    private final Group root;
+
+    public SecondBossPlane(SecondBossLevelUI levelView, Group root) {
         super(IMAGE_NAME, IMAGE_HEIGHT, INITIAL_X_POSITION, INITIAL_Y_POSITION, HEALTH);
         this.levelView = levelView;
+        this.root = root;
 
         movePattern = new ArrayList<>();
         initializeMovePattern();
@@ -97,6 +102,8 @@ public class SecondBossPlane extends Plane {
     public void destroy() {
         super.destroy();
         explosionAudio.play();
+
+        new ExplosionImage(getLayoutX() + getTranslateX(), getLayoutY() + getTranslateY(), root);
     }
 
     private void initializeMovePattern() {
