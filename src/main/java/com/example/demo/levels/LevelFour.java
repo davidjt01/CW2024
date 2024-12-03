@@ -1,22 +1,22 @@
 package com.example.demo.levels;
 
-import com.example.demo.planes.BossPlane;
+import com.example.demo.planes.SecondBossPlane;
 import com.example.demo.levelui.LevelUI;
-import com.example.demo.levelui.BossLevelUI;
+import com.example.demo.levelui.SecondBossLevelUI;
 
 public class LevelFour extends LevelParent {
 
     private static final String BACKGROUND_IMAGE_NAME = "/com/example/demo/images/background2.jpg";
     private static final String NEXT_LEVEL = "com.example.demo.levels.LevelFive";
     private static final int PLAYER_INITIAL_HEALTH = 5;
-    private final BossPlane bossPlane1;
-    private final BossPlane bossPlane2;
-    private BossLevelUI levelView;
+    private final SecondBossPlane bossPlane1;
+    private final SecondBossPlane bossPlane2;
+    private SecondBossLevelUI levelView;
 
     public LevelFour(double screenHeight, double screenWidth) {
         super(BACKGROUND_IMAGE_NAME, screenHeight, screenWidth, PLAYER_INITIAL_HEALTH);
-        bossPlane1 = new BossPlane(levelView);
-        bossPlane2 = new BossPlane(levelView);
+        bossPlane1 = new SecondBossPlane(levelView);
+        bossPlane2 = new SecondBossPlane(levelView);
     }
 
     @Override
@@ -43,7 +43,7 @@ public class LevelFour extends LevelParent {
 
     @Override
     protected LevelUI instantiateLevelView() {
-        levelView = new BossLevelUI(getRoot(), PLAYER_INITIAL_HEALTH);
+        levelView = new SecondBossLevelUI(getRoot(), PLAYER_INITIAL_HEALTH);
         return levelView;
     }
 
