@@ -3,6 +3,9 @@ package com.example.demo.planes;
 import com.example.demo.entities.DestructibleEntity;
 import com.example.demo.projectiles.UserProjectile;
 import com.example.demo.audio.AudioPlayer;
+import com.example.demo.images.ExplosionImage;
+
+import javafx.scene.Group;
 
 public class UserPlane extends Plane {
 
@@ -25,8 +28,13 @@ public class UserPlane extends Plane {
     private int horizontalVelocityMultiplier;
     private int numberOfKills;
 
-    public UserPlane(int initialHealth) {
+    private final Group root;
+
+    public UserPlane(int initialHealth, Group root) {
         super(IMAGE_NAME, IMAGE_HEIGHT, INITIAL_X_POSITION, INITIAL_Y_POSITION, initialHealth);
+
+        this.root = root;
+
         verticalVelocityMultiplier = 0;
         horizontalVelocityMultiplier = 0;
 
@@ -77,6 +85,8 @@ public class UserPlane extends Plane {
     public void destroy() {
         super.destroy();
         explosionAudio.play();
+
+        new ExplosionImage(getLayoutX() + getTranslateX(), getLayoutY() + getTranslateY(), root);
     }
 
     @Override
