@@ -19,7 +19,7 @@ public class LevelFive extends LevelParent {
 
     public LevelFive(double screenHeight, double screenWidth) {
         super(BACKGROUND_IMAGE_NAME, screenHeight, screenWidth, PLAYER_INITIAL_HEALTH);
-        finalBossPlane = new FinalBossPlane(levelView);
+        finalBossPlane = new FinalBossPlane(levelView, getRoot());
     }
 
     @Override
