@@ -58,7 +58,6 @@ public class EnemyPlane extends Plane {
         super.destroy();
         explosionAudio.play();
 
-        ExplosionImage explosion = new ExplosionImage(getLayoutX() + getTranslateX(), getLayoutY() + getTranslateY());
-        root.getChildren().add(explosion);
+        new ExplosionImage(getLayoutX() + getTranslateX(), getLayoutY() + getTranslateY(), root);
     }
 }
