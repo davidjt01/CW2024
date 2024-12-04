@@ -9,6 +9,10 @@ public class GameLauncher extends Application {
     private static final int SCREEN_HEIGHT = 750;
     private static final String TITLE = "Sky Battle";
 
+    public static void main(String[] args) {
+        launch();
+    }
+
     @Override
     public void start(Stage stage) {
         stage.setTitle(TITLE);
@@ -18,9 +22,5 @@ public class GameLauncher extends Application {
 
         GameController gameController = new GameController(stage);
         gameController.showMainMenu();
-    }
-
-    public static void main(String[] args) {
-        launch();
     }
 }
