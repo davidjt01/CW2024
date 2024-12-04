@@ -26,7 +26,7 @@ public class RandomMovingBossProjectile extends BossProjectile {
             currentDirection = getRandomDirection();
             framesInCurrentDirection = 0;
         }
-        checkIfOffScreen(1300, 750);
+        checkIfOffScreen();
     }
 
     private int getRandomDirection() {
