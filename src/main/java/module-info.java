@@ -3,8 +3,6 @@ module com.example.demo {
     requires javafx.fxml;
     requires javafx.media;
 
-
-    // opens com.example.demo to javafx.fxml; // to be removed later
     exports com.example.demo.controller;
     opens com.example.demo.levels to javafx.fxml;
     opens com.example.demo.images to javafx.fxml;
