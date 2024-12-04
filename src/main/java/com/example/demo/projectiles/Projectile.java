@@ -16,4 +16,10 @@ public abstract class Projectile extends DestructibleEntity {
     @Override
     public abstract void updatePosition();
 
+    protected void checkIfOffScreen(double screenWidth, double screenHeight) {
+        if (getLayoutX() + getTranslateX() < 0 || getLayoutX() + getTranslateX() > screenWidth ||
+                getLayoutY() + getTranslateY() < 0 || getLayoutY() + getTranslateY() > screenHeight) {
+            this.destroy();
+        }
+    }
 }
