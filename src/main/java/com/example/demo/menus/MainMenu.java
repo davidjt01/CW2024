@@ -5,6 +5,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.util.Objects;
@@ -21,6 +23,18 @@ public class MainMenu {
         VBox menuLayout = new VBox(20);
         menuLayout.setStyle("-fx-alignment: center; -fx-padding: 50;");
 
+        Text gameTitle = new Text("Sky Battle");
+        gameTitle.setFont(new Font("Arial", 48));
+        gameTitle.setStyle("-fx-fill: white;");
+
+        Button playButton = new Button("Play");
+        playButton.setOnAction(e -> gameController.showLevelSelectionMenu());
+
+        Button quitButton = new Button("Quit");
+        quitButton.setOnAction(e -> stage.close());
+
+        menuLayout.getChildren().addAll(gameTitle, playButton, quitButton);
+
         Image backgroundImage = new Image(Objects.requireNonNull(getClass().getResource("/com/example/demo/images/background1.jpg")).toExternalForm());
 
         BackgroundSize backgroundSize = new BackgroundSize(stage.getWidth(), stage.getHeight(), false, false, false, false);
@@ -30,14 +44,6 @@ public class MainMenu {
                 BackgroundPosition.CENTER,
                 backgroundSize);
         menuLayout.setBackground(new Background(bgImage));
-
-        Button playButton = new Button("Play");
-        playButton.setOnAction(e -> gameController.showLevelSelectionMenu());
-
-        Button quitButton = new Button("Quit");
-        quitButton.setOnAction(e -> stage.close());
-
-        menuLayout.getChildren().addAll(playButton, quitButton);
 
         mainMenuScene = new Scene(menuLayout, stage.getWidth(), stage.getHeight());
         return mainMenuScene;
