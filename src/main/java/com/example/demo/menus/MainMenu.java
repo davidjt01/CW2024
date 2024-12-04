@@ -28,9 +28,15 @@ public class MainMenu {
         gameTitle.setStyle("-fx-fill: white;");
 
         Button playButton = new Button("Play");
+        playButton.setPrefSize(200, 50);
+        playButton.setStyle("-fx-font-size: 18px;");
+
         playButton.setOnAction(e -> gameController.showLevelSelectionMenu());
 
         Button quitButton = new Button("Quit");
+        quitButton.setPrefSize(200, 50);
+        quitButton.setStyle("-fx-font-size: 18px;");
+
         quitButton.setOnAction(e -> stage.close());
 
         menuLayout.getChildren().addAll(gameTitle, playButton, quitButton);
