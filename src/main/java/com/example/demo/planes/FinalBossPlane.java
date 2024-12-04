@@ -1,16 +1,16 @@
 package com.example.demo.planes;
 
-import com.example.demo.entities.DestructibleEntity;
-import com.example.demo.projectiles.BossProjectile;
 import com.example.demo.audio.AudioPlayer;
+import com.example.demo.entities.DestructibleEntity;
+import com.example.demo.images.ExplosionImage;
 import com.example.demo.levelui.FinalBossLevelUI;
 import com.example.demo.projectiles.AngledBossProjectile;
-import com.example.demo.images.ExplosionImage;
+import com.example.demo.projectiles.BossProjectile;
+import javafx.scene.Group;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import javafx.scene.Group;
 
 public class FinalBossPlane extends Plane {
 
@@ -37,13 +37,11 @@ public class FinalBossPlane extends Plane {
     private final AudioPlayer shieldActivateAudio;
     private final AudioPlayer shieldDeactivateAudio;
     private final AudioPlayer explosionAudio;
-
+    private final Group root;
     private boolean isShielded;
     private int consecutiveMovesInSameDirection;
     private int indexOfCurrentMove;
     private int framesWithShieldActivated;
-
-    private final Group root;
 
     public FinalBossPlane(FinalBossLevelUI levelView, Group root) {
         super(IMAGE_NAME, IMAGE_HEIGHT, INITIAL_X_POSITION, INITIAL_Y_POSITION, HEALTH);
