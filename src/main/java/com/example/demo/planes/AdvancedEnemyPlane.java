@@ -1,9 +1,9 @@
 package com.example.demo.planes;
 
-import com.example.demo.entities.DestructibleEntity;
-import com.example.demo.projectiles.EnemyProjectile;
 import com.example.demo.audio.AudioPlayer;
+import com.example.demo.entities.DestructibleEntity;
 import com.example.demo.images.ExplosionImage;
+import com.example.demo.projectiles.EnemyProjectile;
 import javafx.scene.Group;
 
 import java.util.ArrayList;
@@ -24,12 +24,11 @@ public class AdvancedEnemyPlane extends Plane {
     private static final int Y_POSITION_LOWER_BOUND = 475;
 
     private final List<Integer> movePattern;
-    private int consecutiveMovesInSameDirection;
-    private int indexOfCurrentMove;
-
     private final AudioPlayer explosionAudio;
     private final AudioPlayer missileAudio;
     private final Group root;
+    private int consecutiveMovesInSameDirection;
+    private int indexOfCurrentMove;
 
     public AdvancedEnemyPlane(double screenWidth, double initialYPosition, Group root) {
         super(IMAGE_NAME, IMAGE_HEIGHT, screenWidth, initialYPosition, HEALTH);

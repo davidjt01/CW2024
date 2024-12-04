@@ -56,12 +56,18 @@ public class LevelSelectionMenu {
 
     private String getLevelName(int levelNumber) {
         switch (levelNumber) {
-            case 1: return "One";
-            case 2: return "Two";
-            case 3: return "Three";
-            case 4: return "Four";
-            case 5: return "Five";
-            default: throw new IllegalArgumentException("Invalid level number: " + levelNumber);
+            case 1:
+                return "One";
+            case 2:
+                return "Two";
+            case 3:
+                return "Three";
+            case 4:
+                return "Four";
+            case 5:
+                return "Five";
+            default:
+                throw new IllegalArgumentException("Invalid level number: " + levelNumber);
         }
     }
 }

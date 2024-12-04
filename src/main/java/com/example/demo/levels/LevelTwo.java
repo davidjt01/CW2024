@@ -1,8 +1,8 @@
 package com.example.demo.levels;
 
-import com.example.demo.planes.BossPlane;
-import com.example.demo.levelui.LevelUI;
 import com.example.demo.levelui.BossLevelUI;
+import com.example.demo.levelui.LevelUI;
+import com.example.demo.planes.BossPlane;
 
 public class LevelTwo extends LevelParent {
 

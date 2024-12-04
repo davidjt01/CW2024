@@ -1,10 +1,9 @@
 package com.example.demo.planes;
 
-import com.example.demo.entities.DestructibleEntity;
-import com.example.demo.projectiles.UserProjectile;
 import com.example.demo.audio.AudioPlayer;
+import com.example.demo.entities.DestructibleEntity;
 import com.example.demo.images.ExplosionImage;
-
+import com.example.demo.projectiles.UserProjectile;
 import javafx.scene.Group;
 
 public class UserPlane extends Plane {
@@ -24,11 +23,10 @@ public class UserPlane extends Plane {
     private final AudioPlayer pewAudio;
     private final AudioPlayer explosionAudio;
     private final AudioPlayer takeDamageAudio;
+    private final Group root;
     private int verticalVelocityMultiplier;
     private int horizontalVelocityMultiplier;
     private int numberOfKills;
-
-    private final Group root;
 
     public UserPlane(int initialHealth, Group root) {
         super(IMAGE_NAME, IMAGE_HEIGHT, INITIAL_X_POSITION, INITIAL_Y_POSITION, initialHealth);

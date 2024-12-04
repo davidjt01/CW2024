@@ -6,6 +6,7 @@ import javafx.scene.Group;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.util.Duration;
+
 import java.util.Objects;
 
 public class ExplosionImage extends ImageView {

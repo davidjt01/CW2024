@@ -1,4 +1,3 @@
-
 package com.example.demo.projectiles;
 
 public class AngledBossProjectile extends BossProjectile {

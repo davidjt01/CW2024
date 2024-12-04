@@ -1,10 +1,10 @@
 package com.example.demo.planes;
 
-import com.example.demo.entities.DestructibleEntity;
-import com.example.demo.projectiles.BossProjectile;
 import com.example.demo.audio.AudioPlayer;
+import com.example.demo.entities.DestructibleEntity;
 import com.example.demo.images.ExplosionImage;
 import com.example.demo.levelui.BossLevelUI;
+import com.example.demo.projectiles.BossProjectile;
 import javafx.scene.Group;
 
 import java.util.ArrayList;
