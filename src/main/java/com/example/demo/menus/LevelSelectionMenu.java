@@ -33,6 +33,8 @@ public class LevelSelectionMenu {
         for (int i = 1; i <= 5; i++) {
             int level = i;
             Button levelButton = new Button("Level " + level);
+            levelButton.setPrefSize(200, 50);
+            levelButton.setStyle("-fx-font-size: 18px;");
 
             String className = "com.example.demo.levels.Level" + getLevelName(level);
 
@@ -47,6 +49,9 @@ public class LevelSelectionMenu {
         }
 
         Button backButton = new Button("Back");
+        backButton.setPrefSize(200, 50);
+        backButton.setStyle("-fx-font-size: 18px;");
+
         backButton.setOnAction(e -> gameController.showMainMenu());
 
         layout.getChildren().add(backButton);
