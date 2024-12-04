@@ -15,6 +15,6 @@ public class AngledBossProjectile extends BossProjectile {
         double dy = Math.sin(angle) * HORIZONTAL_VELOCITY;
         super.moveHorizontally(dx);
         super.moveVertically(dy);
-        checkIfOffScreen();
+        checkAndDestroyIfOffScreen();
     }
 }

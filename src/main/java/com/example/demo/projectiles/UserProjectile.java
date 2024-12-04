@@ -13,7 +13,7 @@ public class UserProjectile extends Projectile {
     @Override
     public void updatePosition() {
         moveHorizontally(HORIZONTAL_VELOCITY);
-        checkIfOffScreen();
+        checkAndDestroyIfOffScreen();
     }
 
     @Override
