@@ -43,9 +43,9 @@ public class LevelThree extends LevelParent {
 
                 DestructibleEntity newEnemy;
                 if (spawnEnemyPlaneNext) {
-                    newEnemy = new EnemyPlane(getScreenWidth(), newEnemyInitialYPosition);
+                    newEnemy = new EnemyPlane(getScreenWidth(), newEnemyInitialYPosition, getRoot());
                 } else {
-                    newEnemy = new AdvancedEnemyPlane(getScreenWidth(), newEnemyInitialYPosition);
+                    newEnemy = new AdvancedEnemyPlane(getScreenWidth(), newEnemyInitialYPosition, getRoot());
                 }
 
                 spawnEnemyPlaneNext = !spawnEnemyPlaneNext;

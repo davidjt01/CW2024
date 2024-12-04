@@ -15,8 +15,8 @@ public class LevelFour extends LevelParent {
 
     public LevelFour(double screenHeight, double screenWidth) {
         super(BACKGROUND_IMAGE_NAME, screenHeight, screenWidth, PLAYER_INITIAL_HEALTH);
-        bossPlane1 = new SecondBossPlane(levelView);
-        bossPlane2 = new SecondBossPlane(levelView);
+        bossPlane1 = new SecondBossPlane(levelView, getRoot());
+        bossPlane2 = new SecondBossPlane(levelView, getRoot());
     }
 
     @Override

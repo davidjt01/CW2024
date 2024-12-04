@@ -19,7 +19,7 @@ public class LevelFive extends LevelParent {
 
     public LevelFive(double screenHeight, double screenWidth) {
         super(BACKGROUND_IMAGE_NAME, screenHeight, screenWidth, PLAYER_INITIAL_HEALTH);
-        finalBossPlane = new FinalBossPlane(levelView);
+        finalBossPlane = new FinalBossPlane(levelView, getRoot());
     }
 
     @Override
@@ -49,9 +49,9 @@ public class LevelFive extends LevelParent {
 
                 DestructibleEntity newEnemy;
                 if (spawnEnemyPlaneNext) {
-                    newEnemy = new EnemyPlane(getScreenWidth(), newEnemyInitialYPosition);
+                    newEnemy = new EnemyPlane(getScreenWidth(), newEnemyInitialYPosition, getRoot());
                 } else {
-                    newEnemy = new AdvancedEnemyPlane(getScreenWidth(), newEnemyInitialYPosition);
+                    newEnemy = new AdvancedEnemyPlane(getScreenWidth(), newEnemyInitialYPosition, getRoot());
                 }
 
                 spawnEnemyPlaneNext = !spawnEnemyPlaneNext;
