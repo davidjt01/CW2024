@@ -13,6 +13,7 @@ public class EnemyProjectile extends Projectile {
     @Override
     public void updatePosition() {
         moveHorizontally(HORIZONTAL_VELOCITY);
+        checkIfOffScreen(1300, 750);
     }
 
     @Override
