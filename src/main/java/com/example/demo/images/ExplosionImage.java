@@ -10,7 +10,7 @@ import java.util.Objects;
 
 public class ExplosionImage extends ImageView {
     private static final String IMAGE_NAME = "/com/example/demo/images/explosion.png";
-    private static final int IMAGE_HEIGHT = 150;
+    private static final int IMAGE_HEIGHT = 200;
 
     public ExplosionImage(double xPosition, double yPosition, Group root) {
         setImage(new Image(Objects.requireNonNull(getClass().getResource(IMAGE_NAME)).toExternalForm()));
