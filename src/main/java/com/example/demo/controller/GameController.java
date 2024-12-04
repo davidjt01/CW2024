@@ -24,11 +24,6 @@ public class GameController {
         stage.show();
     }
 
-    public void launchGame() throws Exception {
-        goToLevel(LEVEL_ONE_CLASS_NAME);
-    }
-
-
     public void showLevelSelectionMenu() {
         LevelSelectionMenu levelSelectionMenu = new LevelSelectionMenu(stage, this);
         Scene levelSelectionScene = levelSelectionMenu.createLevelSelectionScene();
