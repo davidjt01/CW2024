@@ -1,9 +1,9 @@
 package com.example.demo.levels;
 
 import com.example.demo.entities.DestructibleEntity;
-import com.example.demo.planes.EnemyPlane;
-import com.example.demo.planes.AdvancedEnemyPlane;
 import com.example.demo.levelui.LevelUI;
+import com.example.demo.planes.AdvancedEnemyPlane;
+import com.example.demo.planes.EnemyPlane;
 
 public class LevelThree extends LevelParent {
 
