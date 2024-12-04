@@ -20,6 +20,7 @@ public abstract class Projectile extends DestructibleEntity {
         if (getLayoutX() + getTranslateX() < 0 || getLayoutX() + getTranslateX() > screenWidth ||
                 getLayoutY() + getTranslateY() < 0 || getLayoutY() + getTranslateY() > screenHeight) {
             this.destroy();
+            System.out.println("destroyed off screen projectile");
         }
     }
 }
