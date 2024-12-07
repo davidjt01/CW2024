@@ -2,7 +2,7 @@ package com.example.demo;
 
 import java.util.*;
 
-public class Boss extends Plane {
+public class BossPlane extends Plane {
 
 	private static final String IMAGE_NAME = "bossplane.png";
 	private static final double INITIAL_X_POSITION = 1000.0;
@@ -25,7 +25,7 @@ public class Boss extends Plane {
 	private int indexOfCurrentMove;
 	private int framesWithShieldActivated;
 
-	public Boss() {
+	public BossPlane() {
 		super(IMAGE_NAME, IMAGE_HEIGHT, INITIAL_X_POSITION, INITIAL_Y_POSITION, HEALTH);
 		movePattern = new ArrayList<>();
 		consecutiveMovesInSameDirection = 0;
