@@ -1,7 +1,7 @@
 package com.example.demo.planes;
 
 import com.example.demo.ActiveActorDestructible;
-import com.example.demo.BossProjectile;
+import com.example.demo.projectiles.BossProjectile;
 
 import java.util.*;
 
