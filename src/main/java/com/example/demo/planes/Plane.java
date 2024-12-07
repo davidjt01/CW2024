@@ -1,8 +1,8 @@
 package com.example.demo.planes;
 
-import com.example.demo.ActiveActorDestructible;
+import com.example.demo.DestructibleEntity;
 
-public abstract class Plane extends ActiveActorDestructible {
+public abstract class Plane extends DestructibleEntity {
 
 	private int health;
 
@@ -11,7 +11,7 @@ public abstract class Plane extends ActiveActorDestructible {
 		this.health = health;
 	}
 
-	public abstract ActiveActorDestructible fireProjectile();
+	public abstract DestructibleEntity fireProjectile();
 	
 	@Override
 	public void takeDamage() {

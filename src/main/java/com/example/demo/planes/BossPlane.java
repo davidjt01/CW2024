@@ -1,6 +1,6 @@
 package com.example.demo.planes;
 
-import com.example.demo.ActiveActorDestructible;
+import com.example.demo.DestructibleEntity;
 import com.example.demo.projectiles.BossProjectile;
 
 import java.util.*;
@@ -55,7 +55,7 @@ public class BossPlane extends Plane {
 	}
 
 	@Override
-	public ActiveActorDestructible fireProjectile() {
+	public DestructibleEntity fireProjectile() {
 		return bossFiresInCurrentFrame() ? new BossProjectile(getProjectileInitialPosition()) : null;
 	}
 	

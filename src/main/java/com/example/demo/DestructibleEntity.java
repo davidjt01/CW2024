@@ -1,10 +1,10 @@
 package com.example.demo;
 
-public abstract class ActiveActorDestructible extends ActiveActor implements Destructible {
+public abstract class DestructibleEntity extends Entity implements Destructible {
 
 	private boolean isDestroyed;
 
-	public ActiveActorDestructible(String imageName, int imageHeight, double initialXPos, double initialYPos) {
+	public DestructibleEntity(String imageName, int imageHeight, double initialXPos, double initialYPos) {
 		super(imageName, imageHeight, initialXPos, initialYPos);
 		isDestroyed = false;
 	}

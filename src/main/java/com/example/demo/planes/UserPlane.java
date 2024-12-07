@@ -1,6 +1,6 @@
 package com.example.demo.planes;
 
-import com.example.demo.ActiveActorDestructible;
+import com.example.demo.DestructibleEntity;
 import com.example.demo.projectiles.UserProjectile;
 
 public class UserPlane extends Plane {
@@ -51,7 +51,7 @@ public class UserPlane extends Plane {
 	}
 	
 	@Override
-	public ActiveActorDestructible fireProjectile() {
+	public DestructibleEntity fireProjectile() {
 		return new UserProjectile(getProjectileXPosition(PROJECTILE_X_POSITION_OFFSET), getProjectileYPosition(PROJECTILE_Y_POSITION_OFFSET));
 	}
 

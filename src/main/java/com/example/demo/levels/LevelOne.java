@@ -1,6 +1,6 @@
 package com.example.demo.levels;
 
-import com.example.demo.ActiveActorDestructible;
+import com.example.demo.DestructibleEntity;
 import com.example.demo.LevelView;
 import com.example.demo.planes.EnemyPlane;
 
@@ -37,7 +37,7 @@ public class LevelOne extends LevelParent {
 		for (int i = 0; i < TOTAL_ENEMIES - currentNumberOfEnemies; i++) {
 			if (Math.random() < ENEMY_SPAWN_PROBABILITY) {
 				double newEnemyInitialYPosition = Math.random() * getEnemyMaximumYPosition();
-				ActiveActorDestructible newEnemy = new EnemyPlane(getScreenWidth(), newEnemyInitialYPosition);
+				DestructibleEntity newEnemy = new EnemyPlane(getScreenWidth(), newEnemyInitialYPosition);
 				addEnemyUnit(newEnemy);
 			}
 		}
