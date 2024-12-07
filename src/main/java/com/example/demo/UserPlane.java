@@ -46,6 +46,14 @@ public class UserPlane extends FighterPlane {
 		return new UserProjectile(PROJECTILE_X_POSITION, getProjectileYPosition(PROJECTILE_Y_POSITION_OFFSET));
 	}
 
+	private boolean isMovingVertically() {
+		return verticalVelocityMultiplier != 0;
+	}
+
+	private boolean isMovingHorizontally(){
+		return horizontalVelocityMultiplier != 0;
+	}
+
 	private boolean isMoving() {
 		return verticalVelocityMultiplier != 0;
 	}
