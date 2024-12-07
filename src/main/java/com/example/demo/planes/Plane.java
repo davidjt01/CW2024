@@ -1,6 +1,6 @@
 package com.example.demo.planes;
 
-import com.example.demo.DestructibleEntity;
+import com.example.demo.entities.DestructibleEntity;
 
 public abstract class Plane extends DestructibleEntity {
 

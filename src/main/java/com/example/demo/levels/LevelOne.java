@@ -1,6 +1,6 @@
 package com.example.demo.levels;
 
-import com.example.demo.DestructibleEntity;
+import com.example.demo.entities.DestructibleEntity;
 import com.example.demo.LevelView;
 import com.example.demo.planes.EnemyPlane;
 

@@ -3,7 +3,7 @@ package com.example.demo.levels;
 import java.util.*;
 import java.util.stream.Collectors;
 
-import com.example.demo.DestructibleEntity;
+import com.example.demo.entities.DestructibleEntity;
 import com.example.demo.LevelView;
 import com.example.demo.planes.Plane;
 import com.example.demo.planes.UserPlane;

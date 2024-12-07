@@ -9,4 +9,5 @@ module com.example.demo {
     opens com.example.demo.levels to javafx.fxml;
     opens com.example.demo.images to javafx.fxml;
     opens com.example.demo.projectiles to javafx.fxml;
+    opens com.example.demo.entities to javafx.fxml;
 }
