@@ -1,6 +1,6 @@
 package com.example.demo.levelviews;
 
-import com.example.demo.displays.GameOverImage;
+import com.example.demo.displays.GameOverDisplay;
 import com.example.demo.displays.HeartDisplay;
 import com.example.demo.displays.WinImage;
 import javafx.scene.Group;
@@ -15,14 +15,14 @@ public class LevelView {
 	private static final int LOSS_SCREEN_Y_POSISITION = -375;
 	private final Group root;
 	private final WinImage winImage;
-	private final GameOverImage gameOverImage;
+	private final GameOverDisplay gameOverDisplay;
 	private final HeartDisplay heartDisplay;
 	
 	public LevelView(Group root, int heartsToDisplay) {
 		this.root = root;
 		this.heartDisplay = new HeartDisplay(HEART_DISPLAY_X_POSITION, HEART_DISPLAY_Y_POSITION, heartsToDisplay);
 		this.winImage = new WinImage(WIN_IMAGE_X_POSITION, WIN_IMAGE_Y_POSITION);
-		this.gameOverImage = new GameOverImage(LOSS_SCREEN_X_POSITION, LOSS_SCREEN_Y_POSISITION);
+		this.gameOverDisplay = new GameOverDisplay(LOSS_SCREEN_X_POSITION, LOSS_SCREEN_Y_POSISITION);
 	}
 	
 	public void showHeartDisplay() {
@@ -35,7 +35,7 @@ public class LevelView {
 	}
 	
 	public void showGameOverImage() {
-		root.getChildren().add(gameOverImage);
+		root.getChildren().add(gameOverDisplay);
 	}
 	
 	public void removeHearts(int heartsRemaining) {
