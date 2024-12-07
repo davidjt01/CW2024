@@ -2,7 +2,7 @@ package com.example.demo;
 
 import java.util.*;
 
-public class Boss extends FighterPlane {
+public class Boss extends Plane {
 
 	private static final String IMAGE_NAME = "bossplane.png";
 	private static final double INITIAL_X_POSITION = 1000.0;

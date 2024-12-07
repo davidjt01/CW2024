@@ -1,6 +1,6 @@
 package com.example.demo;
 
-public class UserPlane extends FighterPlane {
+public class UserPlane extends Plane {
 
 	private static final String IMAGE_NAME = "userplane.png";
 	private static final double Y_UPPER_BOUND = -40;
