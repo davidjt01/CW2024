@@ -3,12 +3,12 @@ package com.example.demo.displays;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
-public class ShieldImage extends ImageView {
+public class ShieldDisplay extends ImageView {
 	
 	private static final String IMAGE_NAME = "/com/example/demo/images/shield.png";
 	private static final int SHIELD_SIZE = 200;
 	
-	public ShieldImage(double xPosition, double yPosition) {
+	public ShieldDisplay(double xPosition, double yPosition) {
 		this.setLayoutX(xPosition);
 		this.setLayoutY(yPosition);
 		//this.setImage(new Image(IMAGE_NAME));

@@ -1,6 +1,6 @@
 package com.example.demo.levelviews;
 
-import com.example.demo.displays.ShieldImage;
+import com.example.demo.displays.ShieldDisplay;
 import javafx.scene.Group;
 
 public class LevelViewLevelTwo extends LevelView {
@@ -8,25 +8,25 @@ public class LevelViewLevelTwo extends LevelView {
 	private static final int SHIELD_X_POSITION = 1150;
 	private static final int SHIELD_Y_POSITION = 500;
 	private final Group root;
-	private final ShieldImage shieldImage;
+	private final ShieldDisplay shieldDisplay;
 	
 	public LevelViewLevelTwo(Group root, int heartsToDisplay) {
 		super(root, heartsToDisplay);
 		this.root = root;
-		this.shieldImage = new ShieldImage(SHIELD_X_POSITION, SHIELD_Y_POSITION);
+		this.shieldDisplay = new ShieldDisplay(SHIELD_X_POSITION, SHIELD_Y_POSITION);
 		addImagesToRoot();
 	}
 	
 	private void addImagesToRoot() {
-		root.getChildren().addAll(shieldImage);
+		root.getChildren().addAll(shieldDisplay);
 	}
 	
 	public void showShield() {
-		shieldImage.showShield();
+		shieldDisplay.showShield();
 	}
 
 	public void hideShield() {
-		shieldImage.hideShield();
+		shieldDisplay.hideShield();
 	}
 
 }
