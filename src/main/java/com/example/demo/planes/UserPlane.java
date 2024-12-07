@@ -12,7 +12,7 @@ public class UserPlane extends Plane {
 	private static final double X_RIGHT_BOUND = 800.0; // to be adjusted later
 	private static final double INITIAL_X_POSITION = 5.0;
 	private static final double INITIAL_Y_POSITION = 300.0;
-	private static final int IMAGE_HEIGHT = 150;
+	private static final int IMAGE_HEIGHT = 39;
 	private static final int VERTICAL_VELOCITY = 8;
 	private static final int HORIZONTAL_VELOCITY = 8;
 	private static final int PROJECTILE_X_POSITION_OFFSET = 110;
