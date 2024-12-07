@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.example.demo.levelviews;
 
 import com.example.demo.images.ShieldImage;
 import javafx.scene.Group;
