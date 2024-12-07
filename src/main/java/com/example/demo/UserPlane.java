@@ -13,11 +13,13 @@ public class UserPlane extends FighterPlane {
 	private static final int PROJECTILE_X_POSITION = 110;
 	private static final int PROJECTILE_Y_POSITION_OFFSET = 20;
 	private int verticalVelocityMultiplier;
+	private int horizontalVelocityMultiplier;
 	private int numberOfKills;
 
 	public UserPlane(int initialHealth) {
 		super(IMAGE_NAME, IMAGE_HEIGHT, INITIAL_X_POSITION, INITIAL_Y_POSITION, initialHealth);
 		verticalVelocityMultiplier = 0;
+
 	}
 	
 	@Override
