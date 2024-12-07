@@ -7,4 +7,5 @@ module com.example.demo {
     exports com.example.demo.controller;
     opens com.example.demo.planes to javafx.fxml;
     opens com.example.demo.levels to javafx.fxml;
+    opens com.example.demo.images to javafx.fxml;
 }
