@@ -2,6 +2,7 @@ module com.example.demo {
     requires javafx.controls;
     requires javafx.fxml;
     requires javafx.media;
+    requires transitive javafx.graphics;
 
     exports com.example.demo.controller;
     opens com.example.demo.levels to javafx.fxml;
