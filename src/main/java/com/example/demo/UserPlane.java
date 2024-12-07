@@ -68,6 +68,10 @@ public class UserPlane extends FighterPlane {
 		verticalVelocityMultiplier = 0;
 	}
 
+	public void stopHorizontalVelocity() {
+		horizontalVelocityMultiplier = 0;
+	}
+
 	public int getNumberOfKills() {
 		return numberOfKills;
 	}
