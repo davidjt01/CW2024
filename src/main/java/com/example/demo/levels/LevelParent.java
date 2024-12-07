@@ -1,8 +1,10 @@
-package com.example.demo;
+package com.example.demo.levels;
 
 import java.util.*;
 import java.util.stream.Collectors;
 
+import com.example.demo.ActiveActorDestructible;
+import com.example.demo.LevelView;
 import com.example.demo.planes.Plane;
 import com.example.demo.planes.UserPlane;
 import javafx.animation.*;
