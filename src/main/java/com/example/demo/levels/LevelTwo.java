@@ -13,7 +13,7 @@ public class LevelTwo extends LevelParent {
 
 	public LevelTwo(double screenHeight, double screenWidth) {
 		super(BACKGROUND_IMAGE_NAME, screenHeight, screenWidth, PLAYER_INITIAL_HEALTH);
-		bossPlane = new BossPlane();
+		bossPlane = new BossPlane(levelView);
 	}
 
 	@Override

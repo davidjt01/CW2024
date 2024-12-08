@@ -2,6 +2,7 @@ package com.example.demo.planes;
 
 import com.example.demo.entities.DestructibleEntity;
 import com.example.demo.projectiles.BossProjectile;
+import com.example.demo.levelviews.LevelViewLevelTwo;
 
 import java.util.*;
 
@@ -27,9 +28,11 @@ public class BossPlane extends Plane {
 	private int consecutiveMovesInSameDirection;
 	private int indexOfCurrentMove;
 	private int framesWithShieldActivated;
+	private final LevelViewLevelTwo levelView;
 
-	public BossPlane() {
+	public BossPlane(LevelViewLevelTwo levelView) {
 		super(IMAGE_NAME, IMAGE_HEIGHT, INITIAL_X_POSITION, INITIAL_Y_POSITION, HEALTH);
+		this.levelView = levelView;
 		movePattern = new ArrayList<>();
 		consecutiveMovesInSameDirection = 0;
 		indexOfCurrentMove = 0;
@@ -47,7 +50,7 @@ public class BossPlane extends Plane {
 			setTranslateY(initialTranslateY);
 		}
 	}
-	
+
 	@Override
 	public void updateActor() {
 		updatePosition();
@@ -58,7 +61,7 @@ public class BossPlane extends Plane {
 	public DestructibleEntity fireProjectile() {
 		return bossFiresInCurrentFrame() ? new BossProjectile(getProjectileInitialPosition()) : null;
 	}
-	
+
 	@Override
 	public void takeDamage() {
 		if (!isShielded) {
@@ -77,7 +80,7 @@ public class BossPlane extends Plane {
 
 	private void updateShield() {
 		if (isShielded) framesWithShieldActivated++;
-		else if (shieldShouldBeActivated()) activateShield();	
+		else if (shieldShouldBeActivated()) activateShield();
 		if (shieldExhausted()) deactivateShield();
 	}
 
@@ -113,11 +116,14 @@ public class BossPlane extends Plane {
 
 	private void activateShield() {
 		isShielded = true;
+		levelView.showShield();
+		System.out.println("Activated Shield");
 	}
 
 	private void deactivateShield() {
 		isShielded = false;
 		framesWithShieldActivated = 0;
+		levelView.hideShield();
 	}
 
 }
