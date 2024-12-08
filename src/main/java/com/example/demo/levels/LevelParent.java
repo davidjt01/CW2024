@@ -116,6 +116,13 @@ public abstract class LevelParent extends Observable {
 				if (kc == KeyCode.LEFT) user.moveLeft();
 				if (kc == KeyCode.RIGHT) user.moveRight();
 				if (kc == KeyCode.SPACE) fireProjectile();
+				if (kc == KeyCode.P) {
+					if (timeline.getStatus() == Animation.Status.RUNNING) {
+						pauseGame();
+					} else {
+						resumeGame();
+					}
+				}
 			}
 		});
 		background.setOnKeyReleased(new EventHandler<KeyEvent>() {
@@ -254,6 +261,14 @@ public abstract class LevelParent extends Observable {
 
 	private void updateNumberOfEnemies() {
 		currentNumberOfEnemies = enemyUnits.size();
+	}
+
+	public void pauseGame() {
+		timeline.pause();
+	}
+
+	public void resumeGame() {
+		timeline.play();
 	}
 
 }
