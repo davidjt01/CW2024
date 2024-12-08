@@ -21,8 +21,8 @@ public class LevelViewLevelTwo extends LevelView {
 	}
 	
 	public void showShield() {
-		shieldDisplay.showShield();
 		addImagesToRoot();
+		shieldDisplay.showShield();
 	}
 
 	public void hideShield() {
