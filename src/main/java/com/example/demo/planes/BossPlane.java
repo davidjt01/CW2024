@@ -75,6 +75,7 @@ public class BossPlane extends Plane {
 
 	private void updateHealthBar() {
 		double healthPercentage = (double) getHealth() / HEALTH;
+		System.out.println(healthPercentage);
 		levelView.updateHealthBar(healthPercentage);
 	}
 
