@@ -5,6 +5,7 @@ import javafx.scene.layout.HBox;
 
 public class HealthBarDisplay {
     private static final double INITIAL_PROGRESS = 1.0;
+    private static final String RED_BAR_STYLE = "-fx-accent: red;";
 
     private final HBox container;
     private final ProgressBar progressBar;
@@ -18,11 +19,13 @@ public class HealthBarDisplay {
         progressBar.setPrefWidth(200);
         progressBar.setPrefHeight(20);
 
+        progressBar.setStyle(RED_BAR_STYLE);
+
         container.getChildren().add(progressBar);
     }
 
     public void updateHealth(double healthPercentage) {
-        progressBar.setProgress(healthPercentage); // Automatically clamps between 0.0 and 1.0
+        progressBar.setProgress(healthPercentage);
     }
 
     public HBox getContainer() {
