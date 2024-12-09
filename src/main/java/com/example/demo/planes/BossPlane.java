@@ -55,6 +55,7 @@ public class BossPlane extends Plane {
 	public void updateActor() {
 		updatePosition();
 		updateShield();
+		updateHealthBar();
 	}
 
 	@Override
@@ -66,7 +67,15 @@ public class BossPlane extends Plane {
 	public void takeDamage() {
 		if (!isShielded) {
 			super.takeDamage();
+			//double healthPercentage = (double) getHealth() / HEALTH;
+			//levelView.updateHealthBar(healthPercentage);
 		}
+	}
+
+
+	private void updateHealthBar() {
+		double healthPercentage = (double) getHealth() / HEALTH;
+		levelView.updateHealthBar(healthPercentage);
 	}
 
 	private void initializeMovePattern() {
