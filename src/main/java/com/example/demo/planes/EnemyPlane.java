@@ -13,8 +13,12 @@ public class EnemyPlane extends Plane {
 	private static final int INITIAL_HEALTH = 1;
 	private static final double FIRE_RATE = .01;
 
+	public EnemyPlane(String imageName, double initialXPos, double initialYPos) {
+		super(imageName, IMAGE_HEIGHT, initialXPos, initialYPos, INITIAL_HEALTH);
+	}
+
 	public EnemyPlane(double initialXPos, double initialYPos) {
-		super(IMAGE_NAME, IMAGE_HEIGHT, initialXPos, initialYPos, INITIAL_HEALTH);
+		this(IMAGE_NAME, initialXPos, initialYPos);
 	}
 
 	@Override
