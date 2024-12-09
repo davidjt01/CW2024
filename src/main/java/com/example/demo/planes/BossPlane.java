@@ -34,8 +34,8 @@ public class BossPlane extends Plane {
 	private int framesWithShieldActivated;
 	private final LevelViewLevelTwo levelView;
 
-	public BossPlane(LevelViewLevelTwo levelView) {
-		super(IMAGE_NAME, IMAGE_HEIGHT, INITIAL_X_POSITION, INITIAL_Y_POSITION, HEALTH);
+	public BossPlane(String imageName, LevelViewLevelTwo levelView) {
+		super(imageName, IMAGE_HEIGHT, INITIAL_X_POSITION, INITIAL_Y_POSITION, HEALTH);
 		this.levelView = levelView;
 		movePattern = new ArrayList<>();
 		consecutiveMovesInSameDirection = 0;
@@ -43,6 +43,10 @@ public class BossPlane extends Plane {
 		framesWithShieldActivated = 0;
 		isShielded = false;
 		initializeMovePattern();
+	}
+
+	public BossPlane(LevelViewLevelTwo levelView) {
+		this(IMAGE_NAME, levelView);
 	}
 
 	@Override
@@ -73,8 +77,6 @@ public class BossPlane extends Plane {
 		if (!isShielded) {
 			super.takeDamage();
 			updateHealthBar();
-			//double healthPercentage = (double) getHealth() / HEALTH;
-			//levelView.updateHealthBar(healthPercentage);
 		}
 	}
 
