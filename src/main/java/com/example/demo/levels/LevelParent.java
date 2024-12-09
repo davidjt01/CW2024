@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 import com.example.demo.controller.Controller;
 import com.example.demo.entities.DestructibleEntity;
 import com.example.demo.levelviews.LevelView;
+import com.example.demo.menus.GameOverMenu;
 import com.example.demo.menus.PauseMenu;
 import com.example.demo.menus.WinMenu;
 import com.example.demo.planes.Plane;
@@ -245,7 +246,11 @@ public abstract class LevelParent extends Observable implements Controller {
 
 	protected void loseGame() {
 		timeline.stop();
-		levelView.showGameOverImage();
+		//levelView.showGameOverImage();
+		GameOverMenu gameOverMenu = new GameOverMenu((Stage) scene.getWindow(), this);
+		gameOverMenu.setLevelName(this.getClass().getName());
+		gameOverMenu.show();
+
 	}
 
 	protected UserPlane getUser() {
@@ -294,7 +299,8 @@ public abstract class LevelParent extends Observable implements Controller {
 
 	@Override
 	public void onLevelSelected(String level) {
-
+		timeline.stop();
+		gameController.onLevelSelected(level);
 	}
 
 	@Override

@@ -75,6 +75,7 @@ public class GameController implements Observer, Controller {
 
 	public void onLevelSelected(String levelName) {
 		try {
+			System.out.println("go to level " + levelName);
 			goToLevel(levelName);
 		}
 		catch (Exception ex) {
