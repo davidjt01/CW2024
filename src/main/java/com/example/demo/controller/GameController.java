@@ -7,6 +7,7 @@ import java.util.Observer;
 
 import com.example.demo.menus.LevelMenu;
 import com.example.demo.menus.MainMenu;
+import com.example.demo.menus.PauseMenu;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
@@ -17,6 +18,7 @@ public class GameController implements Observer, Controller {
 
 	private static final String LEVEL_ONE_CLASS_NAME = "com.example.demo.levels.LevelOne";
 	private final Stage stage;
+	private LevelParent currLevel;
 
 	public GameController(Stage stage) {
 		this.stage = stage;
@@ -32,28 +34,30 @@ public class GameController implements Observer, Controller {
 
 	private void showMainMenu() {
 		MainMenu mainMenu = new MainMenu(stage, this);
-		Scene mainMenuScene = mainMenu.createMainMenuScene();
-		stage.setScene(mainMenuScene);
-		stage.show();
+		mainMenu.show();
 	}
 
 	private void showLevelMenu() {
 		LevelMenu levelMenu = new LevelMenu(stage, this);
-		Scene levelMenuScene = levelMenu.createLevelSelectionScene();
-		stage.setScene(levelMenuScene);
-		stage.show();
+		levelMenu.show();
 	}
 
+	private void showPauseMenu() {
+		PauseMenu pauseMenu = new PauseMenu(stage, this);
+		pauseMenu.show();
+	}
 
 	private void goToLevel(String className) throws ClassNotFoundException, NoSuchMethodException, SecurityException,
 			InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+
+			System.out.println("calling game level !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"+className);
 			Class<?> myClass = Class.forName(className);
 			Constructor<?> constructor = myClass.getConstructor(double.class, double.class);
-			LevelParent myLevel = (LevelParent) constructor.newInstance(stage.getHeight(), stage.getWidth());
-			myLevel.addObserver(this);
-			Scene scene = myLevel.initializeScene();
+			currLevel = (LevelParent) constructor.newInstance(stage.getHeight(), stage.getWidth());
+			currLevel.addObserver(this);
+			Scene scene = currLevel.initializeScene();
 			stage.setScene(scene);
-			myLevel.startGame();
+			currLevel.startGame();
 
 	}
 
@@ -86,6 +90,14 @@ public class GameController implements Observer, Controller {
 
 	public void onPlaySelected() {
 		showLevelMenu();
+	}
+
+	public void onPauseSelected() {
+		showPauseMenu();
+	}
+
+	public void onContinueSelected() {
+		currLevel.resumeGame();
 	}
 
 }
