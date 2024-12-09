@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.List;
 
 public class AdvancedEnemyPlane extends EnemyPlane {
+    private static final String IMAGE_NAME = "advancedenemyplane.png";
     private static final int VERTICAL_VELOCITY = 8;
     private static final int MOVE_FREQUENCY_PER_CYCLE = 5;
     private static final int MAX_FRAMES_WITH_SAME_MOVE = 10;
@@ -15,7 +16,7 @@ public class AdvancedEnemyPlane extends EnemyPlane {
     private int indexOfCurrentMove;
 
     public AdvancedEnemyPlane(double initialXPos, double initialYPos) {
-        super(initialXPos, initialYPos);
+        super(IMAGE_NAME, initialXPos, initialYPos);
         movePattern = new ArrayList<>();
         consecutiveMovesInSameDirection = 0;
         indexOfCurrentMove = 0;
@@ -24,7 +25,7 @@ public class AdvancedEnemyPlane extends EnemyPlane {
 
     @Override
     public void updatePosition() {
-        super.updatePosition(); // Keep horizontal movement
+        super.updatePosition();
         double initialTranslateY = getTranslateY();
         moveVertically(getNextMove());
         double currentPosition = getLayoutY() + getTranslateY();
