@@ -7,6 +7,7 @@ import com.example.demo.controller.Controller;
 import com.example.demo.entities.DestructibleEntity;
 import com.example.demo.levelviews.LevelView;
 import com.example.demo.menus.PauseMenu;
+import com.example.demo.menus.WinMenu;
 import com.example.demo.planes.Plane;
 import com.example.demo.planes.UserPlane;
 import javafx.animation.*;
@@ -237,7 +238,9 @@ public abstract class LevelParent extends Observable implements Controller {
 
 	protected void winGame() {
 		timeline.stop();
-		levelView.showWinImage();
+		//levelView.showWinImage();
+		WinMenu winMenu = new WinMenu((Stage) scene.getWindow(), this);
+		winMenu.show();
 	}
 
 	protected void loseGame() {
