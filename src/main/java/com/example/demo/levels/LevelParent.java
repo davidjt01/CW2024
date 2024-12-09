@@ -145,7 +145,17 @@ public abstract class LevelParent extends Observable implements Controller {
 	}
 
 	private void generateEnemyFire() {
-		enemyUnits.forEach(enemy -> spawnEnemyProjectile(((Plane) enemy).fireProjectile()));
+		for (DestructibleEntity enemy : enemyUnits) {
+			if (enemy instanceof Plane) {
+				List<DestructibleEntity> projectiles = ((Plane) enemy).fireProjectiles();
+				for (DestructibleEntity projectile : projectiles) {
+					if (projectile != null) {
+						root.getChildren().add(projectile);
+						enemyProjectiles.add(projectile);
+					}
+				}
+			}
+		}
 	}
 
 	private void spawnEnemyProjectile(DestructibleEntity projectile) {
