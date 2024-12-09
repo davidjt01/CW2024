@@ -43,7 +43,7 @@ public class PauseMenu {
         backButton.setPrefSize(200, 50);
         backButton.setStyle("-fx-font-size: 18px;");
 
-        backButton.setOnAction(e -> gameController.onMainMenuSelected());
+        backButton.setOnAction(e -> gameController.onLevelMenuSelected());
 
         menuLayout.getChildren().addAll(gameTitle, playButton, backButton);
 
