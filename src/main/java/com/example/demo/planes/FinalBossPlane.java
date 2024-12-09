@@ -2,7 +2,10 @@ package com.example.demo.planes;
 
 import com.example.demo.levelviews.BossLevelView;
 import com.example.demo.entities.DestructibleEntity;
-import com.example.demo.projectiles.TripleDirectionBossProjectile;
+import com.example.demo.projectiles.AngledBossProjectile;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class FinalBossPlane extends BossPlane {
 
@@ -14,7 +17,14 @@ public class FinalBossPlane extends BossPlane {
     }
 
     @Override
-    public DestructibleEntity fireProjectile() {
-        return bossFiresInCurrentFrame() ? new TripleDirectionBossProjectile(getProjectileInitialPosition()) : null;
+    public List<DestructibleEntity> fireProjectiles() {
+        List<DestructibleEntity> projectiles = new ArrayList<>();
+        if (bossFiresInCurrentFrame()) {
+            //fireBallAudio.play();
+            projectiles.add(new AngledBossProjectile(getProjectileInitialPosition(), -20));
+            projectiles.add(new AngledBossProjectile(getProjectileInitialPosition(), 0));
+            projectiles.add(new AngledBossProjectile(getProjectileInitialPosition(), 20));
+        }
+        return projectiles;
     }
 }

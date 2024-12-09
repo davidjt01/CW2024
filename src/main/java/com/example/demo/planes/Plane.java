@@ -2,6 +2,8 @@ package com.example.demo.planes;
 
 import com.example.demo.entities.DestructibleEntity;
 
+import java.util.List;
+
 public abstract class Plane extends DestructibleEntity {
 
 	private int health;
@@ -12,6 +14,14 @@ public abstract class Plane extends DestructibleEntity {
 	}
 
 	public abstract DestructibleEntity fireProjectile();
+
+	public List<DestructibleEntity> fireProjectiles() {
+		DestructibleEntity projectile = fireProjectile();
+		if (projectile != null) {
+			return List.of(projectile);
+		}
+		return List.of();
+	}
 	
 	@Override
 	public void takeDamage() {
