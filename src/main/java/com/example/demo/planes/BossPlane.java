@@ -122,11 +122,11 @@ public class BossPlane extends Plane {
 		return currentMove;
 	}
 
-	private boolean bossFiresInCurrentFrame() {
+	protected boolean bossFiresInCurrentFrame() {
 		return Math.random() < BOSS_FIRE_RATE;
 	}
 
-	private double getProjectileInitialPosition() {
+	protected double getProjectileInitialPosition() {
 		return getLayoutY() + getTranslateY() + PROJECTILE_Y_POSITION_OFFSET;
 	}
 
