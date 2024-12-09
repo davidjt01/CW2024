@@ -1,6 +1,8 @@
 package com.example.demo.planes;
 
 import com.example.demo.levelviews.BossLevelView;
+import com.example.demo.entities.DestructibleEntity;
+import com.example.demo.projectiles.TripleDirectionBossProjectile;
 
 public class FinalBossPlane extends BossPlane {
 
@@ -9,5 +11,10 @@ public class FinalBossPlane extends BossPlane {
 
     public FinalBossPlane(BossLevelView levelView) {
         super(IMAGE_NAME, IMAGE_HEIGHT, levelView);
+    }
+
+    @Override
+    public DestructibleEntity fireProjectile() {
+        return bossFiresInCurrentFrame() ? new TripleDirectionBossProjectile(getProjectileInitialPosition()) : null;
     }
 }
