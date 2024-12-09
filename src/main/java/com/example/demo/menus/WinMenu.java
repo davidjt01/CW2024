@@ -1,6 +1,7 @@
 package com.example.demo.menus;
 
 import com.example.demo.controller.Controller;
+import com.example.demo.displays.WinDisplay;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
@@ -21,6 +22,7 @@ public class WinMenu {
     }
 
     public void show() {
+        WinDisplay winDisplay = new WinDisplay(355, 175);
         VBox menuLayout = new VBox(20);
         menuLayout.setStyle("-fx-alignment: center; -fx-padding: 50;");
 
@@ -40,7 +42,9 @@ public class WinMenu {
 
         quitButton.setOnAction(e -> gameController.onMainMenuSelected());
 
-        menuLayout.getChildren().addAll(gameTitle, playButton, quitButton);
+        menuLayout.getChildren().addAll(gameTitle, playButton, quitButton, winDisplay);
+
+        winDisplay.showWinImage();
 
         Image backgroundImage = new Image(Objects.requireNonNull(getClass().getResource("/com/example/demo/images/background1.jpg")).toExternalForm());
 
