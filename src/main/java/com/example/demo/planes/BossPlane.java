@@ -16,6 +16,10 @@ public class BossPlane extends Plane {
 	private static final double BOSS_SHIELD_PROBABILITY = .002;
 	private static final int IMAGE_HEIGHT = 56;
 	private static final int VERTICAL_VELOCITY = 8;
+	private static final double SHIELD_OFFSET_X = 40.0;
+	private static final double SHIELD_OFFSET_Y = -60.0;
+	private static final double HEALTH_BAR_OFFSET_X = 35.0;
+	private static final double HEALTH_BAR_OFFSET_Y = -40.0;
 	private static final int HEALTH = 100;
 	private static final int MOVE_FREQUENCY_PER_CYCLE = 5;
 	private static final int ZERO = 0;
@@ -56,6 +60,7 @@ public class BossPlane extends Plane {
 		updatePosition();
 		updateShield();
 		updateHealthBar();
+		updateUIElements();
 	}
 
 	@Override
@@ -71,6 +76,13 @@ public class BossPlane extends Plane {
 			//double healthPercentage = (double) getHealth() / HEALTH;
 			//levelView.updateHealthBar(healthPercentage);
 		}
+	}
+
+	private void updateUIElements() {
+		double x = getLayoutX() + getTranslateX();
+		double y = getLayoutY() + getTranslateY();
+		levelView.setShieldPosition(x + SHIELD_OFFSET_X, y + SHIELD_OFFSET_Y);
+		levelView.setHealthBarPosition(x + HEALTH_BAR_OFFSET_X, y + HEALTH_BAR_OFFSET_Y);
 	}
 
 	private void updateHealthBar() {
