@@ -6,10 +6,6 @@ import javafx.scene.Group;
 
 public class LevelViewLevelTwo extends LevelView {
 
-	private static final int SHIELD_X_POSITION = 1150;
-	private static final int SHIELD_Y_POSITION = 500;
-	private static final int HEALTH_BAR_X_POSITION = 1150;
-	private static final int HEALTH_BAR_Y_POSITION = 450;
 	private final Group root;
 	private final ShieldDisplay shieldDisplay;
 	private final HealthBarDisplay healthBarDisplay;
@@ -17,8 +13,8 @@ public class LevelViewLevelTwo extends LevelView {
 	public LevelViewLevelTwo(Group root, int heartsToDisplay) {
 		super(root, heartsToDisplay);
 		this.root = root;
-		this.shieldDisplay = new ShieldDisplay(SHIELD_X_POSITION, SHIELD_Y_POSITION);
-		this.healthBarDisplay = new HealthBarDisplay(HEALTH_BAR_X_POSITION, HEALTH_BAR_Y_POSITION);
+		this.shieldDisplay = new ShieldDisplay(0, 0);
+		this.healthBarDisplay = new HealthBarDisplay(0, 0);
 	}
 
 	private void addImagesToRoot() {
@@ -44,4 +40,13 @@ public class LevelViewLevelTwo extends LevelView {
 		healthBarDisplay.updateHealth(healthPercentage);
 	}
 
+	public void setShieldPosition(double x, double y) {
+		shieldDisplay.setLayoutX(x);
+		shieldDisplay.setLayoutY(y);
+	}
+
+	public void setHealthBarPosition(double x, double y) {
+		healthBarDisplay.getContainer().setLayoutX(x);
+		healthBarDisplay.getContainer().setLayoutY(y);
+	}
 }
