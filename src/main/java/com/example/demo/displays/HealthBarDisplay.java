@@ -1,32 +1,28 @@
 package com.example.demo.displays;
 
+import javafx.scene.control.ProgressBar;
 import javafx.scene.layout.HBox;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
 
 public class HealthBarDisplay {
-    private static final int BAR_WIDTH = 200;
-    private static final int BAR_HEIGHT = 20;
-    private static final Color HEALTH_COLOR = Color.GREEN;
-    private static final Color BACKGROUND_COLOR = Color.RED;
+    private static final double INITIAL_PROGRESS = 1.0;
 
-    private HBox container;
-    private Rectangle healthBar;
-    private Rectangle backgroundBar;
+    private final HBox container;
+    private final ProgressBar progressBar;
 
     public HealthBarDisplay(double xPosition, double yPosition) {
         container = new HBox();
         container.setLayoutX(xPosition);
         container.setLayoutY(yPosition);
 
-        backgroundBar = new Rectangle(BAR_WIDTH, BAR_HEIGHT, BACKGROUND_COLOR);
-        healthBar = new Rectangle(BAR_WIDTH, BAR_HEIGHT, HEALTH_COLOR);
+        progressBar = new ProgressBar(INITIAL_PROGRESS);
+        progressBar.setPrefWidth(200);
+        progressBar.setPrefHeight(20);
 
-        container.getChildren().addAll(backgroundBar, healthBar);
+        container.getChildren().add(progressBar);
     }
 
     public void updateHealth(double healthPercentage) {
-        healthBar.setWidth(BAR_WIDTH * healthPercentage);
+        progressBar.setProgress(healthPercentage); // Automatically clamps between 0.0 and 1.0
     }
 
     public HBox getContainer() {
