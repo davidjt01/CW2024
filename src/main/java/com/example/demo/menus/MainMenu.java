@@ -1,7 +1,6 @@
 package com.example.demo.menus;
 
 import com.example.demo.controller.Controller;
-import com.example.demo.controller.GameController;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
@@ -33,7 +32,7 @@ public class MainMenu {
         playButton.setPrefSize(200, 50);
         playButton.setStyle("-fx-font-size: 18px;");
 
-        playButton.setOnAction(e -> gameController.onPlaySelected());
+        playButton.setOnAction(e -> gameController.onLevelMenuSelected());
 
         Button quitButton = new Button("Quit");
         quitButton.setPrefSize(200, 50);

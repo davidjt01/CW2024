@@ -298,11 +298,11 @@ public abstract class LevelParent extends Observable implements Controller {
 	public void onMainMenuSelected() {
 		System.out.println("on HOME pressed");
 		timeline.stop();
-		gameController.onPlaySelected();
+		gameController.onLevelMenuSelected();
 	}
 
 	@Override
-	public void onPlaySelected() {
+	public void onLevelMenuSelected() {
 
 	}
 

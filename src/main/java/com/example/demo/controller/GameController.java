@@ -89,7 +89,7 @@ public class GameController implements Observer, Controller {
 		showMainMenu();
 	}
 
-	public void onPlaySelected() {
+	public void onLevelMenuSelected() {
 		showLevelMenu();
 	}
 
