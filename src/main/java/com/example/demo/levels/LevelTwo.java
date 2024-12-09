@@ -7,6 +7,7 @@ import com.example.demo.planes.BossPlane;
 public class LevelTwo extends LevelParent {
 
 	private static final String BACKGROUND_IMAGE_NAME = "/com/example/demo/images/background2.jpg";
+	private static final String NEXT_LEVEL = "com.example.demo.levels.LevelThree";
 	private static final int PLAYER_INITIAL_HEALTH = 5;
 	private final BossPlane bossPlane;
 	private LevelViewLevelTwo levelView;
@@ -27,7 +28,7 @@ public class LevelTwo extends LevelParent {
 			loseGame();
 		}
 		else if (bossPlane.isDestroyed()) {
-			winGame();
+			goToNextLevel(NEXT_LEVEL);
 		}
 	}
 
