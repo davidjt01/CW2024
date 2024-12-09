@@ -1,5 +1,6 @@
 package com.example.demo.levels;
 
+import com.example.demo.controller.Controller;
 import com.example.demo.levelviews.LevelView;
 import com.example.demo.levelviews.BossLevelView;
 import com.example.demo.planes.BossPlane;
@@ -12,8 +13,8 @@ public class LevelTwo extends LevelParent {
 	private final BossPlane bossPlane;
 	private BossLevelView levelView;
 
-	public LevelTwo(double screenHeight, double screenWidth) {
-		super(BACKGROUND_IMAGE_NAME, screenHeight, screenWidth, PLAYER_INITIAL_HEALTH);
+	public LevelTwo(Controller gameController, double screenHeight, double screenWidth) {
+		super(gameController, BACKGROUND_IMAGE_NAME, screenHeight, screenWidth, PLAYER_INITIAL_HEALTH);
 		bossPlane = new BossPlane(levelView);
 	}
 

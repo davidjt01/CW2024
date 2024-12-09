@@ -1,5 +1,6 @@
 package com.example.demo.levels;
 
+import com.example.demo.controller.Controller;
 import com.example.demo.entities.DestructibleEntity;
 import com.example.demo.levelviews.LevelView;
 import com.example.demo.planes.AdvancedEnemyPlane;
@@ -15,8 +16,8 @@ public class LevelThree extends LevelParent {
     private static final int PLAYER_INITIAL_HEALTH = 5;
     private int enemyCounter = 0; // Counter to alternate between enemy types
 
-    public LevelThree(double screenHeight, double screenWidth) {
-        super(BACKGROUND_IMAGE_NAME, screenHeight, screenWidth, PLAYER_INITIAL_HEALTH);
+    public LevelThree(Controller gameController, double screenHeight, double screenWidth) {
+        super(gameController, BACKGROUND_IMAGE_NAME, screenHeight, screenWidth, PLAYER_INITIAL_HEALTH);
     }
 
     @Override

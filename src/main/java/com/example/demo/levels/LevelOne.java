@@ -1,5 +1,6 @@
 package com.example.demo.levels;
 
+import com.example.demo.controller.Controller;
 import com.example.demo.entities.DestructibleEntity;
 import com.example.demo.levelviews.LevelView;
 import com.example.demo.planes.EnemyPlane;
@@ -13,8 +14,8 @@ public class LevelOne extends LevelParent {
 	private static final double ENEMY_SPAWN_PROBABILITY = .20;
 	private static final int PLAYER_INITIAL_HEALTH = 5;
 
-	public LevelOne(double screenHeight, double screenWidth) {
-		super(BACKGROUND_IMAGE_NAME, screenHeight, screenWidth, PLAYER_INITIAL_HEALTH);
+	public LevelOne(Controller gameController, double screenHeight, double screenWidth) {
+		super(gameController, BACKGROUND_IMAGE_NAME, screenHeight, screenWidth, PLAYER_INITIAL_HEALTH);
 	}
 
 	@Override

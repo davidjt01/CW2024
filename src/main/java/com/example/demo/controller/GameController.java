@@ -52,8 +52,8 @@ public class GameController implements Observer, Controller {
 
 			System.out.println("calling game level !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"+className);
 			Class<?> myClass = Class.forName(className);
-			Constructor<?> constructor = myClass.getConstructor(double.class, double.class);
-			currLevel = (LevelParent) constructor.newInstance(stage.getHeight(), stage.getWidth());
+			Constructor<?> constructor = myClass.getConstructor(Controller.class, double.class, double.class);
+			currLevel = (LevelParent) constructor.newInstance(this, stage.getHeight(), stage.getWidth());
 			currLevel.addObserver(this);
 			Scene scene = currLevel.initializeScene();
 			stage.setScene(scene);
@@ -85,6 +85,7 @@ public class GameController implements Observer, Controller {
 	}
 
 	public void onMainMenuSelected() {
+		System.out.println("main menu selected");
 		showMainMenu();
 	}
 

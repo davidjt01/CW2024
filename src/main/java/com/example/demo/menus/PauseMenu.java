@@ -39,13 +39,13 @@ public class PauseMenu {
             gameController.onContinueSelected();
         });
 
-        Button quitButton = new Button("Home");
-        quitButton.setPrefSize(200, 50);
-        quitButton.setStyle("-fx-font-size: 18px;");
+        Button backButton = new Button("Back");
+        backButton.setPrefSize(200, 50);
+        backButton.setStyle("-fx-font-size: 18px;");
 
-        quitButton.setOnAction(e -> gameController.onMainMenuSelected());
+        backButton.setOnAction(e -> gameController.onMainMenuSelected());
 
-        menuLayout.getChildren().addAll(gameTitle, playButton, quitButton);
+        menuLayout.getChildren().addAll(gameTitle, playButton, backButton);
 
         Scene scene =new Scene(menuLayout, stage.getWidth(), stage.getHeight());
         stage.setScene(scene);

@@ -39,8 +39,10 @@ public abstract class LevelParent extends Observable implements Controller {
 	
 	private int currentNumberOfEnemies;
 	private LevelView levelView;
+	private Controller gameController;
 
-	public LevelParent(String backgroundImageName, double screenHeight, double screenWidth, int playerInitialHealth) {
+	public LevelParent(Controller gameController, String backgroundImageName, double screenHeight, double screenWidth, int playerInitialHealth) {
+		this.gameController = gameController;
 		this.root = new Group();
 		this.scene = new Scene(root, screenWidth, screenHeight);
 		this.timeline = new Timeline();
@@ -294,7 +296,9 @@ public abstract class LevelParent extends Observable implements Controller {
 
 	@Override
 	public void onMainMenuSelected() {
-
+		System.out.println("on HOME pressed");
+		timeline.stop();
+		gameController.onPlaySelected();
 	}
 
 	@Override
