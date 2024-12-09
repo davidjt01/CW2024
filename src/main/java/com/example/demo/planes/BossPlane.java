@@ -2,7 +2,7 @@ package com.example.demo.planes;
 
 import com.example.demo.entities.DestructibleEntity;
 import com.example.demo.projectiles.BossProjectile;
-import com.example.demo.levelviews.LevelViewLevelTwo;
+import com.example.demo.levelviews.BossLevelView;
 
 import java.util.*;
 
@@ -32,9 +32,9 @@ public class BossPlane extends Plane {
 	private int consecutiveMovesInSameDirection;
 	private int indexOfCurrentMove;
 	private int framesWithShieldActivated;
-	private final LevelViewLevelTwo levelView;
+	private final BossLevelView levelView;
 
-	public BossPlane(String imageName, int imageHeight, LevelViewLevelTwo levelView) {
+	public BossPlane(String imageName, int imageHeight, BossLevelView levelView) {
 		super(imageName, imageHeight, INITIAL_X_POSITION, INITIAL_Y_POSITION, HEALTH);
 		this.levelView = levelView;
 		movePattern = new ArrayList<>();
@@ -45,7 +45,7 @@ public class BossPlane extends Plane {
 		initializeMovePattern();
 	}
 
-	public BossPlane(LevelViewLevelTwo levelView) {
+	public BossPlane(BossLevelView levelView) {
 		this(IMAGE_NAME, IMAGE_HEIGHT, levelView);
 	}
 

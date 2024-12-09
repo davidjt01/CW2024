@@ -4,13 +4,13 @@ import com.example.demo.displays.HealthBarDisplay;
 import com.example.demo.displays.ShieldDisplay;
 import javafx.scene.Group;
 
-public class LevelViewLevelTwo extends LevelView {
+public class BossLevelView extends LevelView {
 
 	private final Group root;
 	private final ShieldDisplay shieldDisplay;
 	private final HealthBarDisplay healthBarDisplay;
 
-	public LevelViewLevelTwo(Group root, int heartsToDisplay) {
+	public BossLevelView(Group root, int heartsToDisplay) {
 		super(root, heartsToDisplay);
 		this.root = root;
 		this.shieldDisplay = new ShieldDisplay(0, 0);

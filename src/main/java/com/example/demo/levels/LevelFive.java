@@ -1,7 +1,7 @@
 package com.example.demo.levels;
 
 import com.example.demo.levelviews.LevelView;
-import com.example.demo.levelviews.LevelViewLevelTwo;
+import com.example.demo.levelviews.BossLevelView;
 import com.example.demo.planes.BossPlane;
 
 public class LevelFive extends LevelParent {
@@ -9,7 +9,7 @@ public class LevelFive extends LevelParent {
     private static final String BACKGROUND_IMAGE_NAME = "/com/example/demo/images/background2.jpg";
     private static final int PLAYER_INITIAL_HEALTH = 5;
     private final BossPlane bossPlane;
-    private LevelViewLevelTwo levelView;
+    private BossLevelView levelView;
 
     public LevelFive(double screenHeight, double screenWidth) {
         super(BACKGROUND_IMAGE_NAME, screenHeight, screenWidth, PLAYER_INITIAL_HEALTH);
@@ -40,7 +40,7 @@ public class LevelFive extends LevelParent {
 
     @Override
     protected LevelView instantiateLevelView() {
-        levelView = new LevelViewLevelTwo(getRoot(), PLAYER_INITIAL_HEALTH);
+        levelView = new BossLevelView(getRoot(), PLAYER_INITIAL_HEALTH);
         return levelView;
     }
 
