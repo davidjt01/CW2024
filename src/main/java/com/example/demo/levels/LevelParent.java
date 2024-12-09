@@ -3,8 +3,10 @@ package com.example.demo.levels;
 import java.util.*;
 import java.util.stream.Collectors;
 
+import com.example.demo.controller.Controller;
 import com.example.demo.entities.DestructibleEntity;
 import com.example.demo.levelviews.LevelView;
+import com.example.demo.menus.PauseMenu;
 import com.example.demo.planes.Plane;
 import com.example.demo.planes.UserPlane;
 import javafx.animation.*;
@@ -13,9 +15,10 @@ import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.image.*;
 import javafx.scene.input.*;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 
-public abstract class LevelParent extends Observable {
+public abstract class LevelParent extends Observable implements Controller {
 
 	private static final double SCREEN_HEIGHT_ADJUSTMENT = 150;
 	private static final int MILLISECOND_DELAY = 50;
@@ -265,10 +268,38 @@ public abstract class LevelParent extends Observable {
 
 	public void pauseGame() {
 		timeline.pause();
+		PauseMenu pauseMenu = new PauseMenu((Stage) scene.getWindow(), this);
+		pauseMenu.saveGameScene(scene);
+		pauseMenu.show();
 	}
 
 	public void resumeGame() {
 		timeline.play();
+	}
+
+	@Override
+	public void onLevelSelected(String level) {
+
+	}
+
+	@Override
+	public void onMainMenuSelected() {
+
+	}
+
+	@Override
+	public void onPlaySelected() {
+
+	}
+
+	@Override
+	public void onPauseSelected() {
+
+	}
+
+	@Override
+	public void onContinueSelected() {
+		resumeGame();
 	}
 
 }
