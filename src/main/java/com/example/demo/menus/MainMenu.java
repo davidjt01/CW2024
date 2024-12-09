@@ -15,14 +15,13 @@ import java.util.Objects;
 public class MainMenu {
     private final Stage stage;
     private final Controller gameController;
-    private Scene mainMenuScene;
 
     public MainMenu(Stage stage, Controller gameController) {
         this.stage = stage;
         this.gameController = gameController;
     }
 
-    public Scene createMainMenuScene() {
+    public void show() {
         VBox menuLayout = new VBox(20);
         menuLayout.setStyle("-fx-alignment: center; -fx-padding: 50;");
 
@@ -54,7 +53,8 @@ public class MainMenu {
                 backgroundSize);
         menuLayout.setBackground(new Background(bgImage));
 
-        mainMenuScene = new Scene(menuLayout, stage.getWidth(), stage.getHeight());
-        return mainMenuScene;
+        Scene scene =  new Scene(menuLayout, stage.getWidth(), stage.getHeight());
+        stage.setScene(scene);
+        stage.show();
     }
 }

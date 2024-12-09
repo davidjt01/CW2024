@@ -16,9 +16,9 @@ public class LevelMenu {
         this.gameController = gameController;
     }
 
-    public Scene createLevelSelectionScene() {
-        VBox layout = new VBox(20);
-        layout.setStyle("-fx-alignment: center; -fx-padding: 50;");
+    public void show() {
+        VBox menulayout = new VBox(20);
+        menulayout.setStyle("-fx-alignment: center; -fx-padding: 50;");
 
         Image backgroundImage = new Image(getClass().getResource("/com/example/demo/images/background1.jpg").toExternalForm());
 
@@ -28,7 +28,7 @@ public class LevelMenu {
                 BackgroundRepeat.NO_REPEAT,
                 BackgroundPosition.CENTER,
                 backgroundSize);
-        layout.setBackground(new Background(bgImage));
+        menulayout.setBackground(new Background(bgImage));
 
         for (int i = 1; i <= 5; i++) {
             int level = i;
@@ -45,7 +45,7 @@ public class LevelMenu {
                     ex.printStackTrace();
                 }
             });
-            layout.getChildren().add(levelButton);
+            menulayout.getChildren().add(levelButton);
         }
 
         Button backButton = new Button("Back");
@@ -54,9 +54,11 @@ public class LevelMenu {
 
         backButton.setOnAction(e -> gameController.onMainMenuSelected());
 
-        layout.getChildren().add(backButton);
+        menulayout.getChildren().add(backButton);
 
-        return new Scene(layout, stage.getWidth(), stage.getHeight());
+        Scene scene =  new Scene(menulayout, stage.getWidth(), stage.getHeight());
+        stage.setScene(scene);
+        stage.show();
     }
 
     private String getLevelName(int levelNumber) {
