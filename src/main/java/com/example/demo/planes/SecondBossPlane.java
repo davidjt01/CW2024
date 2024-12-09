@@ -1,6 +1,8 @@
 package com.example.demo.planes;
 
 import com.example.demo.levelviews.BossLevelView;
+import com.example.demo.projectiles.RandomMovingBossProjectile;
+import com.example.demo.entities.DestructibleEntity;
 
 public class SecondBossPlane extends BossPlane {
 
@@ -9,5 +11,10 @@ public class SecondBossPlane extends BossPlane {
 
     public SecondBossPlane(BossLevelView levelView) {
         super(IMAGE_NAME, IMAGE_HEIGHT, levelView);
+    }
+
+    @Override
+    public DestructibleEntity fireProjectile() {
+        return bossFiresInCurrentFrame() ? new RandomMovingBossProjectile(getProjectileInitialPosition()) : null;
     }
 }
