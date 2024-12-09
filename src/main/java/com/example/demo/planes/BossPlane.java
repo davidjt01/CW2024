@@ -34,8 +34,8 @@ public class BossPlane extends Plane {
 	private int framesWithShieldActivated;
 	private final LevelViewLevelTwo levelView;
 
-	public BossPlane(String imageName, LevelViewLevelTwo levelView) {
-		super(imageName, IMAGE_HEIGHT, INITIAL_X_POSITION, INITIAL_Y_POSITION, HEALTH);
+	public BossPlane(String imageName, int imageHeight, LevelViewLevelTwo levelView) {
+		super(imageName, imageHeight, INITIAL_X_POSITION, INITIAL_Y_POSITION, HEALTH);
 		this.levelView = levelView;
 		movePattern = new ArrayList<>();
 		consecutiveMovesInSameDirection = 0;
@@ -46,7 +46,7 @@ public class BossPlane extends Plane {
 	}
 
 	public BossPlane(LevelViewLevelTwo levelView) {
-		this(IMAGE_NAME, levelView);
+		this(IMAGE_NAME, IMAGE_HEIGHT, levelView);
 	}
 
 	@Override
