@@ -24,17 +24,17 @@ public class WinMenu {
         VBox menuLayout = new VBox(20);
         menuLayout.setStyle("-fx-alignment: center; -fx-padding: 50;");
 
-        Button playButton = new Button("Level Menu");
-        playButton.setPrefSize(200, 50);
-        playButton.setStyle("-fx-font-size: 18px;");
-        playButton.setOnAction(e -> gameController.onLevelMenuSelected());
+        Button levelMenuButton = new Button("Level Menu");
+        levelMenuButton.setPrefSize(200, 50);
+        levelMenuButton.setStyle("-fx-font-size: 18px;");
+        levelMenuButton.setOnAction(e -> gameController.onLevelMenuSelected());
 
-        Button quitButton = new Button("Main Menu");
-        quitButton.setPrefSize(200, 50);
-        quitButton.setStyle("-fx-font-size: 18px;");
-        quitButton.setOnAction(e -> gameController.onMainMenuSelected());
+        Button mainMenuButton = new Button("Main Menu");
+        mainMenuButton.setPrefSize(200, 50);
+        mainMenuButton.setStyle("-fx-font-size: 18px;");
+        mainMenuButton.setOnAction(e -> gameController.onMainMenuSelected());
 
-        menuLayout.getChildren().addAll(winDisplay, playButton, quitButton);
+        menuLayout.getChildren().addAll(winDisplay, levelMenuButton, mainMenuButton);
 
         winDisplay.showWinImage();
 
