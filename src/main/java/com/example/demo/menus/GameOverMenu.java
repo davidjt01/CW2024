@@ -35,24 +35,24 @@ public class GameOverMenu {
         gameTitle.setFont(new Font("Arial", 48));
         gameTitle.setStyle("-fx-fill: white;");
 
-        Button playButton = new Button("Retry");
-        playButton.setPrefSize(200, 50);
-        playButton.setStyle("-fx-font-size: 18px;");
+        Button retryButton = new Button("Retry");
+        retryButton.setPrefSize(200, 50);
+        retryButton.setStyle("-fx-font-size: 18px;");
 
         System.out.println(levelName);
-        playButton.setOnAction(e -> gameController.onLevelSelected(levelName));
+        retryButton.setOnAction(e -> gameController.onLevelSelected(levelName));
 
         Button levelMenuButton = new Button("Level Menu");
         levelMenuButton.setPrefSize(200, 50);
         levelMenuButton.setStyle("-fx-font-size: 18px;");
         levelMenuButton.setOnAction(e -> gameController.onLevelMenuSelected());
 
-        Button quitButton = new Button("Main Menu");
-        quitButton.setPrefSize(200, 50);
-        quitButton.setStyle("-fx-font-size: 18px;");
-        quitButton.setOnAction(e -> gameController.onMainMenuSelected());
+        Button mainMenuButton = new Button("Main Menu");
+        mainMenuButton.setPrefSize(200, 50);
+        mainMenuButton.setStyle("-fx-font-size: 18px;");
+        mainMenuButton.setOnAction(e -> gameController.onMainMenuSelected());
 
-        menuLayout.getChildren().addAll(gameTitle, playButton, levelMenuButton, quitButton, gameOverDisplay);
+        menuLayout.getChildren().addAll(gameTitle, retryButton, levelMenuButton, mainMenuButton, gameOverDisplay);
 
         gameOverDisplay.showGameOver();
 
