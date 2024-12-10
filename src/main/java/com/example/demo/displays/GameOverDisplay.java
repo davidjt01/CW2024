@@ -6,8 +6,8 @@ import javafx.scene.image.ImageView;
 public class GameOverDisplay extends ImageView {
 
 	private static final String IMAGE_NAME = "/com/example/demo/images/gameover.png";
-	private static final int HEIGHT = 500;
-	private static final int WIDTH = 600;
+	private static final int HEIGHT = 400;
+	private static final int WIDTH = 400;
 
 	public GameOverDisplay() {
 		this.setImage(new Image(getClass().getResource(IMAGE_NAME).toExternalForm()));
