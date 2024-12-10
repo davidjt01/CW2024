@@ -6,8 +6,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
-import javafx.scene.text.Font;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.util.Objects;
@@ -31,10 +29,6 @@ public class GameOverMenu {
         VBox menuLayout = new VBox(20);
         menuLayout.setStyle("-fx-alignment: center; -fx-padding: 50;");
 
-        Text gameOverText = new Text("Game Over");
-        gameOverText.setFont(new Font("Arial", 48));
-        gameOverText.setStyle("-fx-fill: white;");
-
         Button retryButton = new Button("Retry");
         retryButton.setPrefSize(200, 50);
         retryButton.setStyle("-fx-font-size: 18px;");
@@ -52,7 +46,7 @@ public class GameOverMenu {
         mainMenuButton.setStyle("-fx-font-size: 18px;");
         mainMenuButton.setOnAction(e -> gameController.onMainMenuSelected());
 
-        menuLayout.getChildren().addAll(gameOverDisplay, gameOverText, retryButton, levelMenuButton, mainMenuButton);
+        menuLayout.getChildren().addAll(gameOverDisplay, retryButton, levelMenuButton, mainMenuButton);
 
         gameOverDisplay.showGameOver();
 
