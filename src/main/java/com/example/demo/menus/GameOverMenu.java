@@ -31,9 +31,9 @@ public class GameOverMenu {
         VBox menuLayout = new VBox(20);
         menuLayout.setStyle("-fx-alignment: center; -fx-padding: 50;");
 
-        Text gameTitle = new Text("Game Over");
-        gameTitle.setFont(new Font("Arial", 48));
-        gameTitle.setStyle("-fx-fill: white;");
+        Text gameOverText = new Text("Game Over");
+        gameOverText.setFont(new Font("Arial", 48));
+        gameOverText.setStyle("-fx-fill: white;");
 
         Button retryButton = new Button("Retry");
         retryButton.setPrefSize(200, 50);
@@ -52,7 +52,7 @@ public class GameOverMenu {
         mainMenuButton.setStyle("-fx-font-size: 18px;");
         mainMenuButton.setOnAction(e -> gameController.onMainMenuSelected());
 
-        menuLayout.getChildren().addAll(gameTitle, retryButton, levelMenuButton, mainMenuButton, gameOverDisplay);
+        menuLayout.getChildren().addAll(gameOverText, retryButton, levelMenuButton, mainMenuButton, gameOverDisplay);
 
         gameOverDisplay.showGameOver();
 
