@@ -42,13 +42,17 @@ public class GameOverMenu {
         System.out.println(levelName);
         playButton.setOnAction(e -> gameController.onLevelSelected(levelName));
 
+        Button levelMenuButton = new Button("Level Menu");
+        levelMenuButton.setPrefSize(200, 50);
+        levelMenuButton.setStyle("-fx-font-size: 18px;");
+        levelMenuButton.setOnAction(e -> gameController.onLevelMenuSelected());
+
         Button quitButton = new Button("Main Menu");
         quitButton.setPrefSize(200, 50);
         quitButton.setStyle("-fx-font-size: 18px;");
-
         quitButton.setOnAction(e -> gameController.onMainMenuSelected());
 
-        menuLayout.getChildren().addAll(gameTitle, playButton, quitButton, gameOverDisplay);
+        menuLayout.getChildren().addAll(gameTitle, playButton, levelMenuButton, quitButton, gameOverDisplay);
 
         gameOverDisplay.showGameOver();
 
@@ -62,7 +66,7 @@ public class GameOverMenu {
                 backgroundSize);
         menuLayout.setBackground(new Background(bgImage));
 
-        Scene scene =  new Scene(menuLayout, stage.getWidth(), stage.getHeight());
+        Scene scene = new Scene(menuLayout, stage.getWidth(), stage.getHeight());
         stage.setScene(scene);
         stage.show();
     }
