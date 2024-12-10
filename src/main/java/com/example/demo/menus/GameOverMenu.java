@@ -27,7 +27,7 @@ public class GameOverMenu {
     }
 
     public void show() {
-        GameOverDisplay gameOverDisplay = new GameOverDisplay(355, 175);
+        GameOverDisplay gameOverDisplay = new GameOverDisplay();
         VBox menuLayout = new VBox(20);
         menuLayout.setStyle("-fx-alignment: center; -fx-padding: 50;");
 
@@ -52,7 +52,7 @@ public class GameOverMenu {
         mainMenuButton.setStyle("-fx-font-size: 18px;");
         mainMenuButton.setOnAction(e -> gameController.onMainMenuSelected());
 
-        menuLayout.getChildren().addAll(gameOverText, retryButton, levelMenuButton, mainMenuButton, gameOverDisplay);
+        menuLayout.getChildren().addAll(gameOverDisplay, gameOverText, retryButton, levelMenuButton, mainMenuButton);
 
         gameOverDisplay.showGameOver();
 
