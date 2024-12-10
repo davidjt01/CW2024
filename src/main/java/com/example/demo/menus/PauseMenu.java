@@ -39,7 +39,12 @@ public class PauseMenu {
         levelMenuButton.setStyle("-fx-font-size: 18px;");
         levelMenuButton.setOnAction(e -> gameController.onLevelMenuSelected());
 
-        menuLayout.getChildren().addAll(gameTitle, continueButton, levelMenuButton);
+        Button mainMenuButton = new Button("Main Menu");
+        mainMenuButton.setPrefSize(200, 50);
+        mainMenuButton.setStyle("-fx-font-size: 18px;");
+        mainMenuButton.setOnAction(e -> gameController.onMainMenuSelected());
+
+        menuLayout.getChildren().addAll(gameTitle, continueButton, levelMenuButton, mainMenuButton);
 
         Scene scene = new Scene(menuLayout, stage.getWidth(), stage.getHeight());
         stage.setScene(scene);
