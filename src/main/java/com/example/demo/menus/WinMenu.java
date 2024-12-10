@@ -6,8 +6,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
-import javafx.scene.text.Font;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.util.Objects;
@@ -22,27 +20,21 @@ public class WinMenu {
     }
 
     public void show() {
-        WinDisplay winDisplay = new WinDisplay(355, 175);
+        WinDisplay winDisplay = new WinDisplay();
         VBox menuLayout = new VBox(20);
         menuLayout.setStyle("-fx-alignment: center; -fx-padding: 50;");
-
-        Text gameTitle = new Text("Win");
-        gameTitle.setFont(new Font("Arial", 48));
-        gameTitle.setStyle("-fx-fill: white;");
 
         Button playButton = new Button("Level Menu");
         playButton.setPrefSize(200, 50);
         playButton.setStyle("-fx-font-size: 18px;");
-
         playButton.setOnAction(e -> gameController.onLevelMenuSelected());
 
         Button quitButton = new Button("Main Menu");
         quitButton.setPrefSize(200, 50);
         quitButton.setStyle("-fx-font-size: 18px;");
-
         quitButton.setOnAction(e -> gameController.onMainMenuSelected());
 
-        menuLayout.getChildren().addAll(gameTitle, playButton, quitButton, winDisplay);
+        menuLayout.getChildren().addAll(winDisplay, playButton, quitButton);
 
         winDisplay.showWinImage();
 
@@ -56,7 +48,7 @@ public class WinMenu {
                 backgroundSize);
         menuLayout.setBackground(new Background(bgImage));
 
-        Scene scene =  new Scene(menuLayout, stage.getWidth(), stage.getHeight());
+        Scene scene = new Scene(menuLayout, stage.getWidth(), stage.getHeight());
         stage.setScene(scene);
         stage.show();
     }
