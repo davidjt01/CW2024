@@ -28,19 +28,17 @@ public class MainMenu {
         gameTitle.setFont(new Font("Arial", 48));
         gameTitle.setStyle("-fx-fill: white;");
 
-        Button playButton = new Button("Play");
-        playButton.setPrefSize(200, 50);
-        playButton.setStyle("-fx-font-size: 18px;");
-
-        playButton.setOnAction(e -> gameController.onLevelMenuSelected());
+        Button levelMenuButton = new Button("Play");
+        levelMenuButton.setPrefSize(200, 50);
+        levelMenuButton.setStyle("-fx-font-size: 18px;");
+        levelMenuButton.setOnAction(e -> gameController.onLevelMenuSelected());
 
         Button quitButton = new Button("Quit");
         quitButton.setPrefSize(200, 50);
         quitButton.setStyle("-fx-font-size: 18px;");
-
         quitButton.setOnAction(e -> stage.close());
 
-        menuLayout.getChildren().addAll(gameTitle, playButton, quitButton);
+        menuLayout.getChildren().addAll(gameTitle, levelMenuButton, quitButton);
 
         Image backgroundImage = new Image(Objects.requireNonNull(getClass().getResource("/com/example/demo/images/background1.jpg")).toExternalForm());
 
@@ -52,7 +50,7 @@ public class MainMenu {
                 backgroundSize);
         menuLayout.setBackground(new Background(bgImage));
 
-        Scene scene =  new Scene(menuLayout, stage.getWidth(), stage.getHeight());
+        Scene scene = new Scene(menuLayout, stage.getWidth(), stage.getHeight());
         stage.setScene(scene);
         stage.show();
     }
