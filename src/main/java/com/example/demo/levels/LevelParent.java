@@ -180,13 +180,6 @@ public abstract class LevelParent extends Observable implements Controller {
         }
     }
 
-    private void spawnEnemyProjectile(DestructibleEntity projectile) {
-        if (projectile != null) {
-            root.getChildren().add(projectile);
-            enemyProjectiles.add(projectile);
-        }
-    }
-
     private void updateActors() {
         friendlyUnits.forEach(DestructibleEntity::updateActor);
         enemyUnits.forEach(DestructibleEntity::updateActor);
