@@ -6,4 +6,5 @@ public interface Controller {
     void onLevelMenuSelected();
     void onPauseSelected();
     void onContinueSelected();
+    void onSettingsMenuSelected();
 }

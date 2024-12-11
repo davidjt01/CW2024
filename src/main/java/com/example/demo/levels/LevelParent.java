@@ -333,4 +333,10 @@ public abstract class LevelParent extends Observable implements Controller {
 		resumeGame();
 	}
 
+	@Override
+	public void onSettingsMenuSelected() {
+		timeline.stop();
+		gameController.onSettingsMenuSelected();
+	}
+
 }

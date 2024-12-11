@@ -34,12 +34,17 @@ public class MainMenu {
         levelMenuButton.setStyle("-fx-font-size: 18px;");
         levelMenuButton.setOnAction(e -> gameController.onLevelMenuSelected());
 
+        Button settingsButton = new Button("Settings");
+        settingsButton.setPrefSize(200, 50);
+        settingsButton.setStyle("-fx-font-size: 18px;");
+        settingsButton.setOnAction(e -> gameController.onSettingsMenuSelected());
+
         Button quitButton = new Button("Quit");
         quitButton.setPrefSize(200, 50);
         quitButton.setStyle("-fx-font-size: 18px;");
         quitButton.setOnAction(e -> stage.close());
 
-        menuLayout.getChildren().addAll(gameTitle, levelMenuButton, quitButton);
+        menuLayout.getChildren().addAll(gameTitle, levelMenuButton, settingsButton, quitButton);
 
         Image backgroundImage = new Image(Objects.requireNonNull(getClass().getResource("/com/example/demo/images/background1.jpg")).toExternalForm());
 

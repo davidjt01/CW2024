@@ -8,6 +8,7 @@ import java.util.Observer;
 import com.example.demo.menus.LevelMenu;
 import com.example.demo.menus.MainMenu;
 import com.example.demo.menus.PauseMenu;
+import com.example.demo.menus.SettingsMenu;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
@@ -47,6 +48,11 @@ public class GameController implements Observer, Controller {
 		pauseMenu.show();
 	}
 
+	private void showSettingsMenu() {
+		SettingsMenu settingsMenu = new SettingsMenu(stage, this);
+		settingsMenu.show();
+	}
+
 	private void goToLevel(String className) throws ClassNotFoundException, NoSuchMethodException, SecurityException,
 			InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
 
@@ -65,7 +71,7 @@ public class GameController implements Observer, Controller {
 		try {
 			goToLevel((String) arg1);
 		} catch (ClassNotFoundException | NoSuchMethodException | SecurityException | InstantiationException
-				| IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
+				 | IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
 			Alert alert = new Alert(AlertType.ERROR);
 			alert.setContentText(e.getClass().toString());
 			alert.show();
@@ -101,4 +107,7 @@ public class GameController implements Observer, Controller {
 		currLevel.resumeGame();
 	}
 
+	public void onSettingsMenuSelected() {
+		showSettingsMenu();
+	}
 }
