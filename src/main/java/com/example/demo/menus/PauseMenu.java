@@ -42,9 +42,9 @@ public class PauseMenu {
                 new BackgroundSize(stage.getWidth(), stage.getHeight(), false, false, false, false));
         menuLayout.setBackground(new Background(bgImage));
 
-        Text gameTitle = new Text("Paused");
-        gameTitle.setFont(new Font("Arial", 48));
-        gameTitle.setStyle("-fx-fill: white;");
+        Text pauseTitle = new Text("Paused");
+        pauseTitle.setFont(new Font("Arial", 48));
+        pauseTitle.setStyle("-fx-fill: white;");
 
         Button continueButton = new Button("Continue");
         continueButton.setPrefSize(200, 50);
@@ -64,7 +64,7 @@ public class PauseMenu {
         mainMenuButton.setStyle("-fx-font-size: 18px;");
         mainMenuButton.setOnAction(e -> gameController.onMainMenuSelected());
 
-        menuLayout.getChildren().addAll(gameTitle, continueButton, levelMenuButton, mainMenuButton);
+        menuLayout.getChildren().addAll(pauseTitle, continueButton, levelMenuButton, mainMenuButton);
 
         Scene scene = new Scene(menuLayout, stage.getWidth(), stage.getHeight());
 
