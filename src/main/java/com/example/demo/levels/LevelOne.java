@@ -39,7 +39,7 @@ public class LevelOne extends LevelParent {
 			if (Math.random() < ENEMY_SPAWN_PROBABILITY) {
 				double newEnemyInitialYPosition = Math.random() * getEnemyMaximumYPosition();
 				DestructibleEntity newEnemy = new EnemyPlane(getScreenWidth(), newEnemyInitialYPosition);
-				addEnemyUnit(newEnemy);
+				if (canSpawnEnemy()) {addEnemyUnit(newEnemy);}
 			}
 		}
 	}
@@ -52,5 +52,4 @@ public class LevelOne extends LevelParent {
 	private boolean userHasReachedKillTarget() {
 		return getUser().getNumberOfKills() >= KILLS_TO_ADVANCE;
 	}
-
 }
