@@ -1,5 +1,6 @@
 package com.example.demo.planes;
 
+import com.example.demo.audio.AudioPlayer;
 import com.example.demo.entities.DestructibleEntity;
 import com.example.demo.projectiles.UserProjectile;
 
@@ -21,12 +22,16 @@ public class UserPlane extends Plane {
 	private int horizontalVelocityMultiplier;
 	private int numberOfKills;
 
+	private AudioPlayer audioPlayer;
+
 	public UserPlane(int initialHealth) {
 		super(IMAGE_NAME, IMAGE_HEIGHT, INITIAL_X_POSITION, INITIAL_Y_POSITION, initialHealth);
 		verticalVelocityMultiplier = 0;
 		horizontalVelocityMultiplier = 0;
+		audioPlayer = new AudioPlayer();
+		audioPlayer.loadAudio("/com/example/demo/audio/userfire.wav");
 	}
-	
+
 	@Override
 	public void updatePosition() {
 		if (isMoving()) {
@@ -44,14 +49,15 @@ public class UserPlane extends Plane {
 			}
 		}
 	}
-	
+
 	@Override
 	public void updateActor() {
 		updatePosition();
 	}
-	
+
 	@Override
 	public DestructibleEntity fireProjectile() {
+		audioPlayer.play();
 		return new UserProjectile(getProjectileXPosition(PROJECTILE_X_POSITION_OFFSET), getProjectileYPosition(PROJECTILE_Y_POSITION_OFFSET));
 	}
 
@@ -98,5 +104,4 @@ public class UserPlane extends Plane {
 	public void incrementKillCount() {
 		numberOfKills++;
 	}
-
 }
