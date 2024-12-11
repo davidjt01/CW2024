@@ -6,6 +6,7 @@ import java.util.List;
 
 public class AdvancedEnemyPlane extends EnemyPlane {
     private static final String IMAGE_NAME = "advancedenemyplane.png";
+    private static final int HORIZONTAL_VELOCITY = -10;
     private static final int VERTICAL_VELOCITY = 8;
     private static final int MOVE_FREQUENCY_PER_CYCLE = 5;
     private static final int MAX_FRAMES_WITH_SAME_MOVE = 10;
@@ -25,7 +26,7 @@ public class AdvancedEnemyPlane extends EnemyPlane {
 
     @Override
     public void updatePosition() {
-        super.updatePosition();
+        moveHorizontally(HORIZONTAL_VELOCITY);
         double initialTranslateY = getTranslateY();
         moveVertically(getNextMove());
         double currentPosition = getLayoutY() + getTranslateY();
