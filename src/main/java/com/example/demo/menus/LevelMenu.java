@@ -6,6 +6,7 @@ import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
+import javafx.scene.input.*;
 
 public class LevelMenu {
     private final Stage stage;
@@ -57,6 +58,13 @@ public class LevelMenu {
         menulayout.getChildren().add(backButton);
 
         Scene scene =  new Scene(menulayout, stage.getWidth(), stage.getHeight());
+
+        scene.addEventFilter(KeyEvent.KEY_PRESSED, event -> {
+            if (event.getCode() == KeyCode.SPACE) {
+                event.consume();
+            }
+        });
+
         stage.setScene(scene);
         stage.show();
     }
