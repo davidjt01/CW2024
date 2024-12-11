@@ -18,7 +18,7 @@ public class LevelView {
 
     public LevelView(Group root, int heartsToDisplay) {
         this.root = root;
-        this.heartDisplay = new HeartDisplay(HEART_DISPLAY_X_POSITION, HEART_DISPLAY_Y_POSITION, heartsToDisplay);
+        this.heartDisplay = HeartDisplay.createHeartDisplay(HEART_DISPLAY_X_POSITION, HEART_DISPLAY_Y_POSITION, heartsToDisplay);
         //this.winDisplay = new WinDisplay(WIN_IMAGE_X_POSITION, WIN_IMAGE_Y_POSITION);
         //this.gameOverDisplay = new GameOverDisplay(LOSS_SCREEN_X_POSITION, LOSS_SCREEN_Y_POSITION);
     }
