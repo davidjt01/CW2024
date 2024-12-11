@@ -7,7 +7,8 @@ import javafx.scene.layout.HBox;
 import java.util.Objects;
 
 /**
- *
+ * The {@code HeartDisplay} class represents a display of hearts in the game.
+ * It uses {@link ImageView} to visually indicate the number of hearts (lives) remaining.
  */
 public class HeartDisplay {
 
@@ -20,9 +21,11 @@ public class HeartDisplay {
     private HBox container;
 
     /**
-     * @param xPosition
-     * @param yPosition
-     * @param heartsToDisplay
+     * Constructs a {@code HeartDisplay} at the specified position with the given number of hearts.
+     *
+     * @param xPosition the x-coordinate of the heart display.
+     * @param yPosition the y-coordinate of the heart display.
+     * @param heartsToDisplay the number of hearts to display.
      */
     private HeartDisplay(double xPosition, double yPosition, int heartsToDisplay) {
         this.containerXPosition = xPosition;
@@ -33,17 +36,19 @@ public class HeartDisplay {
     }
 
     /**
-     * @param xPosition
-     * @param yPosition
-     * @param heartsToDisplay
-     * @return
+     * Creates a new instance of {@code HeartDisplay}.
+     *
+     * @param xPosition the x-coordinate of the heart display.
+     * @param yPosition the y-coordinate of the heart display.
+     * @param heartsToDisplay the number of hearts to display.
+     * @return a new {@code HeartDisplay} instance.
      */
     public static HeartDisplay createHeartDisplay(double xPosition, double yPosition, int heartsToDisplay) {
         return new HeartDisplay(xPosition, yPosition, heartsToDisplay);
     }
 
     /**
-     *
+     * Initializes the container for the heart display.
      */
     private void initializeContainer() {
         container = new HBox();
@@ -52,12 +57,11 @@ public class HeartDisplay {
     }
 
     /**
-     *
+     * Initializes the hearts in the display.
      */
     private void initializeHearts() {
         for (int i = 0; i < numberOfHeartsToDisplay; i++) {
             ImageView heart = new ImageView(new Image(Objects.requireNonNull(getClass().getResource(HEART_IMAGE_NAME)).toExternalForm()));
-
             heart.setFitHeight(HEART_HEIGHT);
             heart.setPreserveRatio(true);
             container.getChildren().add(heart);
@@ -65,7 +69,7 @@ public class HeartDisplay {
     }
 
     /**
-     *
+     * Removes one heart from the display.
      */
     public void removeHeart() {
         if (!container.getChildren().isEmpty())
@@ -73,10 +77,11 @@ public class HeartDisplay {
     }
 
     /**
-     * @return
+     * Gets the container holding the hearts.
+     *
+     * @return the container {@link HBox} of the hearts.
      */
     public HBox getContainer() {
         return container;
     }
-
 }
