@@ -3,7 +3,6 @@ package com.example.demo.controller;
 import com.example.demo.levels.LevelParent;
 import com.example.demo.menus.LevelMenu;
 import com.example.demo.menus.MainMenu;
-import com.example.demo.menus.PauseMenu;
 import com.example.demo.menus.SettingsMenu;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -41,11 +40,6 @@ public class GameController implements Observer, Controller {
     private void showLevelMenu() {
         LevelMenu levelMenu = new LevelMenu(stage, this);
         levelMenu.show();
-    }
-
-    private void showPauseMenu() {
-        PauseMenu pauseMenu = new PauseMenu(stage, this);
-        pauseMenu.show();
     }
 
     private void showSettingsMenu() {
