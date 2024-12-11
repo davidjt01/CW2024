@@ -334,9 +334,16 @@ public abstract class LevelParent extends Observable implements Controller {
         List<DestructibleEntity> outOfScreenProjectiles = projectiles.stream()
                 .filter(this::isOutOfScreen)
                 .collect(Collectors.toList());
+
+        // Log the removal of out-of-screen projectiles
+        outOfScreenProjectiles.forEach(projectile ->
+                System.out.println("Removing out-of-screen projectile at position: " +
+                        "X=" + (projectile.getLayoutX() + projectile.getTranslateX()) +
+                        ", Y=" + (projectile.getLayoutY() + projectile.getTranslateY()))
+        );
+
         root.getChildren().removeAll(outOfScreenProjectiles);
         projectiles.removeAll(outOfScreenProjectiles);
-        System.out.println("wow");
     }
 
     @Override
