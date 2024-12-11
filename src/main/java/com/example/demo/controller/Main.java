@@ -5,22 +5,22 @@ import javafx.stage.Stage;
 
 import java.lang.reflect.InvocationTargetException;
 
-public class GameLauncher extends Application {
+public class Main extends Application {
 
     private static final int SCREEN_WIDTH = 1300;
     private static final int SCREEN_HEIGHT = 750;
     private static final String TITLE = "Sky Battle";
     private GameController myGameController;
 
-    private GameLauncher() {
+    private Main() {
     }
 
     public static void main(String[] args) {
         launch();
     }
 
-    public static GameLauncher createMain() {
-        return new GameLauncher();
+    public static Main createMain() {
+        return new Main();
     }
 
     @Override
