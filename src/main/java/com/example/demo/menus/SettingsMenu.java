@@ -4,10 +4,13 @@ import com.example.demo.audio.AudioPlayer;
 import com.example.demo.controller.Controller;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+
+import java.util.Objects;
 
 public class SettingsMenu {
     private final Stage stage;
@@ -47,6 +50,17 @@ public class SettingsMenu {
         backButton.setOnAction(e -> gameController.onMainMenuSelected());
 
         menuLayout.getChildren().addAll(settingsTitle, increaseVolumeButton, decreaseVolumeButton, volumeText, backButton);
+
+        // set background
+        Image backgroundImage = new Image(Objects.requireNonNull(getClass().getResource("/com/example/demo/images/background1.jpg")).toExternalForm());
+
+        BackgroundSize backgroundSize = new BackgroundSize(stage.getWidth(), stage.getHeight(), false, false, false, false);
+        BackgroundImage bgImage = new BackgroundImage(backgroundImage,
+                BackgroundRepeat.NO_REPEAT,
+                BackgroundRepeat.NO_REPEAT,
+                BackgroundPosition.CENTER,
+                backgroundSize);
+        menuLayout.setBackground(new Background(bgImage));
 
         Scene scene = new Scene(menuLayout, stage.getWidth(), stage.getHeight());
         stage.setScene(scene);
