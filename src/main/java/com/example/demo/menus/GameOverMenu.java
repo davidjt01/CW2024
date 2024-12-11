@@ -5,6 +5,8 @@ import com.example.demo.displays.GameOverDisplay;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 
@@ -61,6 +63,13 @@ public class GameOverMenu {
         menuLayout.setBackground(new Background(bgImage));
 
         Scene scene = new Scene(menuLayout, stage.getWidth(), stage.getHeight());
+
+        scene.addEventFilter(KeyEvent.KEY_PRESSED, event -> {
+            if (event.getCode() == KeyCode.SPACE) {
+                event.consume();
+            }
+        });
+
         stage.setScene(scene);
         stage.show();
     }
