@@ -6,7 +6,8 @@ import javafx.scene.image.ImageView;
 import java.util.Objects;
 
 /**
- *
+ * The {@code ShieldDisplay} class represents a shield effect in the game.
+ * It extends {@link ImageView} and displays a shield image at a specified position.
  */
 public class ShieldDisplay extends ImageView {
 
@@ -14,13 +15,14 @@ public class ShieldDisplay extends ImageView {
     private static final int SHIELD_SIZE = 200;
 
     /**
-     * @param xPosition
-     * @param yPosition
+     * Constructs a {@code ShieldDisplay} at the specified position.
+     *
+     * @param xPosition the x-coordinate of the shield.
+     * @param yPosition the y-coordinate of the shield.
      */
     private ShieldDisplay(double xPosition, double yPosition) {
         this.setLayoutX(xPosition);
         this.setLayoutY(yPosition);
-        //this.setImage(new Image(IMAGE_NAME));
         this.setImage(new Image(Objects.requireNonNull(getClass().getResource(IMAGE_NAME)).toExternalForm()));
         this.setVisible(false);
         this.setFitHeight(SHIELD_SIZE);
@@ -28,26 +30,27 @@ public class ShieldDisplay extends ImageView {
     }
 
     /**
-     * @param xPosition
-     * @param yPosition
-     * @return
+     * Creates a new instance of {@code ShieldDisplay}.
+     *
+     * @param xPosition the x-coordinate of the shield.
+     * @param yPosition the y-coordinate of the shield.
+     * @return a new {@code ShieldDisplay} instance.
      */
     public static ShieldDisplay createShieldDisplay(double xPosition, double yPosition) {
         return new ShieldDisplay(xPosition, yPosition);
     }
 
     /**
-     *
+     * Makes the shield image visible.
      */
     public void showShield() {
         this.setVisible(true);
     }
 
     /**
-     *
+     * Makes the shield image invisible.
      */
     public void hideShield() {
         this.setVisible(false);
     }
-
 }
