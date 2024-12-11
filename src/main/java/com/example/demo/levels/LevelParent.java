@@ -29,6 +29,7 @@ public abstract class LevelParent extends Observable implements Controller {
     private static final double SCREEN_HEIGHT_ADJUSTMENT = 150;
     private static final int MILLISECOND_DELAY = 50;
     private static final long MINIMUM_SPAWN_DELAY = 500; // minimum delay in milliseconds
+    private static final long FIRE_COOLDOWN = 200; // cooldown period in milliseconds
     private final double screenHeight;
     private final double screenWidth;
     private final double enemyMaximumYPosition;
@@ -46,7 +47,6 @@ public abstract class LevelParent extends Observable implements Controller {
     private int currentNumberOfEnemies;
     private long lastSpawnTime = 0;
     private int penetratedEnemiesCount = 0;
-    private static final long FIRE_COOLDOWN = 200; // cooldown period in milliseconds
     private long lastFireTime = 0;
 
     public LevelParent(Controller gameController, String backgroundImageName, double screenHeight, double screenWidth, int playerInitialHealth) {
