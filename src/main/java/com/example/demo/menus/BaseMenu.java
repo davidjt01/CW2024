@@ -49,7 +49,7 @@ public abstract class BaseMenu {
 
     protected String getBackgroundImageFile() {
         return "/com/example/demo/images/background1.jpg";
-    };
+    }
 
     abstract VBox getMenuLayout();
 }
