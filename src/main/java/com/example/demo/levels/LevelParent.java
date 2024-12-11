@@ -42,6 +42,8 @@ public abstract class LevelParent extends Observable implements Controller {
 	private long lastSpawnTime = 0;
 	private static final long MINIMUM_SPAWN_DELAY = 500; // minimum delay in milliseconds
 
+	private int penetratedEnemiesCount = 0;
+
 	public LevelParent(Controller gameController, String backgroundImageName, double screenHeight, double screenWidth, int playerInitialHealth) {
 		this.gameController = gameController;
 		this.root = new Group();
@@ -94,7 +96,7 @@ public abstract class LevelParent extends Observable implements Controller {
 		notifyObservers(levelName);
 	}
 
-	private void updateScene() {
+	protected void updateScene() {
 		spawnEnemyUnits();
 		updateActors();
 		generateEnemyFire();
@@ -223,6 +225,7 @@ public abstract class LevelParent extends Observable implements Controller {
 			if (enemyHasPenetratedDefenses(enemy)) {
 				user.takeDamage();
 				enemy.destroy();
+				penetratedEnemiesCount++;
 			}
 		}
 	}
@@ -232,7 +235,9 @@ public abstract class LevelParent extends Observable implements Controller {
 	}
 
 	private void updateKillCount() {
-		for (int i = 0; i < currentNumberOfEnemies - enemyUnits.size(); i++) {
+		int destroyedEnemies = currentNumberOfEnemies - enemyUnits.size();
+		int adjustedKillCount = destroyedEnemies - penetratedEnemiesCount;
+		for (int i = 0; i < adjustedKillCount; i++) {
 			user.incrementKillCount();
 		}
 	}
