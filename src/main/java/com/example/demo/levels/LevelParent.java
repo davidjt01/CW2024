@@ -104,7 +104,7 @@ public abstract class LevelParent extends Observable implements Controller {
         notifyObservers(levelName);
     }
 
-    protected void updateScene() {
+    private void updateScene() {
         spawnEnemyUnits();
         updateActors();
         generateEnemyFire();
@@ -114,6 +114,8 @@ public abstract class LevelParent extends Observable implements Controller {
         handleEnemyProjectileCollisions();
         handlePlaneCollisions();
         removeAllDestroyedActors();
+        removeOutOfScreenProjectiles(userProjectiles);
+        removeOutOfScreenProjectiles(enemyProjectiles);
         updateKillCount();
         updateLevelView();
         checkIfGameOver();
@@ -320,6 +322,20 @@ public abstract class LevelParent extends Observable implements Controller {
 
     public void resumeGame() {
         timeline.play();
+    }
+
+    private boolean isOutOfScreen(DestructibleEntity projectile) {
+        double x = projectile.getLayoutX() + projectile.getTranslateX();
+        double y = projectile.getLayoutY() + projectile.getTranslateY();
+        return x < 0 || x > screenWidth || y < 0 || y > screenHeight;
+    }
+
+    private void removeOutOfScreenProjectiles(List<DestructibleEntity> projectiles) {
+        List<DestructibleEntity> outOfScreenProjectiles = projectiles.stream()
+                .filter(this::isOutOfScreen)
+                .collect(Collectors.toList());
+        root.getChildren().removeAll(outOfScreenProjectiles);
+        projectiles.removeAll(outOfScreenProjectiles);
     }
 
     @Override
