@@ -21,8 +21,8 @@ public class LevelMenu {
     }
 
     public void show() {
-        VBox menulayout = new VBox(20);
-        menulayout.setStyle("-fx-alignment: center; -fx-padding: 50;");
+        VBox menuLayout = new VBox(20);
+        menuLayout.setStyle("-fx-alignment: center; -fx-padding: 50;");
 
         Image backgroundImage = new Image(Objects.requireNonNull(getClass().getResource("/com/example/demo/images/background1.jpg")).toExternalForm());
 
@@ -32,7 +32,7 @@ public class LevelMenu {
                 BackgroundRepeat.NO_REPEAT,
                 BackgroundPosition.CENTER,
                 backgroundSize);
-        menulayout.setBackground(new Background(bgImage));
+        menuLayout.setBackground(new Background(bgImage));
 
         for (int i = 1; i <= 5; i++) {
             Button levelButton = new Button("Level " + i);
@@ -48,7 +48,7 @@ public class LevelMenu {
                     ex.printStackTrace();
                 }
             });
-            menulayout.getChildren().add(levelButton);
+            menuLayout.getChildren().add(levelButton);
         }
 
         Button backButton = new Button("Back");
@@ -57,9 +57,9 @@ public class LevelMenu {
 
         backButton.setOnAction(e -> gameController.onMainMenuSelected());
 
-        menulayout.getChildren().add(backButton);
+        menuLayout.getChildren().add(backButton);
 
-        Scene scene = new Scene(menulayout, stage.getWidth(), stage.getHeight());
+        Scene scene = new Scene(menuLayout, stage.getWidth(), stage.getHeight());
 
         scene.addEventFilter(KeyEvent.KEY_PRESSED, event -> {
             if (event.getCode() == KeyCode.SPACE) {
