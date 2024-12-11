@@ -1,5 +1,6 @@
 package com.example.demo.planes;
 
+import com.example.demo.audio.AudioPlayer;
 import com.example.demo.entities.DestructibleEntity;
 import com.example.demo.projectiles.EnemyProjectile;
 
@@ -13,8 +14,12 @@ public class EnemyPlane extends Plane {
 	private static final int INITIAL_HEALTH = 1;
 	private static final double FIRE_RATE = .01;
 
+	private AudioPlayer enemyFireAudioPlayer;
+
 	public EnemyPlane(String imageName, double initialXPos, double initialYPos) {
 		super(imageName, IMAGE_HEIGHT, initialXPos, initialYPos, INITIAL_HEALTH);
+		enemyFireAudioPlayer = new AudioPlayer();
+		enemyFireAudioPlayer.loadAudio("/com/example/demo/audio/enemyfire.wav");
 	}
 
 	public EnemyPlane(double initialXPos, double initialYPos) {
@@ -29,6 +34,7 @@ public class EnemyPlane extends Plane {
 	@Override
 	public DestructibleEntity fireProjectile() {
 		if (Math.random() < FIRE_RATE) {
+			enemyFireAudioPlayer.play();
 			double projectileXPosition = getProjectileXPosition(PROJECTILE_X_POSITION_OFFSET);
 			double projectileYPosition = getProjectileYPosition(PROJECTILE_Y_POSITION_OFFSET);
 			return new EnemyProjectile(projectileXPosition, projectileYPosition);
@@ -40,5 +46,4 @@ public class EnemyPlane extends Plane {
 	public void updateActor() {
 		updatePosition();
 	}
-
 }
