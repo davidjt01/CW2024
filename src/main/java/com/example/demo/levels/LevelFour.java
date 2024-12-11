@@ -48,7 +48,7 @@ public class LevelFour extends LevelParent {
             if (Math.random() < ENEMY_SPAWN_PROBABILITY) {
                 double newEnemyInitialYPosition = Math.random() * getEnemyMaximumYPosition();
                 DestructibleEntity newEnemy = new EnemyPlane(getScreenWidth(), newEnemyInitialYPosition);
-                addEnemyUnit(newEnemy);
+                if (canSpawnEnemy()) {addEnemyUnit(newEnemy);}
             }
         }
     }
