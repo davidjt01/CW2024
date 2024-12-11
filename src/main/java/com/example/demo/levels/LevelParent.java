@@ -288,8 +288,14 @@ public abstract class LevelParent extends Observable implements Controller {
 
 	public void pauseGame() {
 		timeline.pause();
+
+		// Capture the current game scene as an image
+		WritableImage snapshot = new WritableImage((int) scene.getWidth(), (int) scene.getHeight());
+		scene.snapshot(snapshot);
+
 		PauseMenu pauseMenu = new PauseMenu((Stage) scene.getWindow(), this);
 		pauseMenu.saveGameScene(scene);
+		pauseMenu.setBackgroundImage(snapshot); // Pass the captured image to the pause menu
 		pauseMenu.show();
 	}
 
