@@ -32,7 +32,7 @@ public class BossPlane extends Plane {
 	private int consecutiveMovesInSameDirection;
 	private int indexOfCurrentMove;
 	private int framesWithShieldActivated;
-	private final BossLevelView levelView;
+	protected final BossLevelView levelView;
 
 	public BossPlane(String imageName, int imageHeight, BossLevelView levelView) {
 		super(imageName, imageHeight, INITIAL_X_POSITION, INITIAL_Y_POSITION, HEALTH);
@@ -80,7 +80,7 @@ public class BossPlane extends Plane {
 		}
 	}
 
-	private void updateUIElements() {
+	protected void updateUIElements() {
 		double x = getLayoutX() + getTranslateX();
 		double y = getLayoutY() + getTranslateY();
 		levelView.setShieldPosition(x + SHIELD_OFFSET_X, y + SHIELD_OFFSET_Y);

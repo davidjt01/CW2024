@@ -11,6 +11,10 @@ public class FinalBossPlane extends BossPlane {
 
     private static final String IMAGE_NAME = "finalbossplane.png";
     private static final int IMAGE_HEIGHT = 89;
+    private static final double SHIELD_OFFSET_X = 40.0;
+    private static final double SHIELD_OFFSET_Y = -30.0;
+    private static final double HEALTH_BAR_OFFSET_X = 35.0;
+    private static final double HEALTH_BAR_OFFSET_Y = -40.0;
 
     public FinalBossPlane(BossLevelView levelView) {
         super(IMAGE_NAME, IMAGE_HEIGHT, levelView);
@@ -26,5 +30,13 @@ public class FinalBossPlane extends BossPlane {
             projectiles.add(new AngledBossProjectile(getProjectileInitialPosition(), 20));
         }
         return projectiles;
+    }
+
+    @Override
+    protected void updateUIElements() {
+        double x = getLayoutX() + getTranslateX();
+        double y = getLayoutY() + getTranslateY();
+        levelView.setShieldPosition(x + SHIELD_OFFSET_X, y + SHIELD_OFFSET_Y);
+        levelView.setHealthBarPosition(x + HEALTH_BAR_OFFSET_X, y + HEALTH_BAR_OFFSET_Y);
     }
 }
