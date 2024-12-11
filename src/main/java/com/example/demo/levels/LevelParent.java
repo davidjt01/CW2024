@@ -39,6 +39,9 @@ public abstract class LevelParent extends Observable implements Controller {
 	private LevelView levelView;
 	private Controller gameController;
 
+	private long lastSpawnTime = 0;
+	private static final long MINIMUM_SPAWN_DELAY = 500; // minimum delay in milliseconds
+
 	public LevelParent(Controller gameController, String backgroundImageName, double screenHeight, double screenWidth, int playerInitialHealth) {
 		this.gameController = gameController;
 		this.root = new Group();
@@ -57,6 +60,15 @@ public abstract class LevelParent extends Observable implements Controller {
 		this.currentNumberOfEnemies = 0;
 		initializeTimeline();
 		friendlyUnits.add(user);
+	}
+
+	protected boolean canSpawnEnemy() {
+		long currentTime = System.currentTimeMillis();
+		if (currentTime - lastSpawnTime >= MINIMUM_SPAWN_DELAY) {
+			lastSpawnTime = currentTime;
+			return true;
+		}
+		return false;
 	}
 
 	protected abstract void initializeFriendlyUnits();
