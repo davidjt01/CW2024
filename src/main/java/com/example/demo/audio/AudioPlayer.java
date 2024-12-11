@@ -4,26 +4,48 @@ import javafx.scene.media.AudioClip;
 
 import java.util.Objects;
 
+/**
+ *
+ */
 public class AudioPlayer {
     private static double globalVolume = 1.0;
     private AudioClip audioClip;
 
+    /**
+     *
+     */
     private AudioPlayer() {
     }
 
+    /**
+     *
+     * @return
+     */
     public static double getGlobalVolume() {
         return globalVolume;
     }
 
+    /**
+     *
+     * @param volume
+     */
     // Set global volume for all instances
     public static void setGlobalVolume(double volume) {
         globalVolume = volume;
     }
 
+    /**
+     *
+     * @return
+     */
     public static AudioPlayer createAudioPlayer() {
         return new AudioPlayer();
     }
 
+    /**
+     *
+     * @param filePath
+     */
     // Load audio file
     public void loadAudio(String filePath) {
         try {
@@ -34,6 +56,9 @@ public class AudioPlayer {
         }
     }
 
+    /**
+     *
+     */
     // Play audio
     public void play() {
         if (isReady()) {
@@ -41,6 +66,10 @@ public class AudioPlayer {
         }
     }
 
+    /**
+     *
+     * @return
+     */
     // Check if audio clip is ready
     private boolean isReady() {
         return audioClip != null;
