@@ -50,7 +50,6 @@ public class GameController implements Observer, Controller {
 	private void goToLevel(String className) throws ClassNotFoundException, NoSuchMethodException, SecurityException,
 			InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
 
-			System.out.println("calling game level !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"+className);
 			Class<?> myClass = Class.forName(className);
 			Constructor<?> constructor = myClass.getConstructor(Controller.class, double.class, double.class);
 			currLevel = (LevelParent) constructor.newInstance(this, stage.getHeight(), stage.getWidth());
