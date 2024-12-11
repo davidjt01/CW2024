@@ -10,11 +10,15 @@ public class BossLevelView extends LevelView {
     private final ShieldDisplay shieldDisplay;
     private final HealthBarDisplay healthBarDisplay;
 
-    public BossLevelView(Group root, int heartsToDisplay) {
+    private BossLevelView(Group root, int heartsToDisplay) {
         super(root, heartsToDisplay);
         this.root = root;
         this.shieldDisplay = ShieldDisplay.createShieldDisplay(0, 0);
         this.healthBarDisplay = HealthBarDisplay.createHealthBarDisplay(0, 0);
+    }
+
+    public static BossLevelView createBossLevelView(Group root, int heartsToDisplay) {
+        return new BossLevelView(root, heartsToDisplay);
     }
 
     private void addImagesToRoot() {

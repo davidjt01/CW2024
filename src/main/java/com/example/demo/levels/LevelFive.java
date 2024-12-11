@@ -63,7 +63,7 @@ public class LevelFive extends LevelParent {
 
     @Override
     protected LevelView instantiateLevelView() {
-        levelView = new BossLevelView(getRoot(), PLAYER_INITIAL_HEALTH);
+        levelView = BossLevelView.createBossLevelView(getRoot(), PLAYER_INITIAL_HEALTH);
         return levelView;
     }
 }
