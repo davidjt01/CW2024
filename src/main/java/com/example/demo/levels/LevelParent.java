@@ -11,21 +11,19 @@ import com.example.demo.planes.UserPlane;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
-import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.WritableImage;
 import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Observable;
-import java.util.stream.Collectors;
 
 public abstract class LevelParent extends Observable implements Controller {
     private static final double SCREEN_HEIGHT_ADJUSTMENT = 150;
@@ -59,7 +57,7 @@ public abstract class LevelParent extends Observable implements Controller {
         this.enemyUnits = new ArrayList<>();
         this.userProjectiles = new ArrayList<>();
         this.enemyProjectiles = new ArrayList<>();
-        this.background = new ImageView(new Image(getClass().getResource(backgroundImageName).toExternalForm()));
+        this.background = new ImageView(new Image(Objects.requireNonNull(getClass().getResource(backgroundImageName)).toExternalForm()));
         this.screenHeight = screenHeight;
         this.screenWidth = screenWidth;
         this.enemyMaximumYPosition = screenHeight - SCREEN_HEIGHT_ADJUSTMENT;
@@ -131,31 +129,27 @@ public abstract class LevelParent extends Observable implements Controller {
         background.setFocusTraversable(true);
         background.setFitHeight(screenHeight);
         background.setFitWidth(screenWidth);
-        background.setOnKeyPressed(new EventHandler<KeyEvent>() {
-            public void handle(KeyEvent e) {
-                KeyCode kc = e.getCode();
-                if (kc == KeyCode.UP || kc == KeyCode.W) user.moveUp();
-                if (kc == KeyCode.DOWN || kc == KeyCode.S) user.moveDown();
-                if (kc == KeyCode.LEFT || kc == KeyCode.A) user.moveLeft();
-                if (kc == KeyCode.RIGHT || kc == KeyCode.D) user.moveRight();
-                if (kc == KeyCode.SPACE) fireProjectile();
-                if (kc == KeyCode.P || kc == KeyCode.ESCAPE) {
-                    if (timeline.getStatus() == Animation.Status.RUNNING) {
-                        pauseGame();
-                    } else {
-                        resumeGame();
-                    }
+        background.setOnKeyPressed(e -> {
+            KeyCode kc = e.getCode();
+            if (kc == KeyCode.UP || kc == KeyCode.W) user.moveUp();
+            if (kc == KeyCode.DOWN || kc == KeyCode.S) user.moveDown();
+            if (kc == KeyCode.LEFT || kc == KeyCode.A) user.moveLeft();
+            if (kc == KeyCode.RIGHT || kc == KeyCode.D) user.moveRight();
+            if (kc == KeyCode.SPACE) fireProjectile();
+            if (kc == KeyCode.P || kc == KeyCode.ESCAPE) {
+                if (timeline.getStatus() == Animation.Status.RUNNING) {
+                    pauseGame();
+                } else {
+                    resumeGame();
                 }
             }
         });
-        background.setOnKeyReleased(new EventHandler<KeyEvent>() {
-            public void handle(KeyEvent e) {
-                KeyCode kc = e.getCode();
-                if (kc == KeyCode.UP || kc == KeyCode.W || kc == KeyCode.DOWN || kc == KeyCode.S)
-                    user.stopVerticalVelocity();
-                if (kc == KeyCode.LEFT || kc == KeyCode.A || kc == KeyCode.RIGHT || kc == KeyCode.D)
-                    user.stopHorizontalVelocity();
-            }
+        background.setOnKeyReleased(e -> {
+            KeyCode kc = e.getCode();
+            if (kc == KeyCode.UP || kc == KeyCode.W || kc == KeyCode.DOWN || kc == KeyCode.S)
+                user.stopVerticalVelocity();
+            if (kc == KeyCode.LEFT || kc == KeyCode.A || kc == KeyCode.RIGHT || kc == KeyCode.D)
+                user.stopHorizontalVelocity();
         });
         root.getChildren().add(background);
     }
@@ -188,10 +182,10 @@ public abstract class LevelParent extends Observable implements Controller {
     }
 
     private void updateActors() {
-        friendlyUnits.forEach(plane -> plane.updateActor());
-        enemyUnits.forEach(enemy -> enemy.updateActor());
-        userProjectiles.forEach(projectile -> projectile.updateActor());
-        enemyProjectiles.forEach(projectile -> projectile.updateActor());
+        friendlyUnits.forEach(DestructibleEntity::updateActor);
+        enemyUnits.forEach(DestructibleEntity::updateActor);
+        userProjectiles.forEach(DestructibleEntity::updateActor);
+        enemyProjectiles.forEach(DestructibleEntity::updateActor);
     }
 
     private void removeAllDestroyedActors() {
@@ -202,8 +196,8 @@ public abstract class LevelParent extends Observable implements Controller {
     }
 
     private void removeDestroyedActors(List<DestructibleEntity> actors) {
-        List<DestructibleEntity> destroyedActors = actors.stream().filter(actor -> actor.isDestroyed())
-                .collect(Collectors.toList());
+        List<DestructibleEntity> destroyedActors = actors.stream().filter(DestructibleEntity::isDestroyed)
+                .toList();
         root.getChildren().removeAll(destroyedActors);
         actors.removeAll(destroyedActors);
     }
@@ -333,7 +327,7 @@ public abstract class LevelParent extends Observable implements Controller {
     private void removeOutOfScreenProjectiles(List<DestructibleEntity> projectiles) {
         List<DestructibleEntity> outOfScreenProjectiles = projectiles.stream()
                 .filter(this::isOutOfScreen)
-                .collect(Collectors.toList());
+                .toList();
         root.getChildren().removeAll(outOfScreenProjectiles);
         projectiles.removeAll(outOfScreenProjectiles);
     }
