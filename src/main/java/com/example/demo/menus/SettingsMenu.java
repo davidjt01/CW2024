@@ -33,8 +33,8 @@ public class SettingsMenu {
         HBox volumeControlLayout = new HBox(10);
         volumeControlLayout.setStyle("-fx-alignment: center;");
 
-        Button decreaseVolumeButton = new Button("Decrease Volume");
-        decreaseVolumeButton.setPrefSize(200, 50);
+        Button decreaseVolumeButton = new Button("-");
+        decreaseVolumeButton.setPrefSize(50, 50);
         decreaseVolumeButton.setStyle("-fx-font-size: 18px;");
         decreaseVolumeButton.setOnAction(e -> changeVolume(-0.1));
 
@@ -42,8 +42,8 @@ public class SettingsMenu {
         volumeText.setFont(new Font("Arial", 24));
         volumeText.setStyle("-fx-fill: white;");
 
-        Button increaseVolumeButton = new Button("Increase Volume");
-        increaseVolumeButton.setPrefSize(200, 50);
+        Button increaseVolumeButton = new Button("+");
+        increaseVolumeButton.setPrefSize(50, 50);
         increaseVolumeButton.setStyle("-fx-font-size: 18px;");
         increaseVolumeButton.setOnAction(e -> changeVolume(0.1));
 
