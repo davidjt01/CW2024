@@ -3,16 +3,27 @@ package com.example.demo.controller;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
+/**
+ *
+ */
 public class GameLauncher extends Application {
 
     private static final int SCREEN_WIDTH = 1300;
     private static final int SCREEN_HEIGHT = 750;
     private static final String TITLE = "Sky Battle";
 
+    /**
+     * @param args
+     */
     public static void main(String[] args) {
         launch();
     }
 
+    /**
+     * @param stage
+     * @throws SecurityException
+     * @throws IllegalArgumentException
+     */
     @Override
     public void start(Stage stage) throws SecurityException,
             IllegalArgumentException {
