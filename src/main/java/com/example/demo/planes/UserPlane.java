@@ -18,12 +18,11 @@ public class UserPlane extends Plane {
     private static final int HORIZONTAL_VELOCITY = 8;
     private static final int PROJECTILE_X_POSITION_OFFSET = 110;
     private static final int PROJECTILE_Y_POSITION_OFFSET = 20;
+    private final AudioPlayer fireAudioPlayer;
+    private final AudioPlayer damageAudioPlayer;
     private int verticalVelocityMultiplier;
     private int horizontalVelocityMultiplier;
     private int numberOfKills;
-
-    private final AudioPlayer fireAudioPlayer;
-    private final AudioPlayer damageAudioPlayer;
 
     public UserPlane(int initialHealth) {
         super(IMAGE_NAME, IMAGE_HEIGHT, INITIAL_X_POSITION, INITIAL_Y_POSITION, initialHealth);

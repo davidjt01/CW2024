@@ -32,12 +32,12 @@ public class BossPlane extends Plane {
     private static final int MAX_FRAMES_WITH_SHIELD = 50;
     protected final BossLevelView levelView;
     private final List<Integer> movePattern;
+    private final AudioPlayer bossFireAudioPlayer;
+    private final AudioPlayer shieldAudioPlayer;
     private boolean isShielded;
     private int consecutiveMovesInSameDirection;
     private int indexOfCurrentMove;
     private int framesWithShieldActivated;
-    private final AudioPlayer bossFireAudioPlayer;
-    private final AudioPlayer shieldAudioPlayer;
 
     public BossPlane(String imageName, int imageHeight, BossLevelView levelView) {
         super(imageName, imageHeight, INITIAL_X_POSITION, INITIAL_Y_POSITION, HEALTH);

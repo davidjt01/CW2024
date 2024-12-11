@@ -10,8 +10,8 @@ import java.util.List;
 
 public abstract class Plane extends DestructibleEntity {
 
-    private int health;
     private final AudioPlayer explosionAudioPlayer;
+    private int health;
 
     public Plane(String imageName, int imageHeight, double initialXPos, double initialYPos, int health) {
         super(imageName, imageHeight, initialXPos, initialYPos);

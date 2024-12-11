@@ -43,9 +43,9 @@ public abstract class LevelParent extends Observable implements Controller {
     private final List<DestructibleEntity> enemyUnits;
     private final List<DestructibleEntity> userProjectiles;
     private final List<DestructibleEntity> enemyProjectiles;
-    private int currentNumberOfEnemies;
     private final LevelView levelView;
     private final Controller gameController;
+    private int currentNumberOfEnemies;
     private long lastSpawnTime = 0;
     private int penetratedEnemiesCount = 0;
 
