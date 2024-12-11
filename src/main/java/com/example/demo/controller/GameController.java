@@ -28,12 +28,9 @@ public class GameController implements Observer, Controller {
         return new GameController(stage);
     }
 
-    public void launchGame() throws ClassNotFoundException, NoSuchMethodException, SecurityException,
-            InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
-
+    public void launchGame() throws SecurityException,
+            IllegalArgumentException {
         showMainMenu();
-        //stage.show();
-        //goToLevel(LEVEL_ONE_CLASS_NAME);
     }
 
     private void showMainMenu() {
