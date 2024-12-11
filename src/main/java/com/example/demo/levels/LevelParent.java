@@ -2,7 +2,6 @@ package com.example.demo.levels;
 
 import java.util.*;
 import java.util.stream.Collectors;
-
 import com.example.demo.controller.Controller;
 import com.example.demo.entities.DestructibleEntity;
 import com.example.demo.levelviews.LevelView;
@@ -21,24 +20,21 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 
 public abstract class LevelParent extends Observable implements Controller {
-
 	private static final double SCREEN_HEIGHT_ADJUSTMENT = 150;
 	private static final int MILLISECOND_DELAY = 50;
 	private final double screenHeight;
 	private final double screenWidth;
 	private final double enemyMaximumYPosition;
-
 	private final Group root;
 	private final Timeline timeline;
 	private final UserPlane user;
 	private final Scene scene;
 	private final ImageView background;
-
 	private final List<DestructibleEntity> friendlyUnits;
 	private final List<DestructibleEntity> enemyUnits;
 	private final List<DestructibleEntity> userProjectiles;
 	private final List<DestructibleEntity> enemyProjectiles;
-	
+
 	private int currentNumberOfEnemies;
 	private LevelView levelView;
 	private Controller gameController;
@@ -53,7 +49,6 @@ public abstract class LevelParent extends Observable implements Controller {
 		this.enemyUnits = new ArrayList<>();
 		this.userProjectiles = new ArrayList<>();
 		this.enemyProjectiles = new ArrayList<>();
-
 		this.background = new ImageView(new Image(getClass().getResource(backgroundImageName).toExternalForm()));
 		this.screenHeight = screenHeight;
 		this.screenWidth = screenWidth;
@@ -65,11 +60,8 @@ public abstract class LevelParent extends Observable implements Controller {
 	}
 
 	protected abstract void initializeFriendlyUnits();
-
 	protected abstract void checkIfGameOver();
-
 	protected abstract void spawnEnemyUnits();
-
 	protected abstract LevelView instantiateLevelView();
 
 	public Scene initializeScene() {
@@ -123,7 +115,7 @@ public abstract class LevelParent extends Observable implements Controller {
 				if (kc == KeyCode.LEFT) user.moveLeft();
 				if (kc == KeyCode.RIGHT) user.moveRight();
 				if (kc == KeyCode.SPACE) fireProjectile();
-				if (kc == KeyCode.P) {
+				if (kc == KeyCode.P || kc == KeyCode.ESCAPE) {
 					if (timeline.getStatus() == Animation.Status.RUNNING) {
 						pauseGame();
 					} else {
