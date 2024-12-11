@@ -12,21 +12,18 @@ import javafx.stage.Stage;
 
 import java.util.Objects;
 
-public class GameOverMenu {
-    private final Stage stage;
-    private final Controller gameController;
+public class GameOverMenu extends BaseMenu {
     private String levelName;
 
     public GameOverMenu(Stage stage, Controller gameController) {
-        this.stage = stage;
-        this.gameController = gameController;
+        super(stage, gameController);
     }
 
     public void setLevelName(String levelName) {
         this.levelName = levelName;
     }
 
-    public void show() {
+    protected VBox getMenuLayout() {
         GameOverDisplay gameOverDisplay = new GameOverDisplay();
         VBox menuLayout = new VBox(20);
         menuLayout.setStyle("-fx-alignment: center; -fx-padding: 50;");
@@ -52,25 +49,11 @@ public class GameOverMenu {
 
         gameOverDisplay.showGameOver();
 
-        Image backgroundImage = new Image(Objects.requireNonNull(getClass().getResource("/com/example/demo/images/background1.jpg")).toExternalForm());
+        return menuLayout;
+    }
 
-        BackgroundSize backgroundSize = new BackgroundSize(stage.getWidth(), stage.getHeight(), false, false, false, false);
-        BackgroundImage bgImage = new BackgroundImage(backgroundImage,
-                BackgroundRepeat.NO_REPEAT,
-                BackgroundRepeat.NO_REPEAT,
-                BackgroundPosition.CENTER,
-                backgroundSize);
-        menuLayout.setBackground(new Background(bgImage));
-
-        Scene scene = new Scene(menuLayout, stage.getWidth(), stage.getHeight());
-
-        scene.addEventFilter(KeyEvent.KEY_PRESSED, event -> {
-            if (event.getCode() == KeyCode.SPACE) {
-                event.consume();
-            }
-        });
-
-        stage.setScene(scene);
-        stage.show();
+    @Override
+    protected String getBackgroundImageFile() {
+        return "/com/example/demo/images/background2.jpg";
     }
 }

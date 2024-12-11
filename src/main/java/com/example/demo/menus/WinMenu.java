@@ -12,16 +12,13 @@ import javafx.stage.Stage;
 
 import java.util.Objects;
 
-public class WinMenu {
-    private final Stage stage;
-    private final Controller gameController;
+public class WinMenu extends BaseMenu {
 
     public WinMenu(Stage stage, Controller gameController) {
-        this.stage = stage;
-        this.gameController = gameController;
+        super(stage, gameController);
     }
 
-    public void show() {
+    protected VBox getMenuLayout() {
         WinDisplay winDisplay = new WinDisplay();
         VBox menuLayout = new VBox(20);
         menuLayout.setStyle("-fx-alignment: center; -fx-padding: 50;");
@@ -40,25 +37,11 @@ public class WinMenu {
 
         winDisplay.showWinImage();
 
-        Image backgroundImage = new Image(Objects.requireNonNull(getClass().getResource("/com/example/demo/images/background1.jpg")).toExternalForm());
+        return menuLayout;
+    }
 
-        BackgroundSize backgroundSize = new BackgroundSize(stage.getWidth(), stage.getHeight(), false, false, false, false);
-        BackgroundImage bgImage = new BackgroundImage(backgroundImage,
-                BackgroundRepeat.NO_REPEAT,
-                BackgroundRepeat.NO_REPEAT,
-                BackgroundPosition.CENTER,
-                backgroundSize);
-        menuLayout.setBackground(new Background(bgImage));
-
-        Scene scene = new Scene(menuLayout, stage.getWidth(), stage.getHeight());
-
-        scene.addEventFilter(KeyEvent.KEY_PRESSED, event -> {
-            if (event.getCode() == KeyCode.SPACE) {
-                event.consume();
-            }
-        });
-
-        stage.setScene(scene);
-        stage.show();
+    @Override
+    protected String getBackgroundImageFile() {
+        return "/com/example/demo/images/background2.jpg";
     }
 }

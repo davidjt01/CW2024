@@ -23,7 +23,7 @@ public class BossPlane extends Plane {
     private static final double SHIELD_OFFSET_Y = -60.0;
     private static final double HEALTH_BAR_OFFSET_X = 35.0;
     private static final double HEALTH_BAR_OFFSET_Y = -40.0;
-    private static final int HEALTH = 10;
+    private static final int HEALTH = 1;
     private static final int MOVE_FREQUENCY_PER_CYCLE = 5;
     private static final int ZERO = 0;
     private static final int MAX_FRAMES_WITH_SAME_MOVE = 10;
