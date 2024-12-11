@@ -9,6 +9,8 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 
+import java.util.Objects;
+
 public class LevelMenu {
     private final Stage stage;
     private final Controller gameController;
@@ -22,7 +24,7 @@ public class LevelMenu {
         VBox menulayout = new VBox(20);
         menulayout.setStyle("-fx-alignment: center; -fx-padding: 50;");
 
-        Image backgroundImage = new Image(getClass().getResource("/com/example/demo/images/background1.jpg").toExternalForm());
+        Image backgroundImage = new Image(Objects.requireNonNull(getClass().getResource("/com/example/demo/images/background1.jpg")).toExternalForm());
 
         BackgroundSize backgroundSize = new BackgroundSize(stage.getWidth(), stage.getHeight(), false, false, false, false);
         BackgroundImage bgImage = new BackgroundImage(backgroundImage,
@@ -33,12 +35,11 @@ public class LevelMenu {
         menulayout.setBackground(new Background(bgImage));
 
         for (int i = 1; i <= 5; i++) {
-            int level = i;
-            Button levelButton = new Button("Level " + level);
+            Button levelButton = new Button("Level " + i);
             levelButton.setPrefSize(200, 50);
             levelButton.setStyle("-fx-font-size: 18px;");
 
-            String className = "com.example.demo.levels.Level" + getLevelName(level);
+            String className = "com.example.demo.levels.Level" + getLevelName(i);
 
             levelButton.setOnAction(e -> {
                 try {
@@ -71,19 +72,13 @@ public class LevelMenu {
     }
 
     private String getLevelName(int levelNumber) {
-        switch (levelNumber) {
-            case 1:
-                return "One";
-            case 2:
-                return "Two";
-            case 3:
-                return "Three";
-            case 4:
-                return "Four";
-            case 5:
-                return "Five";
-            default:
-                throw new IllegalArgumentException("Invalid level number: " + levelNumber);
-        }
+        return switch (levelNumber) {
+            case 1 -> "One";
+            case 2 -> "Two";
+            case 3 -> "Three";
+            case 4 -> "Four";
+            case 5 -> "Five";
+            default -> throw new IllegalArgumentException("Invalid level number: " + levelNumber);
+        };
     }
 }
