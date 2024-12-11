@@ -22,7 +22,7 @@ public abstract class BaseMenu {
 
     public void show() {
         VBox menuLayout = getMenuLayout();
-        menuLayout.setBackground(getBackground(stage, getBackgroundImageFile()));
+        menuLayout.setBackground(getBackground(stage));
         Scene scene = new Scene(menuLayout, stage.getWidth(), stage.getHeight());
         scene.addEventFilter(KeyEvent.KEY_PRESSED, event -> {
             if (event.getCode() == KeyCode.SPACE) {
@@ -33,7 +33,7 @@ public abstract class BaseMenu {
         stage.show();
     }
 
-    protected Background getBackground(Stage stage, String imageFile) {
+    protected Background getBackground(Stage stage) {
         BackgroundSize backgroundSize = new BackgroundSize(stage.getWidth(), stage.getHeight(), false, false, false, false);
         BackgroundImage bgImage = new BackgroundImage(getImage(),
                 BackgroundRepeat.NO_REPEAT,
