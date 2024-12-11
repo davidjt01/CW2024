@@ -1,7 +1,10 @@
 package com.example.demo.planes;
 
 import com.example.demo.audio.AudioPlayer;
+import com.example.demo.displays.ExplosionDisplay;
 import com.example.demo.entities.DestructibleEntity;
+import javafx.scene.Group;
+import javafx.scene.layout.Pane;
 
 import java.util.List;
 
@@ -39,6 +42,16 @@ public abstract class Plane extends DestructibleEntity {
 	public void destroy() {
 		super.destroy();
 		explosionAudioPlayer.play();
+
+		// Create and position the explosion display
+		ExplosionDisplay explosionDisplay = new ExplosionDisplay(this.getLayoutX() + this.getTranslateX(), this.getLayoutY() + this.getTranslateY());
+
+		// Ensure the parent is a Group or Pane to access getChildren()
+		if (this.getParent() instanceof Group) {
+			((Group) this.getParent()).getChildren().add(explosionDisplay);
+		} else if (this.getParent() instanceof Pane) {
+			((Pane) this.getParent()).getChildren().add(explosionDisplay);
+		}
 	}
 
 	protected double getProjectileXPosition(double xPositionOffset) {
