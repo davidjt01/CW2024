@@ -30,10 +30,8 @@ public class SettingsMenu {
         settingsTitle.setFont(new Font("Arial", 48));
         settingsTitle.setStyle("-fx-fill: white;");
 
-        Button increaseVolumeButton = new Button("Increase Volume");
-        increaseVolumeButton.setPrefSize(200, 50);
-        increaseVolumeButton.setStyle("-fx-font-size: 18px;");
-        increaseVolumeButton.setOnAction(e -> changeVolume(0.1));
+        HBox volumeControlLayout = new HBox(10);
+        volumeControlLayout.setStyle("-fx-alignment: center;");
 
         Button decreaseVolumeButton = new Button("Decrease Volume");
         decreaseVolumeButton.setPrefSize(200, 50);
@@ -44,12 +42,19 @@ public class SettingsMenu {
         volumeText.setFont(new Font("Arial", 24));
         volumeText.setStyle("-fx-fill: white;");
 
+        Button increaseVolumeButton = new Button("Increase Volume");
+        increaseVolumeButton.setPrefSize(200, 50);
+        increaseVolumeButton.setStyle("-fx-font-size: 18px;");
+        increaseVolumeButton.setOnAction(e -> changeVolume(0.1));
+
+        volumeControlLayout.getChildren().addAll(decreaseVolumeButton, volumeText, increaseVolumeButton);
+
         Button backButton = new Button("Back");
         backButton.setPrefSize(200, 50);
         backButton.setStyle("-fx-font-size: 18px;");
         backButton.setOnAction(e -> gameController.onMainMenuSelected());
 
-        menuLayout.getChildren().addAll(settingsTitle, increaseVolumeButton, decreaseVolumeButton, volumeText, backButton);
+        menuLayout.getChildren().addAll(settingsTitle, volumeControlLayout, backButton);
 
         // set background
         Image backgroundImage = new Image(Objects.requireNonNull(getClass().getResource("/com/example/demo/images/background1.jpg")).toExternalForm());
