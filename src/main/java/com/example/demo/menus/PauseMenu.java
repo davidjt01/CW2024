@@ -40,7 +40,7 @@ public class PauseMenu {
                 new BackgroundSize(stage.getWidth(), stage.getHeight(), false, false, false, false));
         menuLayout.setBackground(new Background(bgImage));
 
-        Text gameTitle = new Text("Pause");
+        Text gameTitle = new Text("Paused");
         gameTitle.setFont(new Font("Arial", 48));
         gameTitle.setStyle("-fx-fill: white;");
 
