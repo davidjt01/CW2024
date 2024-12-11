@@ -3,8 +3,6 @@ package com.example.demo.controller;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
-import java.lang.reflect.InvocationTargetException;
-
 public class GameLauncher extends Application {
 
     private static final int SCREEN_WIDTH = 1300;
@@ -16,8 +14,8 @@ public class GameLauncher extends Application {
     }
 
     @Override
-    public void start(Stage stage) throws ClassNotFoundException, NoSuchMethodException, SecurityException,
-            InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+    public void start(Stage stage) throws SecurityException,
+            IllegalArgumentException {
         stage.setTitle(TITLE);
         stage.setResizable(false);
         stage.setHeight(SCREEN_HEIGHT);
