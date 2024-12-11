@@ -22,14 +22,17 @@ public class UserPlane extends Plane {
 	private int horizontalVelocityMultiplier;
 	private int numberOfKills;
 
-	private AudioPlayer audioPlayer;
+	private AudioPlayer fireAudioPlayer;
+	private AudioPlayer damageAudioPlayer;
 
 	public UserPlane(int initialHealth) {
 		super(IMAGE_NAME, IMAGE_HEIGHT, INITIAL_X_POSITION, INITIAL_Y_POSITION, initialHealth);
 		verticalVelocityMultiplier = 0;
 		horizontalVelocityMultiplier = 0;
-		audioPlayer = new AudioPlayer();
-		audioPlayer.loadAudio("/com/example/demo/audio/userfire.wav");
+		fireAudioPlayer = new AudioPlayer();
+		fireAudioPlayer.loadAudio("/com/example/demo/audio/userfire.wav");
+		damageAudioPlayer = new AudioPlayer();
+		damageAudioPlayer.loadAudio("/com/example/demo/audio/usertakedamage.wav");
 	}
 
 	@Override
@@ -57,8 +60,14 @@ public class UserPlane extends Plane {
 
 	@Override
 	public DestructibleEntity fireProjectile() {
-		audioPlayer.play();
+		fireAudioPlayer.play();
 		return new UserProjectile(getProjectileXPosition(PROJECTILE_X_POSITION_OFFSET), getProjectileYPosition(PROJECTILE_Y_POSITION_OFFSET));
+	}
+
+	@Override
+	public void takeDamage() {
+		super.takeDamage();
+		damageAudioPlayer.play();
 	}
 
 	private boolean isMovingVertically() {
