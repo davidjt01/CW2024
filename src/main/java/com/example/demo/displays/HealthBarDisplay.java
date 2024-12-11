@@ -3,6 +3,9 @@ package com.example.demo.displays;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.layout.HBox;
 
+/**
+ *
+ */
 public class HealthBarDisplay {
     private static final double INITIAL_PROGRESS = 1.0;
     private static final String RED_BAR_STYLE = "-fx-accent: red;";
@@ -10,6 +13,10 @@ public class HealthBarDisplay {
     private final HBox container;
     private final ProgressBar progressBar;
 
+    /**
+     * @param xPosition
+     * @param yPosition
+     */
     private HealthBarDisplay(double xPosition, double yPosition) {
         container = new HBox();
         container.setLayoutX(xPosition);
@@ -24,14 +31,25 @@ public class HealthBarDisplay {
         container.getChildren().add(progressBar);
     }
 
+    /**
+     * @param xPosition
+     * @param yPosition
+     * @return
+     */
     public static HealthBarDisplay createHealthBarDisplay(double xPosition, double yPosition) {
         return new HealthBarDisplay(xPosition, yPosition);
     }
 
+    /**
+     * @param healthPercentage
+     */
     public void updateHealth(double healthPercentage) {
         progressBar.setProgress(healthPercentage);
     }
 
+    /**
+     * @return
+     */
     public HBox getContainer() {
         return container;
     }
