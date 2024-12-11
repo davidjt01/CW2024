@@ -56,7 +56,7 @@ public class LevelThree extends LevelParent {
 
     @Override
     protected LevelView instantiateLevelView() {
-        return new LevelView(getRoot(), PLAYER_INITIAL_HEALTH);
+        return LevelView.createLevelView(getRoot(), PLAYER_INITIAL_HEALTH);
     }
 
     private boolean userHasReachedKillTarget() {

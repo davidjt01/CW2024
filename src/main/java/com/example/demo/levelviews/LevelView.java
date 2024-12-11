@@ -16,11 +16,15 @@ public class LevelView {
     //private final GameOverDisplay gameOverDisplay;
     private final HeartDisplay heartDisplay;
 
-    public LevelView(Group root, int heartsToDisplay) {
+    LevelView(Group root, int heartsToDisplay) {
         this.root = root;
         this.heartDisplay = HeartDisplay.createHeartDisplay(HEART_DISPLAY_X_POSITION, HEART_DISPLAY_Y_POSITION, heartsToDisplay);
         //this.winDisplay = new WinDisplay(WIN_IMAGE_X_POSITION, WIN_IMAGE_Y_POSITION);
         //this.gameOverDisplay = new GameOverDisplay(LOSS_SCREEN_X_POSITION, LOSS_SCREEN_Y_POSITION);
+    }
+
+    public static LevelView createLevelView(Group root, int heartsToDisplay) {
+        return new LevelView(root, heartsToDisplay);
     }
 
     public void showHeartDisplay() {
