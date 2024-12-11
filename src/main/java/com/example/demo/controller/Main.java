@@ -12,15 +12,8 @@ public class Main extends Application {
     private static final String TITLE = "Sky Battle";
     private GameController myGameController;
 
-    private Main() {
-    }
-
     public static void main(String[] args) {
         launch();
-    }
-
-    public static Main createMain() {
-        return new Main();
     }
 
     @Override
