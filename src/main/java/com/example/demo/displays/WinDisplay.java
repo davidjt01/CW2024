@@ -6,7 +6,8 @@ import javafx.scene.image.ImageView;
 import java.util.Objects;
 
 /**
- *
+ * The {@code WinDisplay} class represents the win screen in the game.
+ * It extends {@link ImageView} and displays a "You Win" image when the player wins the game.
  */
 public class WinDisplay extends ImageView {
 
@@ -15,7 +16,8 @@ public class WinDisplay extends ImageView {
     private static final int WIDTH = 400;
 
     /**
-     *
+     * Constructs a {@code WinDisplay} and initializes it with the "You Win" image.
+     * The image is initially invisible.
      */
     public WinDisplay() {
         this.setImage(new Image(Objects.requireNonNull(getClass().getResource(IMAGE_NAME)).toExternalForm()));
@@ -25,7 +27,7 @@ public class WinDisplay extends ImageView {
     }
 
     /**
-     *
+     * Makes the "You Win" image visible.
      */
     public void showWinImage() {
         this.setVisible(true);
