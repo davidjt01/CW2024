@@ -5,12 +5,18 @@ import javafx.scene.image.ImageView;
 
 import java.util.Objects;
 
+/**
+ *
+ */
 public class WinDisplay extends ImageView {
 
     private static final String IMAGE_NAME = "/com/example/demo/images/youwin.png";
     private static final int HEIGHT = 400;
     private static final int WIDTH = 400;
 
+    /**
+     *
+     */
     public WinDisplay() {
         this.setImage(new Image(Objects.requireNonNull(getClass().getResource(IMAGE_NAME)).toExternalForm()));
         this.setVisible(false);
@@ -18,6 +24,9 @@ public class WinDisplay extends ImageView {
         this.setFitWidth(WIDTH);
     }
 
+    /**
+     *
+     */
     public void showWinImage() {
         this.setVisible(true);
     }
