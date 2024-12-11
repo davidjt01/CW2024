@@ -2,11 +2,11 @@ package com.example.demo.levels;
 
 import com.example.demo.controller.Controller;
 import com.example.demo.entities.DestructibleEntity;
-import com.example.demo.levelviews.LevelView;
 import com.example.demo.levelviews.BossLevelView;
-import com.example.demo.planes.FinalBossPlane;
+import com.example.demo.levelviews.LevelView;
 import com.example.demo.planes.AdvancedEnemyPlane;
 import com.example.demo.planes.EnemyPlane;
+import com.example.demo.planes.FinalBossPlane;
 
 public class LevelFive extends LevelParent {
 
@@ -32,8 +32,7 @@ public class LevelFive extends LevelParent {
     protected void checkIfGameOver() {
         if (userIsDestroyed()) {
             loseGame();
-        }
-        else if (finalBossPlane.isDestroyed()) {
+        } else if (finalBossPlane.isDestroyed()) {
             winGame();
         }
     }
@@ -54,7 +53,9 @@ public class LevelFive extends LevelParent {
                 } else {
                     newEnemy = new AdvancedEnemyPlane(getScreenWidth(), newEnemyInitialYPosition);
                 }
-                if (canSpawnEnemy()) {addEnemyUnit(newEnemy);}
+                if (canSpawnEnemy()) {
+                    addEnemyUnit(newEnemy);
+                }
                 enemyCounter++;
             }
         }

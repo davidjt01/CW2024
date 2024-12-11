@@ -2,10 +2,10 @@ package com.example.demo.levels;
 
 import com.example.demo.controller.Controller;
 import com.example.demo.entities.DestructibleEntity;
-import com.example.demo.levelviews.LevelView;
 import com.example.demo.levelviews.BossLevelView;
-import com.example.demo.planes.SecondBossPlane;
+import com.example.demo.levelviews.LevelView;
 import com.example.demo.planes.EnemyPlane;
+import com.example.demo.planes.SecondBossPlane;
 
 public class LevelFour extends LevelParent {
 
@@ -31,8 +31,7 @@ public class LevelFour extends LevelParent {
     protected void checkIfGameOver() {
         if (userIsDestroyed()) {
             loseGame();
-        }
-        else if (secondBossPlane.isDestroyed()) {
+        } else if (secondBossPlane.isDestroyed()) {
             goToNextLevel(NEXT_LEVEL);
         }
     }
@@ -48,7 +47,9 @@ public class LevelFour extends LevelParent {
             if (Math.random() < ENEMY_SPAWN_PROBABILITY) {
                 double newEnemyInitialYPosition = Math.random() * getEnemyMaximumYPosition();
                 DestructibleEntity newEnemy = new EnemyPlane(getScreenWidth(), newEnemyInitialYPosition);
-                if (canSpawnEnemy()) {addEnemyUnit(newEnemy);}
+                if (canSpawnEnemy()) {
+                    addEnemyUnit(newEnemy);
+                }
             }
         }
     }

@@ -4,9 +4,10 @@ import com.example.demo.controller.Controller;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
-import javafx.scene.input.*;
 
 public class LevelMenu {
     private final Stage stage;
@@ -57,7 +58,7 @@ public class LevelMenu {
 
         menulayout.getChildren().add(backButton);
 
-        Scene scene =  new Scene(menulayout, stage.getWidth(), stage.getHeight());
+        Scene scene = new Scene(menulayout, stage.getWidth(), stage.getHeight());
 
         scene.addEventFilter(KeyEvent.KEY_PRESSED, event -> {
             if (event.getCode() == KeyCode.SPACE) {

@@ -5,18 +5,18 @@ import javafx.scene.image.ImageView;
 
 public class GameOverDisplay extends ImageView {
 
-	private static final String IMAGE_NAME = "/com/example/demo/images/gameover.png";
-	private static final int HEIGHT = 400;
-	private static final int WIDTH = 400;
+    private static final String IMAGE_NAME = "/com/example/demo/images/gameover.png";
+    private static final int HEIGHT = 400;
+    private static final int WIDTH = 400;
 
-	public GameOverDisplay() {
-		this.setImage(new Image(getClass().getResource(IMAGE_NAME).toExternalForm()));
-		this.setVisible(false);
-		this.setFitHeight(HEIGHT);
-		this.setFitWidth(WIDTH);
-	}
+    public GameOverDisplay() {
+        this.setImage(new Image(getClass().getResource(IMAGE_NAME).toExternalForm()));
+        this.setVisible(false);
+        this.setFitHeight(HEIGHT);
+        this.setFitWidth(WIDTH);
+    }
 
-	public void showGameOver() {
-		this.setVisible(true);
-	}
+    public void showGameOver() {
+        this.setVisible(true);
+    }
 }

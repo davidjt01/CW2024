@@ -1,8 +1,8 @@
 package com.example.demo.planes;
 
 import com.example.demo.audio.AudioPlayer;
-import com.example.demo.levelviews.BossLevelView;
 import com.example.demo.entities.DestructibleEntity;
+import com.example.demo.levelviews.BossLevelView;
 import com.example.demo.projectiles.AngledBossProjectile;
 
 import java.util.ArrayList;
@@ -17,7 +17,7 @@ public class FinalBossPlane extends BossPlane {
     private static final double HEALTH_BAR_OFFSET_X = 35.0;
     private static final double HEALTH_BAR_OFFSET_Y = -40.0;
 
-    private AudioPlayer bossFireAudioPlayer;
+    private final AudioPlayer bossFireAudioPlayer;
 
     public FinalBossPlane(BossLevelView levelView) {
         super(IMAGE_NAME, IMAGE_HEIGHT, levelView);
