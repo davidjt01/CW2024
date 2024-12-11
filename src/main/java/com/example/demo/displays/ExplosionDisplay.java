@@ -9,15 +9,19 @@ import javafx.util.Duration;
 import java.util.Objects;
 
 /**
- *
+ * The {@code ExplosionDisplay} class represents an explosion effect in the game.
+ * It extends {@link ImageView} and displays an explosion image at a specified position.
+ * The explosion image is automatically removed after a short duration.
  */
 public class ExplosionDisplay extends ImageView {
     private static final String IMAGE_NAME = "/com/example/demo/images/explosion.png";
-    private static final int HEIGHT = 200; // Adjust size as needed
+    private static final int HEIGHT = 200;
 
     /**
-     * @param xPosition
-     * @param yPosition
+     * Constructs an {@code ExplosionDisplay} at the specified position.
+     *
+     * @param xPosition the x-coordinate of the explosion.
+     * @param yPosition the y-coordinate of the explosion.
      */
     public ExplosionDisplay(double xPosition, double yPosition) {
         this.setImage(new Image(Objects.requireNonNull(getClass().getResource(IMAGE_NAME)).toExternalForm()));
@@ -27,7 +31,6 @@ public class ExplosionDisplay extends ImageView {
         this.setPreserveRatio(true);
         this.setVisible(true);
 
-        // Remove the explosion image after one second
         Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(1), e -> this.setVisible(false)));
         timeline.setCycleCount(1);
         timeline.play();
