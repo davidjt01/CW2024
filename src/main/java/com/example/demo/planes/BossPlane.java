@@ -36,6 +36,7 @@ public class BossPlane extends Plane {
 	protected final BossLevelView levelView;
 
 	private AudioPlayer bossFireAudioPlayer;
+	private AudioPlayer shieldAudioPlayer;
 
 	public BossPlane(String imageName, int imageHeight, BossLevelView levelView) {
 		super(imageName, imageHeight, INITIAL_X_POSITION, INITIAL_Y_POSITION, HEALTH);
@@ -48,6 +49,8 @@ public class BossPlane extends Plane {
 		initializeMovePattern();
 		bossFireAudioPlayer = new AudioPlayer();
 		bossFireAudioPlayer.loadAudio("/com/example/demo/audio/bossfire.wav");
+		shieldAudioPlayer = new AudioPlayer();
+		shieldAudioPlayer.loadAudio("/com/example/demo/audio/shield.wav");
 	}
 
 	public BossPlane(BossLevelView levelView) {
@@ -149,6 +152,7 @@ public class BossPlane extends Plane {
 
 	private void activateShield() {
 		isShielded = true;
+		shieldAudioPlayer.play();
 		levelView.showShield();
 		System.out.println("Activated Shield");
 	}
@@ -156,6 +160,7 @@ public class BossPlane extends Plane {
 	private void deactivateShield() {
 		isShielded = false;
 		framesWithShieldActivated = 0;
+		shieldAudioPlayer.play();
 		levelView.hideShield();
 	}
 }
