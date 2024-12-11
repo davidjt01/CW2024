@@ -16,7 +16,7 @@ public abstract class Plane extends DestructibleEntity {
     public Plane(String imageName, int imageHeight, double initialXPos, double initialYPos, int health) {
         super(imageName, imageHeight, initialXPos, initialYPos);
         this.health = health;
-        explosionAudioPlayer = new AudioPlayer();
+        explosionAudioPlayer = AudioPlayer.createAudioPlayer();
         explosionAudioPlayer.loadAudio("/com/example/demo/audio/explosion.wav");
     }
 

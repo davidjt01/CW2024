@@ -29,9 +29,9 @@ public class UserPlane extends Plane {
         super(IMAGE_NAME, IMAGE_HEIGHT, INITIAL_X_POSITION, INITIAL_Y_POSITION, initialHealth);
         verticalVelocityMultiplier = 0;
         horizontalVelocityMultiplier = 0;
-        fireAudioPlayer = new AudioPlayer();
+        fireAudioPlayer = AudioPlayer.createAudioPlayer();
         fireAudioPlayer.loadAudio("/com/example/demo/audio/userfire.wav");
-        damageAudioPlayer = new AudioPlayer();
+        damageAudioPlayer = AudioPlayer.createAudioPlayer();
         damageAudioPlayer.loadAudio("/com/example/demo/audio/usertakedamage.wav");
     }
 

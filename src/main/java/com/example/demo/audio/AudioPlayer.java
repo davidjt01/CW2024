@@ -8,6 +8,9 @@ public class AudioPlayer {
     private static double globalVolume = 1.0;
     private AudioClip audioClip;
 
+    private AudioPlayer() {
+    }
+
     public static double getGlobalVolume() {
         return globalVolume;
     }
@@ -15,6 +18,10 @@ public class AudioPlayer {
     // Set global volume for all instances
     public static void setGlobalVolume(double volume) {
         globalVolume = volume;
+    }
+
+    public static AudioPlayer createAudioPlayer() {
+        return new AudioPlayer();
     }
 
     // Load audio file
