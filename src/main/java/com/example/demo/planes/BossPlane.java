@@ -1,5 +1,6 @@
 package com.example.demo.planes;
 
+import com.example.demo.audio.AudioPlayer;
 import com.example.demo.entities.DestructibleEntity;
 import com.example.demo.projectiles.BossProjectile;
 import com.example.demo.levelviews.BossLevelView;
@@ -34,6 +35,8 @@ public class BossPlane extends Plane {
 	private int framesWithShieldActivated;
 	protected final BossLevelView levelView;
 
+	private AudioPlayer bossFireAudioPlayer;
+
 	public BossPlane(String imageName, int imageHeight, BossLevelView levelView) {
 		super(imageName, imageHeight, INITIAL_X_POSITION, INITIAL_Y_POSITION, HEALTH);
 		this.levelView = levelView;
@@ -43,6 +46,8 @@ public class BossPlane extends Plane {
 		framesWithShieldActivated = 0;
 		isShielded = false;
 		initializeMovePattern();
+		bossFireAudioPlayer = new AudioPlayer();
+		bossFireAudioPlayer.loadAudio("/com/example/demo/audio/bossfire.wav");
 	}
 
 	public BossPlane(BossLevelView levelView) {
@@ -69,7 +74,11 @@ public class BossPlane extends Plane {
 
 	@Override
 	public DestructibleEntity fireProjectile() {
-		return bossFiresInCurrentFrame() ? new BossProjectile(getProjectileInitialPosition()) : null;
+		if (bossFiresInCurrentFrame()) {
+			bossFireAudioPlayer.play();
+			return new BossProjectile(getProjectileInitialPosition());
+		}
+		return null;
 	}
 
 	@Override
@@ -149,5 +158,4 @@ public class BossPlane extends Plane {
 		framesWithShieldActivated = 0;
 		levelView.hideShield();
 	}
-
 }
