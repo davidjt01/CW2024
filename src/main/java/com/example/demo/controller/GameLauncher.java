@@ -12,15 +12,8 @@ public class GameLauncher extends Application {
     private static final String TITLE = "Sky Battle";
     private GameController myGameController;
 
-    private GameLauncher() {
-    }
-
     public static void main(String[] args) {
         launch();
-    }
-
-    public static GameLauncher createMain() {
-        return new GameLauncher();
     }
 
     @Override
