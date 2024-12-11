@@ -4,7 +4,8 @@ import javafx.application.Application;
 import javafx.stage.Stage;
 
 /**
- *
+ * The {@code GameLauncher} class serves as the entry point for the application.
+ * It extends {@link Application} and sets up the primary stage for the game.
  */
 public class GameLauncher extends Application {
 
@@ -13,20 +14,23 @@ public class GameLauncher extends Application {
     private static final String TITLE = "Sky Battle";
 
     /**
-     * @param args
+     * The main method which launches the JavaFX application.
+     *
+     * @param args the command line arguments.
      */
     public static void main(String[] args) {
         launch();
     }
 
     /**
-     * @param stage
-     * @throws SecurityException
-     * @throws IllegalArgumentException
+     * Starts the JavaFX application by setting up the primary stage.
+     *
+     * @param stage the primary stage for this application.
+     * @throws SecurityException if a security violation occurs.
+     * @throws IllegalArgumentException if an illegal argument is provided.
      */
     @Override
-    public void start(Stage stage) throws SecurityException,
-            IllegalArgumentException {
+    public void start(Stage stage) throws SecurityException, IllegalArgumentException {
         stage.setTitle(TITLE);
         stage.setResizable(false);
         stage.setHeight(SCREEN_HEIGHT);
