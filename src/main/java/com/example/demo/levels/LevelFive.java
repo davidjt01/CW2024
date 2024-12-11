@@ -54,7 +54,7 @@ public class LevelFive extends LevelParent {
                 } else {
                     newEnemy = new AdvancedEnemyPlane(getScreenWidth(), newEnemyInitialYPosition);
                 }
-                addEnemyUnit(newEnemy);
+                if (canSpawnEnemy()) {addEnemyUnit(newEnemy);}
                 enemyCounter++;
             }
         }
