@@ -8,6 +8,7 @@ import javafx.scene.layout.*;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.scene.input.*;
 
 import java.util.Objects;
 
@@ -51,6 +52,13 @@ public class MainMenu {
         menuLayout.setBackground(new Background(bgImage));
 
         Scene scene = new Scene(menuLayout, stage.getWidth(), stage.getHeight());
+
+        scene.addEventFilter(KeyEvent.KEY_PRESSED, event -> {
+            if (event.getCode() == KeyCode.SPACE) {
+                event.consume();
+            }
+        });
+
         stage.setScene(scene);
         stage.show();
     }
