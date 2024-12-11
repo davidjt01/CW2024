@@ -10,7 +10,7 @@ public class HealthBarDisplay {
     private final HBox container;
     private final ProgressBar progressBar;
 
-    public HealthBarDisplay(double xPosition, double yPosition) {
+    private HealthBarDisplay(double xPosition, double yPosition) {
         container = new HBox();
         container.setLayoutX(xPosition);
         container.setLayoutY(yPosition);
@@ -22,6 +22,10 @@ public class HealthBarDisplay {
         progressBar.setStyle(RED_BAR_STYLE);
 
         container.getChildren().add(progressBar);
+    }
+
+    public static HealthBarDisplay createHealthBarDisplay(double xPosition, double yPosition) {
+        return new HealthBarDisplay(xPosition, yPosition);
     }
 
     public void updateHealth(double healthPercentage) {

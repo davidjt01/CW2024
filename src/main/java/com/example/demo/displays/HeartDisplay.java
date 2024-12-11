@@ -14,12 +14,16 @@ public class HeartDisplay {
     private final double containerYPosition;
     private final int numberOfHeartsToDisplay;
 
-    public HeartDisplay(double xPosition, double yPosition, int heartsToDisplay) {
+    private HeartDisplay(double xPosition, double yPosition, int heartsToDisplay) {
         this.containerXPosition = xPosition;
         this.containerYPosition = yPosition;
         this.numberOfHeartsToDisplay = heartsToDisplay;
         initializeContainer();
         initializeHearts();
+    }
+
+    public static HeartDisplay createHeartDisplay(double xPosition, double yPosition, int heartsToDisplay) {
+        return new HeartDisplay(xPosition, yPosition, heartsToDisplay);
     }
 
     private void initializeContainer() {

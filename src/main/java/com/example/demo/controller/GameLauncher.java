@@ -5,15 +5,22 @@ import javafx.stage.Stage;
 
 import java.lang.reflect.InvocationTargetException;
 
-public class Main extends Application {
+public class GameLauncher extends Application {
 
     private static final int SCREEN_WIDTH = 1300;
     private static final int SCREEN_HEIGHT = 750;
     private static final String TITLE = "Sky Battle";
     private GameController myGameController;
 
+    private GameLauncher() {
+    }
+
     public static void main(String[] args) {
         launch();
+    }
+
+    public static GameLauncher createMain() {
+        return new GameLauncher();
     }
 
     @Override
@@ -23,7 +30,7 @@ public class Main extends Application {
         stage.setResizable(false);
         stage.setHeight(SCREEN_HEIGHT);
         stage.setWidth(SCREEN_WIDTH);
-        myGameController = new GameController(stage);
+        myGameController = GameController.createGameController(stage);
         myGameController.launchGame();
     }
 }

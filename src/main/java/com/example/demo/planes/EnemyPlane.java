@@ -18,7 +18,7 @@ public class EnemyPlane extends Plane {
 
     public EnemyPlane(String imageName, double initialXPos, double initialYPos) {
         super(imageName, IMAGE_HEIGHT, initialXPos, initialYPos, INITIAL_HEALTH);
-        enemyFireAudioPlayer = new AudioPlayer();
+        enemyFireAudioPlayer = AudioPlayer.createAudioPlayer();
         enemyFireAudioPlayer.loadAudio("/com/example/demo/audio/enemyfire.wav");
     }
 

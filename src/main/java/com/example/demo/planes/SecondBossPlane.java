@@ -18,7 +18,7 @@ public class SecondBossPlane extends BossPlane {
 
     public SecondBossPlane(BossLevelView levelView) {
         super(IMAGE_NAME, IMAGE_HEIGHT, levelView);
-        bossFireAudioPlayer = new AudioPlayer();
+        bossFireAudioPlayer = AudioPlayer.createAudioPlayer();
         bossFireAudioPlayer.loadAudio("/com/example/demo/audio/bossfire.wav");
     }
 

@@ -21,8 +21,12 @@ public class GameController implements Observer, Controller {
     private final Stage stage;
     private LevelParent currLevel;
 
-    public GameController(Stage stage) {
+    private GameController(Stage stage) {
         this.stage = stage;
+    }
+
+    public static GameController createGameController(Stage stage) {
+        return new GameController(stage);
     }
 
     public void launchGame() throws ClassNotFoundException, NoSuchMethodException, SecurityException,

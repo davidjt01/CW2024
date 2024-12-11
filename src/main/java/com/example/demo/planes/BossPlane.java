@@ -48,9 +48,9 @@ public class BossPlane extends Plane {
         framesWithShieldActivated = 0;
         isShielded = false;
         initializeMovePattern();
-        bossFireAudioPlayer = new AudioPlayer();
+        bossFireAudioPlayer = AudioPlayer.createAudioPlayer();
         bossFireAudioPlayer.loadAudio("/com/example/demo/audio/bossfire.wav");
-        shieldAudioPlayer = new AudioPlayer();
+        shieldAudioPlayer = AudioPlayer.createAudioPlayer();
         shieldAudioPlayer.loadAudio("/com/example/demo/audio/shield.wav");
     }
 
