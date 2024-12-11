@@ -19,15 +19,15 @@ public abstract class DestructibleEntity extends Entity implements Destructible 
 
     @Override
     public void destroy() {
-        setDestroyed(true);
+        setDestroyed();
     }
 
     public boolean isDestroyed() {
         return isDestroyed;
     }
 
-    protected void setDestroyed(boolean isDestroyed) {
-        this.isDestroyed = isDestroyed;
+    protected void setDestroyed() {
+        this.isDestroyed = true;
     }
 
 }
