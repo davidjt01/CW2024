@@ -98,10 +98,6 @@ public class GameController implements Observer, Controller {
         showLevelMenu();
     }
 
-    public void onPauseSelected() {
-        showPauseMenu();
-    }
-
     public void onContinueSelected() {
         currLevel.resumeGame();
     }

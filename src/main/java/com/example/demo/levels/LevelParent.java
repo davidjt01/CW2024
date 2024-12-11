@@ -352,11 +352,6 @@ public abstract class LevelParent extends Observable implements Controller {
     }
 
     @Override
-    public void onPauseSelected() {
-
-    }
-
-    @Override
     public void onContinueSelected() {
         resumeGame();
     }
