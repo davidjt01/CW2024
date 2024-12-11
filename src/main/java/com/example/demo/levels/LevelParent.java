@@ -26,7 +26,8 @@ import java.util.Objects;
 import java.util.Observable;
 
 /**
- *
+ * The {@code LevelParent} class serves as the base class for all game levels.
+ * It manages the game flow, including initializing units, handling collisions, and updating the game state.
  */
 public abstract class LevelParent extends Observable implements Controller {
     private static final double SCREEN_HEIGHT_ADJUSTMENT = 150;
@@ -53,11 +54,13 @@ public abstract class LevelParent extends Observable implements Controller {
     private long lastFireTime = 0;
 
     /**
-     * @param gameController
-     * @param backgroundImageName
-     * @param screenHeight
-     * @param screenWidth
-     * @param playerInitialHealth
+     * Constructs a {@code LevelParent} with the specified parameters.
+     *
+     * @param gameController the game controller managing the level.
+     * @param backgroundImageName the name of the background image file.
+     * @param screenHeight the height of the screen.
+     * @param screenWidth the width of the screen.
+     * @param playerInitialHealth the initial health of the player.
      */
     public LevelParent(Controller gameController, String backgroundImageName, double screenHeight, double screenWidth, int playerInitialHealth) {
         this.gameController = gameController;
@@ -80,7 +83,9 @@ public abstract class LevelParent extends Observable implements Controller {
     }
 
     /**
-     * @return
+     * Checks if an enemy can be spawned based on the minimum spawn delay.
+     *
+     * @return {@code true} if an enemy can be spawned, {@code false} otherwise.
      */
     protected boolean canSpawnEnemy() {
         long currentTime = System.currentTimeMillis();
@@ -92,27 +97,35 @@ public abstract class LevelParent extends Observable implements Controller {
     }
 
     /**
-     *
+     * Initializes the friendly units in the level.
+     * This method should be implemented by subclasses to define how friendly units are initialized.
      */
     protected abstract void initializeFriendlyUnits();
 
     /**
-     *
+     * Checks if the game is over.
+     * This method should be implemented by subclasses to define the game over conditions.
      */
     protected abstract void checkIfGameOver();
 
     /**
-     *
+     * Spawns enemy units in the level.
+     * This method should be implemented by subclasses to define how enemy units are spawned.
      */
     protected abstract void spawnEnemyUnits();
 
     /**
-     * @return
+     * Instantiates the level view.
+     * This method should be implemented by subclasses to define the level view.
+     *
+     * @return the instantiated level view.
      */
     protected abstract LevelView instantiateLevelView();
 
     /**
-     * @return
+     * Initializes the scene for the level.
+     *
+     * @return the initialized scene.
      */
     public Scene initializeScene() {
         initializeBackground();
@@ -122,7 +135,7 @@ public abstract class LevelParent extends Observable implements Controller {
     }
 
     /**
-     *
+     * Starts the game by requesting focus for the background and playing the timeline.
      */
     public void startGame() {
         background.requestFocus();
@@ -130,7 +143,9 @@ public abstract class LevelParent extends Observable implements Controller {
     }
 
     /**
-     * @param levelName
+     * Transitions to the next level.
+     *
+     * @param levelName the name of the next level.
      */
     public void goToNextLevel(String levelName) {
         timeline.stop();
@@ -139,7 +154,7 @@ public abstract class LevelParent extends Observable implements Controller {
     }
 
     /**
-     *
+     * Updates the scene by spawning enemies, updating actors, handling collisions, and checking game over conditions.
      */
     private void updateScene() {
         spawnEnemyUnits();
@@ -159,7 +174,7 @@ public abstract class LevelParent extends Observable implements Controller {
     }
 
     /**
-     *
+     * Initializes the timeline for the game loop.
      */
     private void initializeTimeline() {
         timeline.setCycleCount(Timeline.INDEFINITE);
@@ -168,7 +183,7 @@ public abstract class LevelParent extends Observable implements Controller {
     }
 
     /**
-     *
+     * Initializes the background for the level.
      */
     private void initializeBackground() {
         background.setFocusTraversable(true);
@@ -200,7 +215,7 @@ public abstract class LevelParent extends Observable implements Controller {
     }
 
     /**
-     *
+     * Fires a projectile from the user's plane if the fire cooldown period has elapsed.
      */
     private void fireProjectile() {
         long currentTime = System.currentTimeMillis();
@@ -213,7 +228,7 @@ public abstract class LevelParent extends Observable implements Controller {
     }
 
     /**
-     *
+     * Generates enemy fire by spawning projectiles from enemy planes.
      */
     private void generateEnemyFire() {
         for (DestructibleEntity enemy : enemyUnits) {
@@ -230,7 +245,7 @@ public abstract class LevelParent extends Observable implements Controller {
     }
 
     /**
-     *
+     * Updates the state of all actors in the level.
      */
     private void updateActors() {
         friendlyUnits.forEach(DestructibleEntity::updateActor);
@@ -240,7 +255,7 @@ public abstract class LevelParent extends Observable implements Controller {
     }
 
     /**
-     *
+     * Removes all destroyed actors from the level.
      */
     private void removeAllDestroyedActors() {
         removeDestroyedActors(friendlyUnits);
@@ -250,7 +265,9 @@ public abstract class LevelParent extends Observable implements Controller {
     }
 
     /**
-     * @param actors
+     * Removes destroyed actors from the specified list.
+     *
+     * @param actors the list of actors to remove destroyed actors from.
      */
     private void removeDestroyedActors(List<DestructibleEntity> actors) {
         List<DestructibleEntity> destroyedActors = actors.stream().filter(DestructibleEntity::isDestroyed)
@@ -260,32 +277,33 @@ public abstract class LevelParent extends Observable implements Controller {
     }
 
     /**
-     *
+     * Handles collisions between friendly and enemy planes.
      */
     private void handlePlaneCollisions() {
         handleCollisions(friendlyUnits, enemyUnits);
     }
 
     /**
-     *
+     * Handles collisions between user projectiles and enemy units.
      */
     private void handleUserProjectileCollisions() {
         handleCollisions(userProjectiles, enemyUnits);
     }
 
     /**
-     *
+     * Handles collisions between enemy projectiles and friendly units.
      */
     private void handleEnemyProjectileCollisions() {
         handleCollisions(enemyProjectiles, friendlyUnits);
     }
 
     /**
-     * @param actors1
-     * @param actors2
+     * Handles collisions between two lists of destructible entities.
+     *
+     * @param actors1 the first list of destructible entities.
+     * @param actors2 the second list of destructible entities.
      */
-    private void handleCollisions(List<DestructibleEntity> actors1,
-                                  List<DestructibleEntity> actors2) {
+    private void handleCollisions(List<DestructibleEntity> actors1, List<DestructibleEntity> actors2) {
         for (DestructibleEntity actor : actors2) {
             for (DestructibleEntity otherActor : actors1) {
                 if (actor.getBoundsInParent().intersects(otherActor.getBoundsInParent())) {
@@ -297,7 +315,7 @@ public abstract class LevelParent extends Observable implements Controller {
     }
 
     /**
-     *
+     * Handles the event when an enemy penetrates the user's defenses.
      */
     private void handleEnemyPenetration() {
         for (DestructibleEntity enemy : enemyUnits) {
@@ -310,14 +328,14 @@ public abstract class LevelParent extends Observable implements Controller {
     }
 
     /**
-     *
+     * Updates the level view to reflect the current state of the game.
      */
     private void updateLevelView() {
         levelView.removeHearts(user.getHealth());
     }
 
     /**
-     *
+     * Updates the kill count for the user.
      */
     private void updateKillCount() {
         int destroyedEnemies = currentNumberOfEnemies - enemyUnits.size();
@@ -328,58 +346,65 @@ public abstract class LevelParent extends Observable implements Controller {
     }
 
     /**
-     * @param enemy
-     * @return
+     * Checks if an enemy has penetrated the user's defenses.
+     *
+     * @param enemy the enemy to check.
+     * @return {@code true} if the enemy has penetrated the defenses, {@code false} otherwise.
      */
     private boolean enemyHasPenetratedDefenses(DestructibleEntity enemy) {
         return Math.abs(enemy.getTranslateX()) > screenWidth;
     }
 
     /**
-     *
+     * Ends the game with a win.
      */
     protected void winGame() {
         timeline.stop();
-        //levelView.showWinImage();
         WinMenu winMenu = new WinMenu((Stage) scene.getWindow(), this);
         winMenu.show();
     }
 
     /**
-     *
+     * Ends the game with a loss.
      */
     protected void loseGame() {
         timeline.stop();
-        //levelView.showGameOverImage();
         GameOverMenu gameOverMenu = new GameOverMenu((Stage) scene.getWindow(), this);
         gameOverMenu.setLevelName(this.getClass().getName());
         gameOverMenu.show();
-
     }
 
     /**
-     * @return
+     * Gets the user's plane.
+     *
+     * @return the user's plane.
      */
     protected UserPlane getUser() {
         return user;
     }
 
     /**
-     * @return
+     * Gets the root group of the scene.
+     *
+     * @return the root group.
      */
     protected Group getRoot() {
         return root;
     }
 
     /**
-     * @return
+     * Gets the current number of enemies.
+     *
+     * @return the current number of enemies.
      */
     protected int getCurrentNumberOfEnemies() {
         return enemyUnits.size();
     }
 
     /**
-     * @param enemy
+     * Adds an enemy unit to the level.
+     *
+     * @param enemy the enemy unit to add.
      */
     protected void addEnemyUnit(DestructibleEntity enemy) {
         enemyUnits.add(enemy);
@@ -387,59 +412,64 @@ public abstract class LevelParent extends Observable implements Controller {
     }
 
     /**
-     * @return
+     * Gets the maximum Y position for enemies.
+     *
+     * @return the maximum Y position for enemies.
      */
     protected double getEnemyMaximumYPosition() {
         return enemyMaximumYPosition;
     }
 
     /**
-     * @return
+     * Gets the width of the screen.
+     *
+     * @return the screen width.
      */
     protected double getScreenWidth() {
         return screenWidth;
     }
 
     /**
-     * @return
+     * Checks if the user's plane is destroyed.
+     *
+     * @return {@code true} if the user's plane is destroyed, {@code false} otherwise.
      */
     protected boolean userIsDestroyed() {
         return user.isDestroyed();
     }
 
     /**
-     *
+     * Updates the number of enemies in the level.
      */
     private void updateNumberOfEnemies() {
         currentNumberOfEnemies = enemyUnits.size();
     }
 
     /**
-     *
+     * Pauses the game.
      */
     public void pauseGame() {
         timeline.pause();
-
-        // Capture the current game scene as an image
         WritableImage snapshot = new WritableImage((int) scene.getWidth(), (int) scene.getHeight());
         scene.snapshot(snapshot);
-
         PauseMenu pauseMenu = new PauseMenu((Stage) scene.getWindow(), this);
         pauseMenu.saveGameScene(scene);
-        pauseMenu.setBackgroundImage(snapshot); // Pass the captured image to the pause menu
+        pauseMenu.setBackgroundImage(snapshot);
         pauseMenu.show();
     }
 
     /**
-     *
+     * Resumes the game.
      */
     public void resumeGame() {
         timeline.play();
     }
 
     /**
-     * @param projectile
-     * @return
+     * Checks if a projectile is out of the screen.
+     *
+     * @param projectile the projectile to check.
+     * @return {@code true} if the projectile is out of the screen, {@code false} otherwise.
      */
     private boolean isOutOfScreen(DestructibleEntity projectile) {
         double x = projectile.getLayoutX() + projectile.getTranslateX();
@@ -448,7 +478,9 @@ public abstract class LevelParent extends Observable implements Controller {
     }
 
     /**
-     * @param projectiles
+     * Removes projectiles that are out of the screen.
+     *
+     * @param projectiles the list of projectiles to check.
      */
     private void removeOutOfScreenProjectiles(List<DestructibleEntity> projectiles) {
         List<DestructibleEntity> outOfScreenProjectiles = projectiles.stream()
@@ -459,6 +491,8 @@ public abstract class LevelParent extends Observable implements Controller {
     }
 
     /**
+     * Handles the event when a level is selected.
+     *
      * @param level the name of the selected level.
      */
     @Override
@@ -468,7 +502,7 @@ public abstract class LevelParent extends Observable implements Controller {
     }
 
     /**
-     *
+     * Handles the event when the main menu is selected.
      */
     @Override
     public void onMainMenuSelected() {
@@ -478,7 +512,7 @@ public abstract class LevelParent extends Observable implements Controller {
     }
 
     /**
-     *
+     * Handles the event when the level menu is selected.
      */
     @Override
     public void onLevelMenuSelected() {
@@ -488,7 +522,7 @@ public abstract class LevelParent extends Observable implements Controller {
     }
 
     /**
-     *
+     * Handles the event when the continue option is selected.
      */
     @Override
     public void onContinueSelected() {
@@ -496,12 +530,11 @@ public abstract class LevelParent extends Observable implements Controller {
     }
 
     /**
-     *
+     * Handles the event when the settings menu is selected.
      */
     @Override
     public void onSettingsMenuSelected() {
         timeline.stop();
         gameController.onSettingsMenuSelected();
     }
-
 }
