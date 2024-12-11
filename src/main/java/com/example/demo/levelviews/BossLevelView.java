@@ -13,7 +13,7 @@ public class BossLevelView extends LevelView {
     public BossLevelView(Group root, int heartsToDisplay) {
         super(root, heartsToDisplay);
         this.root = root;
-        this.shieldDisplay = new ShieldDisplay(0, 0);
+        this.shieldDisplay = ShieldDisplay.createShieldDisplay(0, 0);
         this.healthBarDisplay = HealthBarDisplay.createHealthBarDisplay(0, 0);
     }
 
