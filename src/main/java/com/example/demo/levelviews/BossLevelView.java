@@ -14,7 +14,7 @@ public class BossLevelView extends LevelView {
         super(root, heartsToDisplay);
         this.root = root;
         this.shieldDisplay = new ShieldDisplay(0, 0);
-        this.healthBarDisplay = new HealthBarDisplay(0, 0);
+        this.healthBarDisplay = HealthBarDisplay.createHealthBarDisplay(0, 0);
     }
 
     private void addImagesToRoot() {
