@@ -17,7 +17,6 @@ import java.util.Observer;
 
 public class GameController implements Observer, Controller {
 
-    private static final String LEVEL_ONE_CLASS_NAME = "com.example.demo.levels.LevelOne";
     private final Stage stage;
     private LevelParent currLevel;
 
