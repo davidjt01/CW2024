@@ -46,6 +46,8 @@ public abstract class LevelParent extends Observable implements Controller {
     private int currentNumberOfEnemies;
     private long lastSpawnTime = 0;
     private int penetratedEnemiesCount = 0;
+    private static final long FIRE_COOLDOWN = 200; // cooldown period in milliseconds
+    private long lastFireTime = 0;
 
     public LevelParent(Controller gameController, String backgroundImageName, double screenHeight, double screenWidth, int playerInitialHealth) {
         this.gameController = gameController;
@@ -155,9 +157,13 @@ public abstract class LevelParent extends Observable implements Controller {
     }
 
     private void fireProjectile() {
-        DestructibleEntity projectile = user.fireProjectile();
-        root.getChildren().add(projectile);
-        userProjectiles.add(projectile);
+        long currentTime = System.currentTimeMillis();
+        if (currentTime - lastFireTime >= FIRE_COOLDOWN) {
+            DestructibleEntity projectile = user.fireProjectile();
+            root.getChildren().add(projectile);
+            userProjectiles.add(projectile);
+            lastFireTime = currentTime;
+        }
     }
 
     private void generateEnemyFire() {
