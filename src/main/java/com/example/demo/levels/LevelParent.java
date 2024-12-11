@@ -336,7 +336,6 @@ public abstract class LevelParent extends Observable implements Controller {
                 .collect(Collectors.toList());
         root.getChildren().removeAll(outOfScreenProjectiles);
         projectiles.removeAll(outOfScreenProjectiles);
-        System.out.println("wow");
     }
 
     @Override
