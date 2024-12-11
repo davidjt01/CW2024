@@ -2,6 +2,7 @@ package com.example.demo.menus;
 
 import com.example.demo.controller.Controller;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
@@ -31,6 +32,13 @@ public abstract class BaseMenu {
         });
         stage.setScene(scene);
         stage.show();
+    }
+
+    protected Button createButton(String buttonText) {
+        Button button = new Button(buttonText);
+        button.setPrefSize(200, 50);
+        button.setStyle("-fx-font-size: 18px;");
+        return button;
     }
 
     protected Background getBackground(Stage stage) {

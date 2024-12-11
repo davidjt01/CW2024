@@ -47,14 +47,10 @@ public class PauseMenu extends BaseMenu {
             gameController.onContinueSelected();
         });
 
-        Button levelMenuButton = new Button("Level Menu");
-        levelMenuButton.setPrefSize(200, 50);
-        levelMenuButton.setStyle("-fx-font-size: 18px;");
+        Button levelMenuButton = createButton("Level Menu");
         levelMenuButton.setOnAction(e -> gameController.onLevelMenuSelected());
 
-        Button mainMenuButton = new Button("Main Menu");
-        mainMenuButton.setPrefSize(200, 50);
-        mainMenuButton.setStyle("-fx-font-size: 18px;");
+        Button mainMenuButton =  createButton("Main Menu");
         mainMenuButton.setOnAction(e -> gameController.onMainMenuSelected());
 
         menuLayout.getChildren().addAll(pauseTitle, continueButton, levelMenuButton, mainMenuButton);

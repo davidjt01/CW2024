@@ -43,9 +43,7 @@ public class SettingsMenu extends BaseMenu {
 
         volumeControlLayout.getChildren().addAll(decreaseVolumeButton, volumeText, increaseVolumeButton);
 
-        Button backButton = new Button("Back");
-        backButton.setPrefSize(200, 50);
-        backButton.setStyle("-fx-font-size: 18px;");
+        Button backButton = createButton("Back");
         backButton.setOnAction(e -> gameController.onMainMenuSelected());
 
         menuLayout.getChildren().addAll(settingsTitle, volumeControlLayout, backButton);
