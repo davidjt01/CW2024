@@ -5,7 +5,7 @@ import javafx.stage.Stage;
 
 import java.lang.reflect.InvocationTargetException;
 
-public class Main extends Application {
+public class GameLauncher extends Application {
 
     private static final int SCREEN_WIDTH = 1300;
     private static final int SCREEN_HEIGHT = 750;
