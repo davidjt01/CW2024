@@ -23,13 +23,6 @@ public class AudioPlayer {
         }
     }
 
-    // Set volume
-    public void setVolume(double volume) {
-        if (isReady()) {
-            audioClip.setVolume(volume);
-        }
-    }
-
     // Check if audio clip is ready
     private boolean isReady() {
         return audioClip != null;
