@@ -46,7 +46,7 @@ public class LevelThree extends LevelParent {
                 } else {
                     newEnemy = new AdvancedEnemyPlane(getScreenWidth(), newEnemyInitialYPosition);
                 }
-                addEnemyUnit(newEnemy);
+                if (canSpawnEnemy()) {addEnemyUnit(newEnemy);}
                 enemyCounter++;
             }
         }
