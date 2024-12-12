@@ -4,6 +4,10 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * The {@code AdvancedEnemyPlane} class represents an advanced enemy plane in the game.
+ * It extends {@link EnemyPlane} and provides additional movement patterns.
+ */
 public class AdvancedEnemyPlane extends EnemyPlane {
     private static final String IMAGE_NAME = "advancedenemyplane.png";
     private static final int HORIZONTAL_VELOCITY = -10;
@@ -16,6 +20,12 @@ public class AdvancedEnemyPlane extends EnemyPlane {
     private int consecutiveMovesInSameDirection;
     private int indexOfCurrentMove;
 
+    /**
+     * Constructs an {@code AdvancedEnemyPlane} with the specified initial x and y positions.
+     *
+     * @param initialXPos the initial x-coordinate of the advanced enemy plane.
+     * @param initialYPos the initial y-coordinate of the advanced enemy plane.
+     */
     public AdvancedEnemyPlane(double initialXPos, double initialYPos) {
         super(IMAGE_NAME, initialXPos, initialYPos);
         movePattern = new ArrayList<>();
@@ -24,6 +34,10 @@ public class AdvancedEnemyPlane extends EnemyPlane {
         initializeMovePattern();
     }
 
+    /**
+     * Updates the position of the advanced enemy plane.
+     * Moves the plane horizontally and vertically based on its movement pattern.
+     */
     @Override
     public void updatePosition() {
         moveHorizontally(HORIZONTAL_VELOCITY);
@@ -35,6 +49,10 @@ public class AdvancedEnemyPlane extends EnemyPlane {
         }
     }
 
+    /**
+     * Initializes the movement pattern for the advanced enemy plane.
+     * The pattern includes vertical movements and no movement.
+     */
     private void initializeMovePattern() {
         for (int i = 0; i < MOVE_FREQUENCY_PER_CYCLE; i++) {
             movePattern.add(VERTICAL_VELOCITY);
@@ -44,6 +62,12 @@ public class AdvancedEnemyPlane extends EnemyPlane {
         Collections.shuffle(movePattern);
     }
 
+    /**
+     * Gets the next move in the movement pattern.
+     * Shuffles the pattern if the plane has moved in the same direction for too long.
+     *
+     * @return the next vertical movement value.
+     */
     private int getNextMove() {
         int currentMove = movePattern.get(indexOfCurrentMove);
         consecutiveMovesInSameDirection++;
