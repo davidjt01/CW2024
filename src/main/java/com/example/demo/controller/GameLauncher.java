@@ -14,6 +14,14 @@ public class GameLauncher extends Application {
     private static final String TITLE = "Sky Battle";
 
     /**
+     * Default constructor for the {@code GameLauncher} class.
+     * This constructor initializes the application entry point.
+     */
+    public GameLauncher() {
+        // Default constructor
+    }
+
+    /**
      * The main method which launches the JavaFX application.
      *
      * @param args the command line arguments.
