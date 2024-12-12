@@ -4,13 +4,16 @@ import com.example.demo.audio.AudioPlayer;
 import com.example.demo.entities.DestructibleEntity;
 import com.example.demo.levelviews.BossLevelView;
 import com.example.demo.projectiles.BossProjectile;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * The {@code BossPlane} class represents a boss plane in the game.
+ * It extends {@link Plane} and provides additional functionalities such as firing projectiles,
+ * activating shields, and updating UI elements.
+ */
 public class BossPlane extends Plane {
-
     private static final String IMAGE_NAME = "bossplane.png";
     private static final double INITIAL_X_POSITION = 1000.0;
     private static final double INITIAL_Y_POSITION = 400;
@@ -39,6 +42,13 @@ public class BossPlane extends Plane {
     private int indexOfCurrentMove;
     private int framesWithShieldActivated;
 
+    /**
+     * Constructs a {@code BossPlane} with the specified image name, image height, and level view.
+     *
+     * @param imageName the name of the image file.
+     * @param imageHeight the height of the image.
+     * @param levelView the level view associated with the boss plane.
+     */
     public BossPlane(String imageName, int imageHeight, BossLevelView levelView) {
         super(imageName, imageHeight, INITIAL_X_POSITION, INITIAL_Y_POSITION, HEALTH);
         this.levelView = levelView;
@@ -54,10 +64,19 @@ public class BossPlane extends Plane {
         shieldAudioPlayer.loadAudio("/com/example/demo/audio/shield.wav");
     }
 
+    /**
+     * Constructs a {@code BossPlane} with the default image name and height, and the specified level view.
+     *
+     * @param levelView the level view associated with the boss plane.
+     */
     public BossPlane(BossLevelView levelView) {
         this(IMAGE_NAME, IMAGE_HEIGHT, levelView);
     }
 
+    /**
+     * Updates the position of the boss plane.
+     * Moves the plane vertically based on its movement pattern.
+     */
     @Override
     public void updatePosition() {
         double initialTranslateY = getTranslateY();
@@ -68,6 +87,10 @@ public class BossPlane extends Plane {
         }
     }
 
+    /**
+     * Updates the state of the boss plane.
+     * This includes updating its position, shield, health bar, and UI elements.
+     */
     @Override
     public void updateActor() {
         updatePosition();
@@ -76,6 +99,12 @@ public class BossPlane extends Plane {
         updateUIElements();
     }
 
+    /**
+     * Fires a projectile from the boss plane.
+     * Plays the firing audio and returns the fired projectile.
+     *
+     * @return the fired projectile, or {@code null} if the plane does not fire in the current frame.
+     */
     @Override
     public DestructibleEntity fireProjectile() {
         if (bossFiresInCurrentFrame()) {
@@ -85,6 +114,10 @@ public class BossPlane extends Plane {
         return null;
     }
 
+    /**
+     * Inflicts damage on the boss plane.
+     * If the plane is shielded, it does not take damage.
+     */
     @Override
     public void takeDamage() {
         if (!isShielded) {
@@ -93,6 +126,10 @@ public class BossPlane extends Plane {
         }
     }
 
+    /**
+     * Updates the UI elements associated with the boss plane.
+     * This includes the shield and health bar positions.
+     */
     protected void updateUIElements() {
         double x = getLayoutX() + getTranslateX();
         double y = getLayoutY() + getTranslateY();
@@ -100,12 +137,19 @@ public class BossPlane extends Plane {
         levelView.setHealthBarPosition(x + HEALTH_BAR_OFFSET_X, y + HEALTH_BAR_OFFSET_Y);
     }
 
+    /**
+     * Updates the health bar to reflect the current health percentage.
+     */
     private void updateHealthBar() {
         double healthPercentage = (double) getHealth() / HEALTH;
         System.out.println(healthPercentage);
         levelView.updateHealthBar(healthPercentage);
     }
 
+    /**
+     * Initializes the movement pattern for the boss plane.
+     * The pattern includes vertical movements and no movement.
+     */
     private void initializeMovePattern() {
         for (int i = 0; i < MOVE_FREQUENCY_PER_CYCLE; i++) {
             movePattern.add(VERTICAL_VELOCITY);
@@ -115,12 +159,22 @@ public class BossPlane extends Plane {
         Collections.shuffle(movePattern);
     }
 
+    /**
+     * Updates the shield state of the boss plane.
+     * Activates or deactivates the shield based on certain conditions.
+     */
     private void updateShield() {
         if (isShielded) framesWithShieldActivated++;
         else if (shieldShouldBeActivated()) activateShield();
         if (shieldExhausted()) deactivateShield();
     }
 
+    /**
+     * Gets the next move in the movement pattern.
+     * Shuffles the pattern if the plane has moved in the same direction for too long.
+     *
+     * @return the next vertical movement value.
+     */
     private int getNextMove() {
         int currentMove = movePattern.get(indexOfCurrentMove);
         consecutiveMovesInSameDirection++;
@@ -135,22 +189,46 @@ public class BossPlane extends Plane {
         return currentMove;
     }
 
+    /**
+     * Checks if the boss plane should fire in the current frame.
+     *
+     * @return {@code true} if the boss plane should fire, {@code false} otherwise.
+     */
     protected boolean bossFiresInCurrentFrame() {
         return Math.random() < BOSS_FIRE_RATE;
     }
 
+    /**
+     * Gets the initial position for the projectile.
+     *
+     * @return the initial y-coordinate for the projectile.
+     */
     protected double getProjectileInitialPosition() {
         return getLayoutY() + getTranslateY() + PROJECTILE_Y_POSITION_OFFSET;
     }
 
+    /**
+     * Checks if the shield should be activated.
+     *
+     * @return {@code true} if the shield should be activated, {@code false} otherwise.
+     */
     private boolean shieldShouldBeActivated() {
         return Math.random() < BOSS_SHIELD_PROBABILITY;
     }
 
+    /**
+     * Checks if the shield is exhausted.
+     *
+     * @return {@code true} if the shield is exhausted, {@code false} otherwise.
+     */
     private boolean shieldExhausted() {
         return framesWithShieldActivated == MAX_FRAMES_WITH_SHIELD;
     }
 
+    /**
+     * Activates the shield for the boss plane.
+     * Plays the shield activation audio and updates the UI.
+     */
     private void activateShield() {
         isShielded = true;
         shieldAudioPlayer.play();
@@ -158,6 +236,10 @@ public class BossPlane extends Plane {
         System.out.println("Activated Shield");
     }
 
+    /**
+     * Deactivates the shield for the boss plane.
+     * Plays the shield deactivation audio and updates the UI.
+     */
     private void deactivateShield() {
         isShielded = false;
         framesWithShieldActivated = 0;
