@@ -100,6 +100,15 @@ https://github.com/davidjt01/CW2024
 ### Package organisation
 - Classes were grouped and moved into new packages for organisation.
 
+### Factory method for
+- AudioPlayer
+- GameController
+- HealthBarDisplay
+- HeartDisplay
+- ShieldDisplay
+- LevelView
+- BossLevelView
+
 ## Features Implemented But Not Working Properly:
 
 ## Features Not Implemented:
