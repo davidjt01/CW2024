@@ -352,6 +352,221 @@ levelFive.startGame();
 
 The LevelFive class provides a fitting conclusion to the game, combining strategic challenges, intense gameplay, and immersive visuals to deliver a rewarding final experience.
 
+### ParentMenu
+The ParentMenu class serves as a base class for all menu screens in the game. It provides common functionality for displaying menus, creating buttons, and setting backgrounds.
+
+#### Key Functionalities:
+- Menu Display: Provides a method to display the menu on the stage.
+- Button Creation: Provides a method to create buttons with specified text.
+- Background Setting: Provides methods to set the background image for the menu.
+#### Methods:
+- Constructor:
+  - ```public ParentMenu(Stage stage, Controller gameController)```
+  - Constructs a ParentMenu with the specified stage and game controller.
+- show:
+  - ```public void show()```
+  - Displays the menu on the stage.
+- createButton:
+  - ```protected Button createButton(String buttonText)```
+  - Creates a button with the specified text.
+- getBackground:
+  - ```protected Background getBackground(Stage stage)```
+  - Gets the background for the menu.
+- getImage:
+  - ```protected Image getImage()```
+  - Gets the image for the background.
+- getBackgroundImageFile:
+  - ```protected String getBackgroundImageFile()```
+  - Gets the file path for the background image.
+- getMenuLayout:
+  - ```abstract VBox getMenuLayout()```
+  - Creates and returns the layout for the menu.
+- Usage Example:
+```
+// Create an instance of a subclass of ParentMenu
+ParentMenu menu = new MainMenu(stage, gameController);
+
+// Display the menu
+menu.show();
+```
+This class ensures a consistent and reusable structure for all menu screens in the game, providing essential functionalities for menu display, button creation, and background setting.
+
+### GameOverMenu
+The GameOverMenu class represents the game over menu displayed when the game ends. It extends the ParentMenu class and provides options to retry the level, go to the level menu, or return to the main menu.
+
+#### Key Functionalities:
+- Level Retry: Allows the player to retry the level they lost.
+- Menu Navigation: Provides buttons to navigate to the level menu or the main menu.
+- Game Over Image: Displays a game over image using the GameOverDisplay class.
+#### Methods:
+- Constructor:
+  - ```public GameOverMenu(Stage stage, Controller gameController)```
+  - Constructs a GameOverMenu with the specified stage and game controller.
+
+- setLevelName:
+  - ```public void setLevelName(String levelName)```
+  - Sets the name of the level to retry.
+
+- getMenuLayout:
+  - ```protected VBox getMenuLayout()```
+  - Creates and returns the layout for the game over menu. This method uses the GameOverDisplay class to show the game over image.
+
+- getBackgroundImageFile:
+  - ```protected String getBackgroundImageFile()```
+  - Returns the file path for the background image of the game over menu.
+
+- Usage Example:
+```
+// Create an instance of GameOverMenu
+GameOverMenu gameOverMenu = new GameOverMenu(stage, gameController);
+
+// Set the level name to retry
+gameOverMenu.setLevelName("Level 1");
+
+// Get the menu layout
+VBox menuLayout = gameOverMenu.getMenuLayout();
+```
+#### Game Over Image Integration:
+The getMenuLayout method integrates the game over image using the GameOverDisplay class. Here's how it works:
+- An instance of GameOverDisplay is created. 
+- The showGameOver method of GameOverDisplay is called to display the game over image. 
+- The GameOverDisplay instance is added to the menu layout.
+
+This class ensures a user-friendly interface for players to navigate after losing a game, providing options to retry or return to other menus, and visually indicating the game over state with an image.
+
+### LevelMenu
+The LevelMenu class represents the menu for selecting game levels. It extends the ParentMenu class and provides options to select different levels or return to the main menu.
+
+#### Key Functionalities:
+- Level Selection: Allows the player to select from five different levels.
+- Menu Navigation: Provides a button to return to the main menu.
+#### Methods:
+- Constructor:
+  - ```public LevelMenu(Stage stage, Controller gameController)```
+  - Constructs a LevelMenu with the specified stage and game controller.
+
+- getMenuLayout:
+  - ```protected VBox getMenuLayout()```
+  - Creates and returns the layout for the level menu. This method includes buttons for each level and a back button to return to the main menu.
+
+- getLevelName:
+  - ```private String getLevelName(int levelNumber)```
+  - Returns the name of the level based on the level number.
+
+- Usage Example:
+```
+// Create an instance of LevelMenu
+LevelMenu levelMenu = new LevelMenu(stage, gameController);
+
+// Get the menu layout
+VBox menuLayout = levelMenu.getMenuLayout();
+``````
+This class ensures a user-friendly interface for players to select different game levels or return to the main menu, enhancing the overall navigation experience within the game.
+
+### MainMenu
+The MainMenu class represents the main menu displayed at the start of the game. It extends the ParentMenu class and provides options to start the game, access settings, or quit the application.
+
+#### Key Functionalities:
+- Start Game: Provides a button to start the game by navigating to the level menu. 
+- Settings Access: Provides a button to access the settings menu. 
+- Quit Application: Provides a button to quit the application.
+#### Methods:
+- Constructor:
+- ```public MainMenu(Stage stage, Controller gameController)```
+- Constructs a MainMenu with the specified stage and game controller.
+
+- getMenuLayout:
+- ```protected VBox getMenuLayout()```
+- Creates and returns the layout for the main menu. This method includes buttons to start the game, access settings, and quit the application.
+
+- Usage Example:
+```
+// Create an instance of MainMenu
+MainMenu mainMenu = new MainMenu(stage, gameController);
+
+// Get the menu layout
+VBox menuLayout = mainMenu.getMenuLayout();
+```
+
+This class ensures a user-friendly interface for players to navigate the main options of the game, providing easy access to start the game, adjust settings, or exit the application.
+
+### PauseMenu
+The PauseMenu class represents the pause menu displayed when the game is paused. It extends the ParentMenu class and provides options to continue the game, go to the level menu, or return to the main menu.
+
+#### Key Functionalities:
+- Continue Game: Provides a button to resume the game. 
+- Menu Navigation: Provides buttons to navigate to the level menu or the main menu. 
+- Pause Background: Displays a snapshot of the currently paused game scene as the background.
+#### Methods:
+- Constructor:
+  - ```public PauseMenu(Stage stage, Controller gameController)```
+  - Constructs a PauseMenu with the specified stage and game controller. 
+- getMenuLayout:
+  - ```protected VBox getMenuLayout()```
+  - Creates and returns the layout for the pause menu. This method includes buttons to continue the game, go to the level menu, and return to the main menu. 
+- Usage Example:
+```
+// Create an instance of PauseMenu
+PauseMenu pauseMenu = new PauseMenu(stage, gameController);
+
+// Get the menu layout
+VBox menuLayout = pauseMenu.getMenuLayout();
+```
+This class ensures a user-friendly interface for players to navigate the pause options, providing easy access to resume the game, switch levels, or return to the main menu, while visually indicating the paused state with a background snapshot.
+
+### SettingsMenu
+The SettingsMenu class represents the settings menu of the game. It extends the ParentMenu class and provides options to adjust the game settings, such as volume control.
+
+#### Key Functionalities:
+* Volume Control: Allows players to adjust the audio volume from 0 to 100 percent.
+  * The - button decreases volume by 10 percent.
+  * The + button increases volume by 10 percent.
+  * Displays the current volume percentage.
+* Menu Navigation: Provides a button to return to the main menu.
+#### Methods:
+* Constructor:
+  * ```public SettingsMenu(Stage stage, Controller gameController)```
+  * Constructs a SettingsMenu with the specified stage and game controller.
+* getMenuLayout:
+  * ```protected VBox getMenuLayout()```
+  * Creates and returns the layout for the settings menu. This method includes buttons for volume control and a back button to return to the main menu.
+* changeVolume:
+  * ```private void changeVolume(double delta)```
+  * Changes the global volume by the specified delta. Ensures the volume is between 0 and 1.
+* Usage Example:
+```
+// Create an instance of SettingsMenu
+SettingsMenu settingsMenu = new SettingsMenu(stage, gameController);
+// Get the menu layout
+VBox menuLayout = settingsMenu.getMenuLayout();
+```
+
+This class ensures a user-friendly interface for players to adjust game settings, providing easy access to volume control and navigation back to the main menu.
+
+### WinMenu
+* The WinMenu class represents the win menu displayed when the player wins the game. It extends the ParentMenu class and provides options to go to the level menu or return to the main menu.
+#### Key Functionalities:
+* Menu Navigation: Provides buttons to navigate to the level menu or the main menu.
+* Win Display: Shows a win image using the WinDisplay class. 
+#### Methods:
+* Constructor:
+  * ```public WinMenu(Stage stage, Controller gameController)```
+  * Constructs a WinMenu with the specified stage and game controller.
+* getMenuLayout:
+  * ```protected VBox getMenuLayout()```
+  * Creates and returns the layout for the win menu. This method includes buttons for navigating to the level menu and the main menu, and displays the win image using the WinDisplay class.
+* getBackgroundImageFile:
+  * ```protected String getBackgroundImageFile()```
+  * Returns the file path for the background image of the win menu.
+* Usage Example:
+```
+// Create an instance of WinMenu
+WinMenu winMenu = new WinMenu(stage, gameController);
+// Get the menu layout
+VBox menuLayout = winMenu.getMenuLayout();
+```
+This class ensures a user-friendly interface for players to navigate after winning the game, providing easy access to the level menu or the main menu, and visually indicating the win state with an image.
+
 
 
 
