@@ -33,6 +33,9 @@ public class BossPlane extends Plane {
     private static final int Y_POSITION_UPPER_BOUND = 10;
     private static final int Y_POSITION_LOWER_BOUND = 475;
     private static final int MAX_FRAMES_WITH_SHIELD = 50;
+    /**
+     * The view associated with the boss level.
+     */
     protected final BossLevelView levelView;
     private final List<Integer> movePattern;
     private final AudioPlayer bossFireAudioPlayer;
