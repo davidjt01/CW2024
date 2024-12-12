@@ -18,7 +18,6 @@ class LevelViewTest extends ApplicationTest {
 
     @Override
     public void start(Stage stage) {
-        // Required by TestFX but not used in this test
     }
 
     @BeforeEach

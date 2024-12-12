@@ -37,6 +37,14 @@ public class BossLevelView extends LevelView {
         return new BossLevelView(root, heartsToDisplay);
     }
 
+    public ShieldDisplay getShieldDisplay() {
+        return shieldDisplay;
+    }
+
+    public HealthBarDisplay getHealthBarDisplay() {
+        return healthBarDisplay;
+    }
+
     /**
      * Adds the shield and health bar images to the root group if they are not already present.
      */

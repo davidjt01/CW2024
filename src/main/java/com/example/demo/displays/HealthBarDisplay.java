@@ -61,4 +61,8 @@ public class HealthBarDisplay {
     public HBox getContainer() {
         return container;
     }
+
+    public double getProgress() {
+        return progressBar.getProgress();
+    }
 }
