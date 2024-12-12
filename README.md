@@ -157,6 +157,28 @@ The Controller interface defines the core methods required for handling user int
 
 This interface ensures a consistent approach to managing user interactions and gameplay navigation in the application.
 
+### ExplosionDisplay
+The ExplosionDisplay class creates a visual effect for explosions within the game. It extends JavaFX's ImageView to display an explosion image at a specified position and automatically removes the effect after a brief duration.
+
+#### Key Functionalities:
+- Explosion Effect:
+  - Displays an explosion image at a specific location in the game scene.
+  - Automatically hides the explosion after one second using a Timeline.
+- Positioning and Sizing:
+  - Allows precise placement of the explosion via the constructor parameters (xPosition and yPosition).
+  - Sets the explosion image height to a fixed size while preserving its aspect ratio.
+- Usage Example:
+```
+// Creating an ExplosionDisplay at specific coordinates
+ExplosionDisplay explosion = new ExplosionDisplay(100, 200);
+
+// Adding the explosion to the scene
+root.getChildren().add(explosion);
+```
+- Features:
+  - Pre-configured explosion image located at /com/example/demo/images/explosion.png.
+  - Automatically hides itself after one second to keep the scene clean and optimize performance.
+This class provides a simple yet effective way to add dynamic visual effects for explosions in the game, enhancing user experience.
 
 ## Modified Java Classes:
 
