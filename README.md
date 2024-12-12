@@ -7,7 +7,7 @@ https://github.com/davidjt01/CW2024
 
 ## Features Implemented And Working Properly:
 
-### Audio
+### Added sound effects
 - Added sound effects in game.
   - Explosion sound plays when the player's plane or an enemy plane is destroyed
   - Shield activation and deactivation sound plays when boss's shield is activated or deactivated
@@ -16,6 +16,8 @@ https://github.com/davidjt01/CW2024
     - Missile sound for enemy planes that fires missiles
     - Fireball sound for boss's that fires fireballs
   - "Ouch" sound plays when player takes damage
+
+### Audio volume control
 - Added volume control in settings menu where players can adjust the audio volume from 0 to 100 percent.
   - '-' button decreases volume by 10 percent while '+' button increases volume by 10 percent.
 
