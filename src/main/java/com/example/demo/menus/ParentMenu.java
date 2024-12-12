@@ -11,11 +11,11 @@ import javafx.stage.Stage;
 
 import java.util.Objects;
 
-public abstract class BaseMenu {
+public abstract class ParentMenu {
     protected Stage stage;
     protected Controller gameController;
 
-    public BaseMenu(Stage stage, Controller gameController) {
+    public ParentMenu(Stage stage, Controller gameController) {
         this.stage = stage;
         this.gameController = gameController;
     }

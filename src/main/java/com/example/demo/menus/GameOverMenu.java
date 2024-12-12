@@ -6,7 +6,7 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-public class GameOverMenu extends BaseMenu {
+public class GameOverMenu extends ParentMenu {
     private String levelName;
 
     public GameOverMenu(Stage stage, Controller gameController) {

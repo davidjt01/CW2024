@@ -5,7 +5,7 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-public class LevelMenu extends BaseMenu {
+public class LevelMenu extends ParentMenu {
 
     public LevelMenu(Stage stage, Controller gameController) {
         super(stage, gameController);

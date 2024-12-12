@@ -10,7 +10,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-public class PauseMenu extends BaseMenu {
+public class PauseMenu extends ParentMenu {
     private Scene gameScene;
     private WritableImage backgroundImage;
 

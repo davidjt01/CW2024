@@ -9,7 +9,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-public class SettingsMenu extends BaseMenu {
+public class SettingsMenu extends ParentMenu {
     private Text volumeText;
 
     public SettingsMenu(Stage stage, Controller gameController) {

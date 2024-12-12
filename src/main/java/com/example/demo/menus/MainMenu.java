@@ -7,7 +7,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-public class MainMenu extends BaseMenu {
+public class MainMenu extends ParentMenu {
 
     public MainMenu(Stage stage, Controller gameController) {
         super(stage, gameController);
