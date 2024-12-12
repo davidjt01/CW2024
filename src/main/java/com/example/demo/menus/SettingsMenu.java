@@ -9,13 +9,30 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+/**
+ * The {@code SettingsMenu} class represents the settings menu of the game.
+ * It extends {@link ParentMenu} and provides options to adjust the game settings, such as volume control.
+ */
 public class SettingsMenu extends ParentMenu {
+
     private Text volumeText;
 
+    /**
+     * Constructs a {@code SettingsMenu} with the specified stage and game controller.
+     *
+     * @param stage the primary stage for this application.
+     * @param gameController the game controller managing the menu.
+     */
     public SettingsMenu(Stage stage, Controller gameController) {
         super(stage, gameController);
     }
 
+    /**
+     * Creates and returns the layout for the settings menu.
+     *
+     * @return the layout for the settings menu.
+     */
+    @Override
     protected VBox getMenuLayout() {
         VBox menuLayout = new VBox(20);
         menuLayout.setStyle("-fx-alignment: center; -fx-padding: 50;");
@@ -47,10 +64,14 @@ public class SettingsMenu extends ParentMenu {
         backButton.setOnAction(e -> gameController.onMainMenuSelected());
 
         menuLayout.getChildren().addAll(settingsTitle, volumeControlLayout, backButton);
-
         return menuLayout;
     }
 
+    /**
+     * Changes the global volume by the specified delta.
+     *
+     * @param delta the amount to change the volume by.
+     */
     private void changeVolume(double delta) {
         double newVolume = AudioPlayer.getGlobalVolume() + delta;
         newVolume = Math.max(0, Math.min(newVolume, 1)); // Ensure volume is between 0 and 1
