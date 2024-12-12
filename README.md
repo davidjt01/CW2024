@@ -658,6 +658,59 @@ secondBossPlane.updateUIElements();
 
 This class ensures a challenging and dynamic second boss encounter, enhancing the gameplay experience with advanced projectile mechanics and responsive UI updates.
 
+### AngledBossProjectile
+The AngledBossProjectile class represents a projectile fired by boss planes at an angle. It extends the BossProjectile class and provides methods for updating its position based on the specified angle.
+
+#### Key Functionalities:
+* Angled Movement: Moves the projectile horizontally and vertically based on its velocity and angle.
+  * Converts the specified angle from degrees to radians.
+  * Calculates the horizontal and vertical displacement based on the angle and velocity.
+#### Methods:
+* Constructor:
+  * ```public AngledBossProjectile(double initialYPos, double angle)```
+  * Constructs an AngledBossProjectile with the specified initial y position and angle.
+* updatePosition:
+  * ```public void updatePosition()```
+  * Updates the position of the angled boss projectile. Moves the projectile horizontally and vertically based on its velocity and angle.
+* Usage Example:
+```
+// Create an instance of AngledBossProjectile
+AngledBossProjectile angledProjectile = new AngledBossProjectile(100, 20);
+// Update the position of the angled boss projectile
+angledProjectile.updatePosition();
+```
+
+This class ensures dynamic and precise movement for projectiles fired at an angle, enhancing the gameplay experience with advanced projectile mechanics.
+
+### RandomMovingBossProjectile
+The RandomMovingBossProjectile class represents a projectile fired by boss planes that moves randomly. It extends the BossProjectile class and provides methods for updating its position with random vertical movements.
+
+#### Key Functionalities:
+* Random Vertical Movement: Moves the projectile horizontally and vertically based on its velocity and random direction.
+  * Changes direction randomly after a set number of frames.
+  * Uses a random generator to determine the direction of vertical movement.
+#### Methods:
+* Constructor:
+  * ```public RandomMovingBossProjectile(double initialYPos)```
+  * Constructs a RandomMovingBossProjectile with the specified initial y position.
+* updatePosition:
+  * ```public void updatePosition()```
+  * Updates the position of the random moving boss projectile. Moves the projectile horizontally and vertically based on its velocity and random direction.
+* getRandomDirection:
+  * ```private int getRandomDirection()```
+  * Gets a random direction for the projectile's vertical movement. Returns 1 for upward movement or -1 for downward movement.
+* updateActor:
+  * ```public void updateActor()```
+  * Updates the state of the random moving boss projectile. This method is called in each frame to update the projectile's behavior.
+* Usage Example:
+```
+// Create an instance of RandomMovingBossProjectile
+RandomMovingBossProjectile randomProjectile = new RandomMovingBossProjectile(100);
+// Update the position of the random moving boss projectile
+randomProjectile.updatePosition();
+```
+
+This class ensures dynamic and unpredictable movement for projectiles, enhancing the gameplay experience with advanced projectile mechanics.
 
 
 ## Modified Java Classes:
