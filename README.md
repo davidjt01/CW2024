@@ -93,6 +93,13 @@ https://github.com/davidjt01/CW2024
 - Level four is a boss fight with Second Boss Plane together with Enemy Planes periodically spawning where the player will have to kill the boss to advance.
 - Level five is the final level where the player will have to fight Final Boss Plane while Enemy Planes and Advanced Enemy Planes endlessly spawn where the player will have to kill the boss to win the game.
 
+### Renaming of classes
+- Classes were renamed for clarity standardisation.
+- For example, classes Boss was renamed BossPlane while ShieldImage was renamed ShieldDisplay.
+
+### Package organisation
+- Classes were grouped and moved into new packages for organisation.
+
 ## Features Implemented But Not Working Properly:
 
 ## Features Not Implemented:
