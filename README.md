@@ -40,7 +40,8 @@ https://github.com/davidjt01/CW2024
 ### Improved performance
 - Projectiles that are out of bounds are removed to not waste resources tracking them.
 
-###
+### Accurate hit boxes
+-  Images of all planes and projectiles were cropped and their in game sizes were adjusted to appear as before for accureate collision handling.
 
 ### Menus
 
