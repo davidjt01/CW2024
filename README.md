@@ -567,6 +567,96 @@ VBox menuLayout = winMenu.getMenuLayout();
 ```
 This class ensures a user-friendly interface for players to navigate after winning the game, providing easy access to the level menu or the main menu, and visually indicating the win state with an image.
 
+### AdvancedEnemyPlane
+The AdvancedEnemyPlane class represents an advanced enemy plane in the game. It extends the EnemyPlane class and provides additional movement patterns.
+
+#### Key Functionalities:
+* Movement Patterns: Provides advanced movement patterns including vertical movements and no movement.
+* Moves horizontally at a fixed velocity.
+* Moves vertically based on a predefined pattern that includes upward, downward, and no movement.
+* Shuffles the movement pattern if the plane has moved in the same direction for too long.
+#### Methods:
+* Constructor:
+  * public AdvancedEnemyPlane(double initialXPos, double initialYPos)
+  * Constructs an AdvancedEnemyPlane with the specified initial x and y positions.
+* updatePosition:
+  * public void updatePosition()
+  * Updates the position of the advanced enemy plane. Moves the plane horizontally and vertically based on its movement pattern.
+* initializeMovePattern:
+  * private void initializeMovePattern()
+  * Initializes the movement pattern for the advanced enemy plane. The pattern includes vertical movements and no movement.
+* getNextMove:
+  * private int getNextMove()
+  * Gets the next move in the movement pattern. Shuffles the pattern if the plane has moved in the same direction for too long.
+* Usage Example:
+```
+// Create an instance of AdvancedEnemyPlane
+AdvancedEnemyPlane advancedEnemyPlane = new AdvancedEnemyPlane(100, 200);
+// Update the position of the advanced enemy plane
+advancedEnemyPlane.updatePosition();
+```
+
+This class ensures dynamic and unpredictable movement for advanced enemy planes, enhancing the challenge and engagement in the game.
+
+### FinalBossPlane
+The FinalBossPlane class represents the final boss plane in the game. It extends the BossPlane class and provides additional functionalities such as firing angled projectiles.
+
+#### Key Functionalities:
+* Angled Projectiles: Fires multiple angled projectiles from the final boss plane.
+  * Plays a firing audio when projectiles are fired.
+  * Fires projectiles at three different angles: -20 degrees, 0 degrees, and 20 degrees.
+* UI Elements: Updates the UI elements associated with the final boss plane.
+  * Adjusts the positions of the shield and health bar based on the plane's current position.
+#### Methods:
+* Constructor:
+  * public FinalBossPlane(BossLevelView levelView)
+  * Constructs a FinalBossPlane with the specified level view.
+* fireProjectiles:
+  * public List<DestructibleEntity> fireProjectiles()
+  * Fires multiple angled projectiles from the final boss plane. Plays the firing audio and returns a list of fired projectiles.
+* updateUIElements:
+  * protected void updateUIElements()
+  * Updates the UI elements associated with the final boss plane. This includes the shield and health bar positions.
+* Usage Example:
+```
+// Create an instance of FinalBossPlane
+FinalBossPlane finalBossPlane = new FinalBossPlane(levelView);
+// Fire projectiles from the final boss plane
+List<DestructibleEntity> projectiles = finalBossPlane.fireProjectiles();
+// Update the UI elements of the final boss plane
+finalBossPlane.updateUIElements();
+```
+
+This class ensures a challenging and dynamic final boss encounter, enhancing the gameplay experience with advanced projectile mechanics and responsive UI updates.
+
+### SecondBossPlane
+The SecondBossPlane class represents the second boss plane in the game. It extends the BossPlane class and provides additional functionalities such as firing random moving projectiles.
+#### Key Functionalities:
+* Random Moving Projectiles: Fires a random moving projectile from the second boss plane.
+  * Plays a firing audio when the projectile is fired.
+* UI Elements: Updates the UI elements associated with the second boss plane.
+  * Adjusts the positions of the shield and health bar based on the plane's current position. 
+#### Methods:
+* Constructor:
+  * public SecondBossPlane(BossLevelView levelView)
+  * Constructs a SecondBossPlane with the specified level view.
+* fireProjectile:
+  * public DestructibleEntity fireProjectile()
+  * Fires a random moving projectile from the second boss plane. Plays the firing audio and returns the fired projectile, or null if the plane does not fire in the current frame.
+* updateUIElements:
+  * protected void updateUIElements()
+  * Updates the UI elements associated with the second boss plane. This includes the shield and health bar positions.
+* Usage Example:
+```
+// Create an instance of SecondBossPlane
+SecondBossPlane secondBossPlane = new SecondBossPlane(levelView);
+// Fire a projectile from the second boss plane
+DestructibleEntity projectile = secondBossPlane.fireProjectile();
+// Update the UI elements of the second boss plane
+secondBossPlane.updateUIElements();
+```
+
+This class ensures a challenging and dynamic second boss encounter, enhancing the gameplay experience with advanced projectile mechanics and responsive UI updates.
 
 
 
