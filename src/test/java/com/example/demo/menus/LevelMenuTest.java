@@ -67,7 +67,6 @@ class LevelMenuTest extends ApplicationTest {
                 Button levelButton = (Button) levelMenu.getMenuLayout().getChildren().get(i - 1);
                 assertEquals("Level " + i, levelButton.getText(), "Level button should have the correct text.");
                 levelButton.fire();
-                // Add assertions to verify the behavior when each level button is clicked
             }
             latch.countDown();
         });
@@ -81,7 +80,6 @@ class LevelMenuTest extends ApplicationTest {
             Button backButton = (Button) levelMenu.getMenuLayout().getChildren().get(5);
             assertEquals("Back", backButton.getText(), "Back button should have the correct text.");
             backButton.fire();
-            // Add assertions to verify the behavior when the back button is clicked
             latch.countDown();
         });
         latch.await();

@@ -90,7 +90,6 @@ class SettingsMenuTest extends ApplicationTest {
             Button backButton = (Button) settingsMenu.getMenuLayout().getChildren().get(2);
             assertEquals("Back", backButton.getText(), "Back button should have the correct text.");
             backButton.fire();
-            // Add assertions to verify the behavior when the back button is clicked
             latch.countDown();
         });
         latch.await();

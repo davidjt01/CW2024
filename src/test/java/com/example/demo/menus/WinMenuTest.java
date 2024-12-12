@@ -79,7 +79,6 @@ class WinMenuTest extends ApplicationTest {
             Button mainMenuButton = (Button) winMenu.getMenuLayout().getChildren().get(2);
             assertEquals("Main Menu", mainMenuButton.getText(), "Main Menu button should have the correct text.");
             mainMenuButton.fire();
-            // Add assertions to verify the behavior when the main menu button is clicked
             latch.countDown();
         });
         latch.await();
