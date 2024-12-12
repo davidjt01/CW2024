@@ -115,6 +115,49 @@ https://github.com/davidjt01/CW2024
 
 ## New Java Classes:
 
+### AudioPlayer
+The AudioPlayer class provides a streamlined way to manage and play audio clips within the application. It includes features such as global volume control and seamless audio clip playback. Below are the key functionalities of the AudioPlayer class:
+
+#### Global Volume Control:
+Allows setting and retrieving a global volume value applicable to all instances of the AudioPlayer.
+Volume levels range from 0.0 (mute) to 1.0 (maximum volume).
+#### Audio Management:
+Provides a static factory method createAudioPlayer() to instantiate new AudioPlayer objects.
+Facilitates loading audio files using the loadAudio(String filePath) method, which accepts the file path of the audio resource.
+#### Playback:
+Supports playing the loaded audio clip with the play() method.
+Ensures that only properly loaded audio clips are playable.
+#### Usage Example:
+```
+// Set global volume
+AudioPlayer.setGlobalVolume(0.5);
+
+// Create an AudioPlayer instance
+AudioPlayer audioPlayer = AudioPlayer.createAudioPlayer();
+
+// Load and play an audio file
+audioPlayer.loadAudio("/path/to/audio/file.wav");
+audioPlayer.play();
+```
+This class is built on top of JavaFX's AudioClip and ensures robust audio playback suitable for various interactive applications.
+
+### Controller
+The Controller interface defines the core methods required for handling user interactions within the game. It provides a structured way to manage navigation between levels, menus, and settings.
+
+#### Key Functionalities:
+- Level Selection:
+  - Provides the onLevelSelected(String level) method to handle events when a specific game level is selected.
+- Menu Navigation:
+  - Includes methods for navigating between the main menu, level menu, and settings:
+    - onMainMenuSelected(): Handles navigation to the main menu.
+    - onLevelMenuSelected(): Handles navigation to the level selection menu.
+    - onSettingsMenuSelected(): Handles navigation to the settings menu.
+  - Gameplay Control:
+    - Offers the onContinueSelected() method to resume gameplay, allowing seamless transitions back to the game after interruptions.
+
+This interface ensures a consistent approach to managing user interactions and gameplay navigation in the application.
+
+
 ## Modified Java Classes:
 
 ## Unexpected Problems:
