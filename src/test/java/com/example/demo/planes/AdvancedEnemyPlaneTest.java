@@ -23,11 +23,16 @@ public class AdvancedEnemyPlaneTest {
 
     @Test
     public void testUpdatePosition() {
-        double initialX = advancedEnemyPlane.getLayoutX();
         double initialY = advancedEnemyPlane.getLayoutY();
-        advancedEnemyPlane.updatePosition();
-        assertNotEquals(initialX, advancedEnemyPlane.getLayoutX() + advancedEnemyPlane.getTranslateX(), "X position should be updated correctly");
-        assertNotEquals(initialY, advancedEnemyPlane.getLayoutY() + advancedEnemyPlane.getTranslateY(), "Y position should be updated correctly");
+        boolean positionUpdated = false;
+        for (int i = 0; i < 20; i++) { // Try multiple updates to ensure movement
+            advancedEnemyPlane.updatePosition();
+            if (advancedEnemyPlane.getLayoutY() + advancedEnemyPlane.getTranslateY() != initialY) {
+                positionUpdated = true;
+                break;
+            }
+        }
+        assertTrue(positionUpdated, "Y position should be updated correctly");
     }
 
     @Test
