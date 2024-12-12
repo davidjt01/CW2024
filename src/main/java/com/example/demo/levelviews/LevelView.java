@@ -35,6 +35,10 @@ public class LevelView {
         return new LevelView(root, heartsToDisplay);
     }
 
+    public HeartDisplay getHeartDisplay() {
+        return heartDisplay;
+    }
+
     /**
      * Displays the heart display on the screen.
      */

@@ -67,7 +67,6 @@ class GameOverMenuTest extends ApplicationTest {
             Button retryButton = (Button) gameOverMenu.getMenuLayout().getChildren().get(1);
             assertEquals("Retry", retryButton.getText(), "Retry button should have the correct text.");
             retryButton.fire();
-            // Add assertions to verify the behavior when the retry button is clicked
             latch.countDown();
         });
         latch.await();
@@ -80,7 +79,6 @@ class GameOverMenuTest extends ApplicationTest {
             Button levelMenuButton = (Button) gameOverMenu.getMenuLayout().getChildren().get(2);
             assertEquals("Level Menu", levelMenuButton.getText(), "Level Menu button should have the correct text.");
             levelMenuButton.fire();
-            // Add assertions to verify the behavior when the level menu button is clicked
             latch.countDown();
         });
         latch.await();
@@ -93,7 +91,6 @@ class GameOverMenuTest extends ApplicationTest {
             Button mainMenuButton = (Button) gameOverMenu.getMenuLayout().getChildren().get(3);
             assertEquals("Main Menu", mainMenuButton.getText(), "Main Menu button should have the correct text.");
             mainMenuButton.fire();
-            // Add assertions to verify the behavior when the main menu button is clicked
             latch.countDown();
         });
         latch.await();

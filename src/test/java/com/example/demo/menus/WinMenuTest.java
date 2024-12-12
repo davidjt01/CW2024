@@ -66,7 +66,6 @@ class WinMenuTest extends ApplicationTest {
             Button levelMenuButton = (Button) winMenu.getMenuLayout().getChildren().get(1);
             assertEquals("Level Menu", levelMenuButton.getText(), "Level Menu button should have the correct text.");
             levelMenuButton.fire();
-            // Add assertions to verify the behavior when the level menu button is clicked
             latch.countDown();
         });
         latch.await();

@@ -66,17 +66,14 @@ class MainMenuTest extends ApplicationTest {
             Button playButton = (Button) mainMenu.getMenuLayout().getChildren().get(1);
             assertEquals("Play", playButton.getText(), "Play button should have the correct text.");
             playButton.fire();
-            // Add assertions to verify the behavior when the play button is clicked
 
             Button settingsButton = (Button) mainMenu.getMenuLayout().getChildren().get(2);
             assertEquals("Settings", settingsButton.getText(), "Settings button should have the correct text.");
             settingsButton.fire();
-            // Add assertions to verify the behavior when the settings button is clicked
 
             Button quitButton = (Button) mainMenu.getMenuLayout().getChildren().get(3);
             assertEquals("Quit", quitButton.getText(), "Quit button should have the correct text.");
             quitButton.fire();
-            // Add assertions to verify the behavior when the quit button is clicked
 
             latch.countDown();
         });
