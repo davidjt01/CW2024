@@ -577,16 +577,16 @@ The AdvancedEnemyPlane class represents an advanced enemy plane in the game. It 
 * Shuffles the movement pattern if the plane has moved in the same direction for too long.
 #### Methods:
 * Constructor:
-  * public AdvancedEnemyPlane(double initialXPos, double initialYPos)
+  * ```public AdvancedEnemyPlane(double initialXPos, double initialYPos)```
   * Constructs an AdvancedEnemyPlane with the specified initial x and y positions.
 * updatePosition:
-  * public void updatePosition()
+  * ```public void updatePosition()```
   * Updates the position of the advanced enemy plane. Moves the plane horizontally and vertically based on its movement pattern.
 * initializeMovePattern:
-  * private void initializeMovePattern()
+  * ```private void initializeMovePattern()```
   * Initializes the movement pattern for the advanced enemy plane. The pattern includes vertical movements and no movement.
 * getNextMove:
-  * private int getNextMove()
+  * ```private int getNextMove()```
   * Gets the next move in the movement pattern. Shuffles the pattern if the plane has moved in the same direction for too long.
 * Usage Example:
 ```
@@ -609,13 +609,13 @@ The FinalBossPlane class represents the final boss plane in the game. It extends
   * Adjusts the positions of the shield and health bar based on the plane's current position.
 #### Methods:
 * Constructor:
-  * public FinalBossPlane(BossLevelView levelView)
+  * ```public FinalBossPlane(BossLevelView levelView)```
   * Constructs a FinalBossPlane with the specified level view.
 * fireProjectiles:
-  * public List<DestructibleEntity> fireProjectiles()
+  * ```public List<DestructibleEntity> fireProjectiles()```
   * Fires multiple angled projectiles from the final boss plane. Plays the firing audio and returns a list of fired projectiles.
 * updateUIElements:
-  * protected void updateUIElements()
+  * ```protected void updateUIElements()```
   * Updates the UI elements associated with the final boss plane. This includes the shield and health bar positions.
 * Usage Example:
 ```
@@ -638,13 +638,13 @@ The SecondBossPlane class represents the second boss plane in the game. It exten
   * Adjusts the positions of the shield and health bar based on the plane's current position. 
 #### Methods:
 * Constructor:
-  * public SecondBossPlane(BossLevelView levelView)
+  * ```public SecondBossPlane(BossLevelView levelView)```
   * Constructs a SecondBossPlane with the specified level view.
 * fireProjectile:
-  * public DestructibleEntity fireProjectile()
+  * ```public DestructibleEntity fireProjectile()```
   * Fires a random moving projectile from the second boss plane. Plays the firing audio and returns the fired projectile, or null if the plane does not fire in the current frame.
 * updateUIElements:
-  * protected void updateUIElements()
+  * ```protected void updateUIElements()```
   * Updates the UI elements associated with the second boss plane. This includes the shield and health bar positions.
 * Usage Example:
 ```
