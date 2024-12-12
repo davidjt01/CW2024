@@ -22,7 +22,14 @@ import java.util.Objects;
  */
 public abstract class ParentMenu {
 
+    /**
+     * The primary stage for this application.
+     */
     protected Stage stage;
+
+    /**
+     * The game controller managing the menu.
+     */
     protected Controller gameController;
 
     /**
