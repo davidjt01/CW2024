@@ -5,6 +5,9 @@ package com.example.demo.projectiles;
  * It extends {@link Projectile} and provides methods for updating its position and handling its behavior.
  */
 public class BossProjectile extends Projectile {
+    /**
+     * The horizontal velocity of the boss projectile.
+     */
     protected static final int HORIZONTAL_VELOCITY = -15;
     private static final String IMAGE_NAME = "fireball.png";
     private static final int IMAGE_HEIGHT = 75;
