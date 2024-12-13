@@ -974,3 +974,26 @@ The UserProjectile class was modified. Below are the key changes:
 * Image Height Adjustment: Adjusted the image height of the user projectile to ensure it fits well within the game visuals after cropping userfire image.
 
 ## Unexpected Problems:
+
+### Error after completion of LevelOne
+#### Solution:
+* Resolved correcting the IMAGE_NAME file path and updating setImage method to use IMAGE_NAME in ShieldImage.
+* Stopped timeline in goToNextLevel method before setChanged and notifyObservers in LevelParent.
+
+### Shield Image Not Showing
+#### Solution:
+* Updated Boss to take LevelViewLevelTwo as parameters and to use methods showShield and hideShield from LevelViewLevelTwo.
+* Updated LevelViewLevelTwo to only add shield image to root in showShield Method instead of adding in the constructor.
+
+### Low Performance when space bar is held, firing projectiles in quick succession
+#### Solution:
+* Added a method to remove projectiles that are out off bounds in LevelParent
+
+### Inaccurate hit boxes
+#### Solution:
+* Cropped the images used using a python script and updated the image heights so that the effected entities still appear the same size.
+
+
+### Kill Count includes enemies that penetrated defences
+#### Solution:
+* Updated method in LevelParent to not include enemies that penetrated defences into kill count.
