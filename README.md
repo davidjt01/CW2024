@@ -952,25 +952,25 @@ The Projectile class was modified. Below are the key changes:
 The BossProjectile class was modified. Below are the key changes:
 
 #### Key Functionalities:
-Package Change: The class was moved from com.example.demo to com.example.demo.projectiles.
-Imports: Updated imports to include necessary classes from the new package structure.
-Class Documentation: Added class-level Javadoc comments to describe the purpose of the BossProjectile class.
+* Package Change: The class was moved from com.example.demo to com.example.demo.projectiles.
+* Imports: Updated imports to include necessary classes from the new package structure.
+* Class Documentation: Added class-level Javadoc comments to describe the purpose of the BossProjectile class.
 
 ### EnemyProjectile
 The EnemyProjectile class was modified. Below are the key changes:
 
 #### Key Functionalities:
-Package Change: The class was moved from com.example.demo to com.example.demo.projectiles.
-Imports: Updated imports to include necessary classes from the new package structure.
-Class Documentation: Added class-level Javadoc comments to describe the purpose of the EnemyProjectile class.
+* Package Change: The class was moved from com.example.demo to com.example.demo.projectiles.
+* Imports: Updated imports to include necessary classes from the new package structure.
+* Class Documentation: Added class-level Javadoc comments to describe the purpose of the EnemyProjectile class.
 
 ### UserProjectile
 The UserProjectile class was modified. Below are the key changes:
 
 #### Key Functionalities:
-Package Change: The class was moved from com.example.demo to com.example.demo.projectiles.
-Imports: Updated imports to include necessary classes from the new package structure.
-Class Documentation: Added class-level Javadoc comments to describe the purpose of the UserProjectile class.
-Image Height Adjustment: Adjusted the image height of the user projectile to ensure it fits well within the game visuals after cropping userfire image
+* Package Change: The class was moved from com.example.demo to com.example.demo.projectiles.
+* Imports: Updated imports to include necessary classes from the new package structure.
+* Class Documentation: Added class-level Javadoc comments to describe the purpose of the UserProjectile class.
+* Image Height Adjustment: Adjusted the image height of the user projectile to ensure it fits well within the game visuals after cropping userfire image.
 
 ## Unexpected Problems:
