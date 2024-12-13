@@ -715,4 +715,114 @@ This class ensures dynamic and unpredictable movement for projectiles, enhancing
 
 ## Modified Java Classes:
 
+### Controller to GameController
+The Controller class was modified and renamed to GameController. Below are the key changes:
+
+#### Key Functionalities:
+* Class Name Change: The class was renamed from Controller to GameController.
+* Interface Implementation: The GameController class implements both the Controller and Observer interfaces.
+* Factory Method: Added a factory method createGameController for creating instances of GameController.
+* Menu Methods: Added methods for displaying different menus:
+  * showMainMenu()
+  * showLevelMenu()
+  * showSettingsMenu()
+* Level Transition: Modified the goToLevel method to include Controller as a parameter in the constructor of level classes.
+* Event Handlers: Added methods to handle various events:
+  * onLevelSelected(String levelName)
+  * onMainMenuSelected()
+  * onLevelMenuSelected()
+  * onContinueSelected()
+  * onSettingsMenuSelected()
+* Current Level: Added a currLevel field to keep track of the current level.
+
+These changes reflect the transition from a basic Controller class to a more comprehensive GameController class that manages game flow, level transitions, and menu displays. This ensures a more structured and user-friendly interface for managing the game's various states and interactions.
+
+### Main to GameLauncher
+The Main class was modified and renamed to GameLauncher. Below are the key changes:
+
+#### Key Functionalities:
+* Class Name Change: The class was renamed from Main to GameLauncher.
+* Class Documentation: Added class-level Javadoc comments to describe the purpose of the GameLauncher class.
+* Constructor: Added a default constructor for the GameLauncher class.
+* Imports: Removed unused imports related to reflection.
+* Controller Initialization: Changed from using Controller to GameController with a factory method for instantiation.
+* Exception Handling: Simplified exception handling in the start method.
+
+These changes reflect the transition from a basic Main class to a more comprehensive GameLauncher class that serves as the entry point for the application, setting up the primary stage and initializing the game controller. This ensures a more structured and user-friendly interface for launching the game.
+
+### GameOverImage to GameOverDisplay
+The GameOverImage class was modified and renamed to GameOverDisplay. Below are the key changes:
+
+#### Key Functionalities:
+* Package Change: The class was moved from com.example.demo to com.example.demo.displays.
+* Class Name Change: The class was renamed from GameOverImage to GameOverDisplay.
+* Class Documentation: Added class-level Javadoc comments to describe the purpose of the GameOverDisplay class.
+* Constructor: Modified the constructor to initialize the image with specific dimensions and set it to be initially invisible.
+* Visibility Control: Added a method to make the "Game Over" image visible.
+
+These changes reflect the transition from a basic GameOverImage class to a more comprehensive GameOverDisplay class that provides better control over the visibility and dimensions of the "Game Over" image, enhancing the user experience.
+
+### HeartDisplay
+The HeartDisplay class was modified. Below are the key changes:
+
+#### Key Functionalities:
+* Package Change: The class was moved from com.example.demo to com.example.demo.displays.
+* Class Documentation: Added class-level Javadoc comments to describe the purpose of the HeartDisplay class.
+* Constructor: Modified the constructor to be private and added a static factory method for creating instances of HeartDisplay.
+* Imports: Added java.util.Objects for null checks.
+* Factory Method: Added a static factory method createHeartDisplay for creating instances of HeartDisplay.
+
+These changes reflect the transition to a more structured and user-friendly HeartDisplay class, providing better encapsulation and initialization through a factory method. This ensures a more consistent and reliable way to create and manage heart displays in the game.
+
+### ShieldImage to ShieldDisplay
+The ShieldImage class was modified and renamed to ShieldDisplay. Below are the key changes:
+
+#### Key Functionalities:
+* Package Change: The class was moved from com.example.demo to com.example.demo.displays.
+* Class Name Change: The class was renamed from ShieldImage to ShieldDisplay.
+* Class Documentation: Added class-level Javadoc comments to describe the purpose of the ShieldDisplay class.
+* Constructor: Modified the constructor to be private and added a static factory method for creating instances of ShieldDisplay.
+* Imports: Added java.util.Objects for null checks.
+* Factory Method: Added a static factory method createShieldDisplay for creating instances of ShieldDisplay.
+
+These changes reflect the transition to a more structured and user-friendly ShieldDisplay class, providing better encapsulation and initialization through a factory method. This ensures a more consistent and reliable way to create and manage shield displays in the game.
+
+### WinImage to WinDisplay
+The WinImage class was modified and renamed to WinDisplay. Below are the key changes:
+
+#### Key Functionalities:
+* Package Change: The class was moved from com.example.demo to com.example.demo.displays.
+* Class Name Change: The class was renamed from WinImage to WinDisplay.
+* Class Documentation: Added class-level Javadoc comments to describe the purpose of the WinDisplay class.
+
+### LevelOne
+The LevelOne class was modified. Below are the key changes:
+
+#### Key Functionalities:
+* Package Change: The class was moved from com.example.demo to com.example.demo.levels.
+* Imports: Updated imports to include necessary classes from the new package structure.
+* Class Documentation: Added class-level Javadoc comments to describe the purpose of the LevelOne class.
+* Constructor: Modified the constructor to include a Controller parameter and updated the superclass constructor call.
+* Enemy Spawning: Added a check to ensure enemies can be spawned before adding them to the level.
+* Level View: Updated the instantiateLevelView method to use a factory method for creating the LevelView.
+
+These changes reflect the transition to a more structured and user-friendly LevelOne class, providing better encapsulation and initialization through updated methods and parameters. This ensures a more consistent and reliable way to manage the first level of the game.
+
+### LevelTwo
+The LevelTwo class was modified. Below are the key changes:
+
+#### Key Functionalities:
+* Package Change: The class was moved from com.example.demo to com.example.demo.levels.
+* Imports: Updated imports to include necessary classes from the new package structure.
+* Class Documentation: Added class-level Javadoc comments to describe the purpose of the LevelTwo class.
+* Constructor: Modified the constructor to include a Controller parameter and updated the superclass constructor call.
+* Boss Initialization: Changed from using Boss to BossPlane and updated the initialization to include the level view.
+* Level View: Updated the instantiateLevelView method to use a factory method for creating the BossLevelView.
+
+These changes reflect the transition to a more structured and user-friendly LevelTwo class, providing better encapsulation and initialization through updated methods and parameters. This ensures a more consistent and reliable way to manage the second level of the game.
+
+
+
+
+
 ## Unexpected Problems:
