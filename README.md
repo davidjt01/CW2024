@@ -807,6 +807,7 @@ The ActiveActorDestructible class was modified. Below are the key changes:
 
 #### Key Functionalities:
 * Package Change: The class was moved from com.example.demo to com.example.demo.entities.
+* Class Name Change: The class was renamed from ActiveActorDestructible to DestructibleEntity.
 * Class Documentation: Added class-level Javadoc comments to describe the purpose of the DestructibleEntity class.
 
 ### ActiveActor to Entity
@@ -814,6 +815,7 @@ The ActiveActorDestructible class was modified to Entity. Below are the key chan
 
 #### Key Functionalities:
 * Package Change: The class was moved from com.example.demo to com.example.demo.entities.
+* Class Name Change: The class was renamed from ActiveActor to Entity.
 * Class Documentation: Added class-level Javadoc comments to describe the purpose of the Entity class.
 
 ### LevelParent
