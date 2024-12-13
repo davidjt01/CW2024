@@ -795,6 +795,27 @@ The WinImage class was modified and renamed to WinDisplay. Below are the key cha
 * Class Name Change: The class was renamed from WinImage to WinDisplay.
 * Class Documentation: Added class-level Javadoc comments to describe the purpose of the WinDisplay class.
 
+### Destructible
+The Destructible class was modified. Below are the key changes:
+
+#### Key Functionalities:
+* Package Change: The class was moved from com.example.demo to com.example.demo.entities.
+* Class Documentation: Added class-level Javadoc comments to describe the purpose of the Destructible interface.
+
+### ActiveActorDestructible to DestructibleEntity
+The ActiveActorDestructible class was modified. Below are the key changes:
+
+#### Key Functionalities:
+* Package Change: The class was moved from com.example.demo to com.example.demo.entities.
+* Class Documentation: Added class-level Javadoc comments to describe the purpose of the DestructibleEntity class.
+
+### ActiveActor to Entity
+The ActiveActorDestructible class was modified to Entity. Below are the key changes:
+
+#### Key Functionalities:
+* Package Change: The class was moved from com.example.demo to com.example.demo.entities.
+* Class Documentation: Added class-level Javadoc comments to describe the purpose of the Entity class.
+
 ### LevelParent
 The LevelParent class was modified. Below are the key changes:
 
@@ -939,7 +960,7 @@ The EnemyProjectile class was modified. Below are the key changes:
 #### Key Functionalities:
 Package Change: The class was moved from com.example.demo to com.example.demo.projectiles.
 Imports: Updated imports to include necessary classes from the new package structure.
-Class Documentation: Added class-level Javadoc comments to describe the purpose of the BossProjectile class.
+Class Documentation: Added class-level Javadoc comments to describe the purpose of the EnemyProjectile class.
 
 ### UserProjectile
 The UserProjectile class was modified. Below are the key changes:
@@ -947,7 +968,7 @@ The UserProjectile class was modified. Below are the key changes:
 #### Key Functionalities:
 Package Change: The class was moved from com.example.demo to com.example.demo.projectiles.
 Imports: Updated imports to include necessary classes from the new package structure.
-Class Documentation: Added class-level Javadoc comments to describe the purpose of the BossProjectile class.
+Class Documentation: Added class-level Javadoc comments to describe the purpose of the UserProjectile class.
 Image Height Adjustment: Adjusted the image height of the user projectile to ensure it fits well within the game visuals after cropping userfire image
 
 ## Unexpected Problems:
