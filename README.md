@@ -795,6 +795,24 @@ The WinImage class was modified and renamed to WinDisplay. Below are the key cha
 * Class Name Change: The class was renamed from WinImage to WinDisplay.
 * Class Documentation: Added class-level Javadoc comments to describe the purpose of the WinDisplay class.
 
+### LevelParent
+The LevelParent class was modified. Below are the key changes:
+
+#### Key Functionalities:
+* Package Change: The class was moved from com.example.demo to com.example.demo.levels.
+* Imports: Updated imports to include necessary classes from the new package structure.
+* Class Documentation: Added class-level Javadoc comments to describe the purpose of the LevelParent class.
+* Controller Implementation: Implemented the Controller interface.
+* Game Flow Management: Enhanced methods for managing game flow, including initializing units, handling collisions, and updating the game state.
+* Pause and Resume Functionality: Added methods to pause and resume the game.
+* Projectile Management: Added methods to handle projectiles, including firing, removing out-of-screen projectiles, and generating enemy fire.
+* Enemy Spawn Control: Added a method to control enemy spawning based on a minimum spawn delay.
+* Enhanced Input Handling: Improved input handling to support additional keys for movement and game control.
+* Added method to handle multiple projectiles allowing enemies to fire multiple projectiles at once.
+* Added firing cooldown for UserPlane so that UserPlane will fire at a reasonable rate when space bar is held.
+
+These changes reflect the transition to a more structured and user-friendly LevelParent class, providing better encapsulation and initialization through updated methods and parameters. This ensures a more consistent and reliable way to manage game levels, including enhanced game flow management, improved input handling, and robust projectile and enemy spawn control. The addition of pause and resume functionality further enhances the gameplay experience, allowing for seamless interruptions and resumptions.
+
 ### LevelOne
 The LevelOne class was modified. Below are the key changes:
 
@@ -821,8 +839,115 @@ The LevelTwo class was modified. Below are the key changes:
 
 These changes reflect the transition to a more structured and user-friendly LevelTwo class, providing better encapsulation and initialization through updated methods and parameters. This ensures a more consistent and reliable way to manage the second level of the game.
 
+### LevelView
+The LevelView class was modified. Below are the key changes:
 
+#### Key Functionalities:
+* Package Change: The class was moved from com.example.demo to com.example.demo.levelviews.
+* Imports: Updated imports to include necessary classes from the new package structure.
+* Class Documentation: Added class-level Javadoc comments to describe the purpose of the LevelView class.
+* Constructor: Modified the constructor to be package-private and added a static factory method for creating instances of LevelView.
+* Heart Display Initialization: Changed the initialization of HeartDisplay to use a factory method.
+* Removed Win and Game Over Images: Removed the fields and methods related to WinImage and GameOverImage.
 
+These changes reflect the transition to a more structured and user-friendly LevelView class, providing better encapsulation and initialization through a factory method. This ensures a more consistent and reliable way to manage the visual components of a game level.
 
+### LevelViewLevelTwo to BossLevelView
+The LevelViewLevelTwo class was modified and renamed to BossLevelView. Below are the key changes:
+
+#### Key Functionalities:
+* Class Name Change: The class was renamed from LevelViewLevelTwo to BossLevelView.
+* Package Change: The class was moved from com.example.demo to com.example.demo.levelviews.
+* Imports: Updated imports to include necessary classes from the new package structure.
+* Class Documentation: Added class-level Javadoc comments to describe the purpose of the BossLevelView class.
+* Constructor: Modified the constructor to be private and added a static factory method for creating instances of BossLevelView.
+* Shield and Health Bar Initialization: Changed the initialization of ShieldDisplay and HealthBarDisplay to use factory methods.
+* Image Management: Added methods to manage the display of shield and health bar images.
+
+These changes reflect the transition to a more structured and user-friendly BossLevelView class, providing better encapsulation and initialization through a factory method. This ensures a more consistent and reliable way to manage the visual components of a boss level in the game.
+
+### FighterPlane to Plane
+The FighterPlane class was modified and renamed to Plane. Below are the key changes:
+
+#### Key Functionalities:
+* Class Name Change: The class was renamed from FighterPlane to Plane.
+* Package Change: The class was moved from com.example.demo to com.example.demo.planes.
+* Imports: Updated imports to include necessary classes from the new package structure.
+* Class Documentation: Added class-level Javadoc comments to describe the purpose of the Plane class.
+* Audio Player: Integrated an AudioPlayer instance for playing explosion sounds upon destruction.
+* Explosion Display: Added functionality to display an explosion effect when the plane is destroyed.
+
+These changes reflect the transition to a more structured and user-friendly Plane class, providing better encapsulation and initialization through updated methods and parameters. This ensures a more consistent and reliable way to manage plane entities in the game.
+
+### EnemyPlane
+The EnemyPlane class was modified. Below are the key changes:
+
+#### Key Functionalities:
+* Package Change: The class was moved from com.example.demo to com.example.demo.planes.
+* Imports: Updated imports to include necessary classes from the new package structure.
+* Class Documentation: Added class-level Javadoc comments to describe the purpose of the EnemyPlane class.
+* Constructor: Added a new constructor to initialize the EnemyPlane with an audio player for firing sounds.
+* Audio Player: Integrated an AudioPlayer to play a sound when the enemy plane fires a projectile.
+
+These changes reflect the transition to a more structured and user-friendly EnemyPlane class, providing better encapsulation and initialization through updated methods and parameters. This ensures a more consistent and reliable way to manage enemy planes in the game.
+
+### Boss to BossPlane
+The Boss class was modified and renamed to BossPlane. Below are the key changes:
+
+#### Key Functionalities:
+* Class Name Change: The class was renamed from Boss to BossPlane.
+* Package Change: The class was moved from com.example.demo to com.example.demo.planes.
+* Imports: Updated imports to include necessary classes from the new package structure.
+* Class Documentation: Added class-level Javadoc comments to describe the purpose of the BossPlane class.
+* Constructor: Modified the constructor to include a BossLevelView parameter and updated the superclass constructor call.
+* Audio Player: Integrated AudioPlayer instances for firing and shield sounds.
+* Shield and Health Bar Management: Added methods to manage the shield and health bar, including updating their positions and states.
+
+These changes reflect the transition to a more structured and user-friendly BossPlane class, providing better encapsulation and initialization through updated methods and parameters. This ensures a more consistent and reliable way to manage boss planes in the game.
+
+### UserPlane
+The UserPlane class was modified. Below are the key changes:
+
+#### Key Functionalities:
+* Package Change: The class was moved from com.example.demo to com.example.demo.planes.
+* Imports: Updated imports to include necessary classes from the new package structure.
+* Class Documentation: Added class-level Javadoc comments to describe the purpose of the UserPlane class.
+* Audio Player: Integrated AudioPlayer instances for playing firing and damage sounds.
+* Movement Control: Enhanced movement control to include both vertical and horizontal movements.
+
+These changes reflect the transition to a more structured and user-friendly UserPlane class, providing better encapsulation and initialization through updated methods and parameters. This ensures a more consistent and reliable way to manage the user's plane in the game.
+
+### Projectile
+The Projectile class was modified. Below are the key changes:
+
+#### Key Functionalities:
+* Package Change: The class was moved from com.example.demo to com.example.demo.projectiles.
+* Imports: Updated imports to include necessary classes from the new package structure.
+* Class Documentation: Added class-level Javadoc comments to describe the purpose of the Projectile class.
+
+### BossProjectile
+The BossProjectile class was modified. Below are the key changes:
+
+#### Key Functionalities:
+Package Change: The class was moved from com.example.demo to com.example.demo.projectiles.
+Imports: Updated imports to include necessary classes from the new package structure.
+Class Documentation: Added class-level Javadoc comments to describe the purpose of the BossProjectile class.
+
+### EnemyProjectile
+The EnemyProjectile class was modified. Below are the key changes:
+
+#### Key Functionalities:
+Package Change: The class was moved from com.example.demo to com.example.demo.projectiles.
+Imports: Updated imports to include necessary classes from the new package structure.
+Class Documentation: Added class-level Javadoc comments to describe the purpose of the BossProjectile class.
+
+### UserProjectile
+The UserProjectile class was modified. Below are the key changes:
+
+#### Key Functionalities:
+Package Change: The class was moved from com.example.demo to com.example.demo.projectiles.
+Imports: Updated imports to include necessary classes from the new package structure.
+Class Documentation: Added class-level Javadoc comments to describe the purpose of the BossProjectile class.
+Image Height Adjustment: Adjusted the image height of the user projectile to ensure it fits well within the game visuals after cropping userfire image
 
 ## Unexpected Problems:
