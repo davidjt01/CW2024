@@ -5,6 +5,10 @@ https://github.com/davidjt01/CW2024
 
 ## Compilation Instructions:
 
+- Download or clone the repository.
+- In the directory where it the porject is saved, run the following from command line.
+- ```mvn clean compile javafx:run```
+
 ## Features Implemented And Working Properly:
 
 ### Added sound effects
